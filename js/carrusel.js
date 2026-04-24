@@ -1,75 +1,48 @@
 "use strict";
 
 class Carrusel {
-    constructor(busqueda) {
-        this.busqueda = busqueda;
+    constructor(imagenes) {
+        this.imagenes = imagenes;
         this.actual = 0;
-        this.maximo = 4;
-        this.fotos = [];
+        this.maximo = imagenes.length - 1;
 
-        // Llamar al método para obtener las fotografías
-        this.getFotografias();
-    }
-
-    getFotografias() {
-        // Usar la API de Unsplash para obtener imágenes de Salamanca
-        $.getJSON("https://api.unsplash.com/search/photos", {
-            client_id: "-KhXDWwnlFHMsdk2YI0iaQxT3alLPOLtVNzuK-O2W4g",
-            query: this.busqueda,
-            per_page: 5,
-            orientation: "landscape"
-        })
-        .done((data) => {
-            console.log("Datos recibidos de Unsplash:", data);
-            this.procesarJSONFotografias(data);
-        })
-        .fail((jqXHR, textStatus, errorThrown) => {
-            console.error("Error al cargar fotos:", textStatus, errorThrown);
-            console.error("Detalles del error:", jqXHR);
-        });
-    }
-
-    procesarJSONFotografias(data) {
-        console.log("Procesando JSON...");
-        if (data.results && data.results.length > 0) {
-            // Adaptar el formato de Unsplash al formato que usa el carrusel
-            this.fotos = data.results.map(photo => ({
-                url: photo.urls.regular,
-                title: photo.alt_description || photo.description || "Imagen de Salamanca"
-            }));
-            console.log("Fotos encontradas:", this.fotos.length);
-            this.mostrarFotografias();
-        } else {
-            console.error("No se encontraron fotos en la respuesta");
-            console.log("Estructura de datos recibida:", data);
-        }
+        // Llamar al metodo para mostrar las fotografias
+        this.mostrarFotografias();
     }
 
     mostrarFotografias() {
-        console.log("Mostrando fotografías...");
+        console.log("Mostrando fotografias...");
 
         // Crear el article y el h2
         let article = $("<article>");
-        let h2 = $("<h2>").text("Imágenes de " + this.busqueda);
+        let h2 = $("<h2>").text("Principales recursos turísticos de Salamanca");
 
         // Obtener la primera foto
-        let foto = this.fotos[0];
+        let foto = this.imagenes[0];
 
         console.log("URL de la primera imagen:", foto.url);
 
         // Crear la imagen
-        let img = $("<img>").attr("src", foto.url).attr("alt", foto.title);
+        let img = $("<img>")
+            .attr("src", foto.url)
+            .attr("alt", foto.title);
 
-        // Añadir elementos al article
+        // Crear el pie de foto
+        let figcaption = $("<figcaption>").text(foto.title);
+
+        // Envolver imagen y pie en un figure
+        let figure = $("<figure>").append(img).append(figcaption);
+
+        // Anadir elementos al article
         article.append(h2);
-        article.append(img);
+        article.append(figure);
 
-        // Insertar después del header
+        // Insertar despues del header
         $("header").after(article);
 
         console.log("Carrusel insertado en el DOM");
 
-        // Iniciar el cambio automático de imágenes cada 3 segundos
+        // Iniciar el cambio automatico de imagenes cada 3 segundos
         setInterval(() => this.cambiarFotografia(), 3000);
     }
 
@@ -79,17 +52,28 @@ class Carrusel {
             this.actual = 0;
         }
 
-        let foto = this.fotos[this.actual];
+        let foto = this.imagenes[this.actual];
 
         console.log("Cambiando a imagen:", this.actual, foto.url);
 
-        // Actualizar la imagen existente
-        $("article img").attr("src", foto.url).attr("alt", foto.title);
+        // Actualizar la imagen y el pie de foto existentes
+        $("header + article figure img").attr("src", foto.url).attr("alt", foto.title);
+        $("header + article figure figcaption").text(foto.title);
     }
 }
 
-// Inicializar el carrusel cuando el documento esté listo
+// Inicializar el carrusel cuando el documento este listo
 $(document).ready(() => {
     console.log("Documento listo, iniciando carrusel...");
-    new Carrusel("Salamanca España monumento");
+
+    // Imagenes locales de la carpeta multimedia/
+    let imagenes = [
+        { url: "multimedia/carrusel-mapa-salamanca.jpg",   title: "Mapa de situación de la provincia de Salamanca" },
+        { url: "multimedia/carrusel-plaza-mayor.jpg",      title: "Plaza Mayor de Salamanca" },
+        { url: "multimedia/carrusel-catedral.jpg",         title: "Catedral Nueva de Salamanca" },
+        { url: "multimedia/carrusel-arribes.jpg",          title: "Arribes del Duero" },
+        { url: "multimedia/carrusel-alberca.jpg",          title: "La Alberca" }
+    ];
+
+    new Carrusel(imagenes);
 });
