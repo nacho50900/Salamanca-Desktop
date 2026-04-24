@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Turismo Salamanca</title>
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/menu-movil.css" />
+    <link rel="icon" type="image/ico" href="multimedia/favicon.ico" />
+
+    <meta name="author" content="Ignacio - UO300737" />
+    <meta name="description" content="Página principal del proyecto Turismo Salamanca con carrusel de imágenes y noticias" />
+    <meta name="keywords" content="Salamanca, turismo, monumentos, gastronomía, rutas, patrimonio" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- jQuery 3.7.1 minificado -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+
+    <script src="js/carrusel.js"></script>
+    <script src="js/noticias.js"></script>
+    <script src="js/menu-movil.js"></script>
+</head>
+
+<body>
+    <!-- Datos con el contenido que aparece en el navegador -->
+    <h1>
+        <a href="index.html" title="Página principal">Turismo Salamanca</a>
+    </h1>
+
+    <header>
+        <nav>
+            <button id="btn-menu" aria-label="Abrir menú de navegación" aria-expanded="false">☰ Menú</button>
+            <a href="index.html" title="Página principal" class="active">Inicio</a>
+            <a href="gastronomia.html" title="Gastronomía de Salamanca">Gastronomía</a>
+            <a href="rutas.html" title="Rutas turísticas">Rutas</a>
+            <a href="meteorologia.html" title="Meteorología de Salamanca">Meteorología</a>
+            <a href="juego.html" title="Juego sobre Salamanca">Juego</a>
+            <a href="reservas.php" title="Reservas de recursos turísticos">Reservas</a>
+            <a href="ayuda.html" title="Ayuda y manual de uso">Ayuda</a>
+        </nav>
+
+        <p>Estás en: <strong>Inicio</strong></p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Bienvenidos a Salamanca</h2>
+            <p>
+                Salamanca, conocida como la <strong>Ciudad Dorada</strong> por el color de su piedra
+                arenisca, es una de las ciudades más bellas y con mayor tradición universitaria de España.
+                Declarada <strong>Patrimonio de la Humanidad</strong> por la UNESCO en 1988, alberga
+                una de las universidades más antiguas del mundo, fundada en 1218.
+            </p>
+            <p>
+                La provincia de Salamanca ofrece una rica combinación de monumentos históricos,
+                naturaleza exuberante, gastronomía única y una vibrante vida cultural. Desde la
+                impresionante Plaza Mayor hasta las sierras de Béjar y Francia, pasando por La
+                Alberca —primer Conjunto Histórico-Artístico de España—, cada rincón esconde
+                una historia por descubrir.
+            </p>
+        </section>
+
+        <section>
+            <h2>Noticias sobre Salamanca</h2>
+            <div id="noticias-contenedor">
+                <p>Cargando noticias...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Turismo Salamanca &mdash; UO300737 &mdash; Software y estándares para la Web</p>
+    </footer>
+</body>
+</html>

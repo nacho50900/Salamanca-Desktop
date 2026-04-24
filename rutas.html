@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Rutas - Turismo Salamanca</title>
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/menu-movil.css" />
+    <link rel="icon" type="image/ico" href="multimedia/favicon.ico" />
+
+    <meta name="author" content="Ignacio - UO300737" />
+    <meta name="description" content="Rutas turísticas por la provincia de Salamanca" />
+    <meta name="keywords" content="rutas, senderismo, Salamanca, turismo, monumentos, naturaleza" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- jQuery 3.7.1 minificado -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+
+    <!-- Google Maps API-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeKMC4IblZcvdzUbSrbx_01_lYh_k2V38&callback=Function.prototype" defer></script>
+
+    <script src="js/rutas.js"></script>
+    <script src="js/menu-movil.js"></script>
+</head>
+
+<body>
+    <h1>
+        <a href="index.html" title="Página principal">Turismo Salamanca</a>
+    </h1>
+
+    <header>
+        <nav>
+            <button id="btn-menu" aria-label="Abrir menú de navegación" aria-expanded="false">☰ Menú</button>
+            <a href="index.html" title="Página principal">Inicio</a>
+            <a href="gastronomia.html" title="Gastronomía de Salamanca">Gastronomía</a>
+            <a href="rutas.html" title="Rutas turísticas" class="active">Rutas</a>
+            <a href="meteorologia.html" title="Meteorología de Salamanca">Meteorología</a>
+            <a href="juego.html" title="Juego sobre Salamanca">Juego</a>
+            <a href="reservas.php" title="Reservas de recursos turísticos">Reservas</a>
+            <a href="ayuda.html" title="Ayuda y manual de uso">Ayuda</a>
+        </nav>
+
+        <p>Estás en: <a href="index.html" title="Página principal">Inicio</a> &gt;&gt; <strong>Rutas</strong></p>
+    </header>
+
+    <main>
+        <h2>Rutas Turísticas por Salamanca</h2>
+        <p>Descubre la provincia de Salamanca a través de sus rutas más emblemáticas. Selecciona una ruta para ver toda la información, el mapa y el perfil de altimetría.</p>
+
+        <section>
+            <h2>Selecciona una ruta</h2>
+            <div id="tabs-rutas">
+                <p>Cargando rutas...</p>
+            </div>
+        </section>
+
+        <section id="detalle-ruta" hidden>
+            <div id="info-ruta"></div>
+
+            <h2>Planimetría de la ruta</h2>
+            <!-- div permitido para mapas dinámicos según especificación del proyecto -->
+            <div id="mapa-ruta"></div>
+
+            <h2>Altimetría de la ruta</h2>
+            <div id="altimetria-ruta"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Turismo Salamanca &mdash; UO300737 &mdash; Software y estándares para la Web</p>
+    </footer>
+</body>
+</html>

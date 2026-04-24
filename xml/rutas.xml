@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rutas SYSTEM "rutas.dtd">
+<rutas provincia="Salamanca">
+
+    <ruta id="ruta1">
+        <nombre>Ruta Monumental de Salamanca</nombre>
+        <tipo>Arquitectura y monumentos</tipo>
+        <transporte>A pie</transporte>
+        <fechaInicio opcional="true">2026-04-01</fechaInicio>
+        <horaInicio opcional="true">09:00</horaInicio>
+        <duracion>3 horas</duracion>
+        <agencia>Salamanca Turismo</agencia>
+        <descripcion>
+            Recorrido por los monumentos más emblemáticos del casco histórico de Salamanca,
+            Patrimonio de la Humanidad. La ruta discurre por la Universidad, la Catedral Vieja
+            y Nueva, la Casa de las Conchas y la impresionante Plaza Mayor, joya del barroco español.
+        </descripcion>
+        <personas>Apta para todos los públicos, incluidos personas con movilidad reducida en su mayor parte</personas>
+        <lugarInicio>Plaza Mayor</lugarInicio>
+        <direccionInicio>Plaza Mayor, s/n, Salamanca</direccionInicio>
+        <coordenadasInicio>
+            <longitud>-5.6638</longitud>
+            <latitud>40.9651</latitud>
+            <altitud>800</altitud>
+        </coordenadasInicio>
+        <referencias>
+            <referencia>https://turismo.salamanca.es/</referencia>
+            <referencia>https://es.wikipedia.org/wiki/Plaza_Mayor_de_Salamanca</referencia>
+            <referencia>https://es.wikipedia.org/wiki/Universidad_de_Salamanca</referencia>
+            <referencia>https://www.catedralsalamanca.org/</referencia>
+        </referencias>
+        <recomendacion>9</recomendacion>
+        <hitos>
+            <hito id="h1_1">
+                <nombre>Plaza Mayor</nombre>
+                <descripcion>
+                    La Plaza Mayor de Salamanca es considerada una de las más bellas de España.
+                    Construida entre 1729 y 1756 por los arquitectos Alberto Churriguera y Andrés García de Quiñones,
+                    presenta una planta rectangular con galerías de arcos en los cuatro lados y medallones con
+                    bustos de reyes y personajes ilustres en las enjutas de los arcos.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-5.6638</longitud>
+                    <latitud>40.9651</latitud>
+                    <altitud>800</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>plaza-mayor-salamanca.jpg</foto>
+                    <foto>plaza-mayor-noche.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h1_2">
+                <nombre>Casa de las Conchas</nombre>
+                <descripcion>
+                    Edificio gótico-plateresco construido a finales del siglo XV por Rodrigo Arias Maldonado.
+                    Su nombre proviene de las más de 300 conchas de piedra que decoran su fachada,
+                    símbolo de la Orden de Santiago. Actualmente es biblioteca pública.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-5.6672</longitud>
+                    <latitud>40.9640</latitud>
+                    <altitud>798</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="m">350</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>casa-conchas.jpg</foto>
+                    <foto>casa-conchas-detalle.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h1_3">
+                <nombre>Universidad de Salamanca</nombre>
+                <descripcion>
+                    Fundada en 1218, es una de las universidades más antiguas del mundo.
+                    Su fachada plateresca (1534) es considerada la obra más representativa del estilo
+                    plateresco español. En ella se esconde una rana sobre una calavera que según la
+                    tradición trae suerte a quien la encuentre antes del examen.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-5.6680</longitud>
+                    <latitud>40.9628</latitud>
+                    <altitud>795</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="m">200</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>universidad-salamanca.jpg</foto>
+                    <foto>universidad-fachada.jpg</foto>
+                    <foto>universidad-rana.jpg</foto>
+                </fotos>
+                <videos>
+                    <video>universidad-tour.mp4</video>
+                </videos>
+            </hito>
+            <hito id="h1_4">
+                <nombre>Catedral Nueva de Salamanca</nombre>
+                <descripcion>
+                    Construida entre los siglos XVI y XVIII, combina los estilos gótico tardío,
+                    plateresco y barroco. Destaca su torre campanario de 110 metros de altura.
+                    Comparte muro con la Catedral Vieja del siglo XII. Curiosamente, en sus
+                    esculturas pueden encontrarse un astronauta y un dragón moderno añadidos
+                    durante una restauración en 1992.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-5.6695</longitud>
+                    <latitud>40.9609</latitud>
+                    <altitud>793</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="m">300</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>catedral-nueva.jpg</foto>
+                    <foto>catedral-interior.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h1_5">
+                <nombre>Puente Romano</nombre>
+                <descripcion>
+                    El Puente Romano de Salamanca data del siglo I a.C. y fue construido
+                    sobre el río Tormes por orden del emperador romano Trajano. Consta de 26 arcos
+                    y mide 180 metros de longitud. Junto a él se encuentra el Toro Ibérico, símbolo
+                    de la ciudad, datado entre el siglo III y II a.C.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-5.6680</longitud>
+                    <latitud>40.9570</latitud>
+                    <altitud>790</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="m">500</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>puente-romano.jpg</foto>
+                    <foto>puente-romano-catedral.jpg</foto>
+                </fotos>
+            </hito>
+        </hitos>
+        <planimetria>xml/ruta1_planimetria.kml</planimetria>
+        <altimetria>xml/ruta1_altimetria.svg</altimetria>
+    </ruta>
+
+    <ruta id="ruta2">
+        <nombre>Ruta de los Arribes del Duero</nombre>
+        <tipo>Paisajística</tipo>
+        <transporte>Bicicleta</transporte>
+        <fechaInicio opcional="true">2026-05-15</fechaInicio>
+        <horaInicio opcional="true">08:30</horaInicio>
+        <duracion>6 horas</duracion>
+        <agencia>NaturaTur Arribes</agencia>
+        <descripcion>
+            Espectacular ruta en bicicleta por el Parque Natural de los Arribes del Duero,
+            donde el río Duero forma profundas gargantas entre las fronteras de España y Portugal.
+            La ruta ofrece vistas panorámicas impresionantes, pueblos medievales y una rica
+            biodiversidad con buitres leonados, cigüeñas negras y águilas reales.
+        </descripcion>
+        <personas>Personas en buena forma física. No recomendada para tercera edad ni niños pequeños.</personas>
+        <lugarInicio>Mirador de La Peña de Francia visible desde Aldeadávila</lugarInicio>
+        <direccionInicio>Carretera SA-335, Aldeadávila de la Ribera</direccionInicio>
+        <coordenadasInicio>
+            <longitud>-6.6178</longitud>
+            <latitud>41.2295</latitud>
+            <altitud>320</altitud>
+        </coordenadasInicio>
+        <referencias>
+            <referencia>https://www.arribesdelduero.com/</referencia>
+            <referencia>https://es.wikipedia.org/wiki/Arribes_del_Duero</referencia>
+            <referencia>https://www.miteco.gob.es/es/red-parques-nacionales/nuestros-parques/arribes/</referencia>
+        </referencias>
+        <recomendacion>8</recomendacion>
+        <hitos>
+            <hito id="h2_1">
+                <nombre>Mirador de la Presa de Aldeadávila</nombre>
+                <descripcion>
+                    La presa de Aldeadávila es la mayor central hidroeléctrica de España y
+                    una de las más grandes de Europa. El mirador ofrece una vista privilegiada
+                    del embalse y del cañón del Duero desde más de 300 metros de altura.
+                    Una maravilla de ingeniería rodeada de naturaleza salvaje.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.6178</longitud>
+                    <latitud>41.2295</latitud>
+                    <altitud>320</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>presa-aldeadavila.jpg</foto>
+                    <foto>arribes-panoramica.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h2_2">
+                <nombre>Vilvestre</nombre>
+                <descripcion>
+                    Precioso pueblo con arquitectura tradicional de la raya hispanoportuguesa.
+                    Su iglesia parroquial de estilo románico tardío data del siglo XIII.
+                    Desde aquí se organizan excursiones en barco por el río Duero.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.6520</longitud>
+                    <latitud>41.1930</latitud>
+                    <altitud>510</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">12</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>vilvestre-pueblo.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h2_3">
+                <nombre>Mirador del Picón de Felipe</nombre>
+                <descripcion>
+                    Uno de los miradores más espectaculares de los Arribes. Desde aquí
+                    se domina una panorámica de 360 grados del cañón del Duero y la frontera
+                    con Portugal. Es habitual avistar buitres leonados sobrevolando las hoces.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.7010</longitud>
+                    <latitud>41.1450</latitud>
+                    <altitud>680</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">18</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>picon-felipe.jpg</foto>
+                    <foto>buitres-arribes.jpg</foto>
+                </fotos>
+                <videos>
+                    <video>arribes-vuelo-buitres.mp4</video>
+                </videos>
+            </hito>
+            <hito id="h2_4">
+                <nombre>Corporario</nombre>
+                <descripcion>
+                    Pequeña aldea prácticamente deshabitada que conserva la arquitectura
+                    de pizarra característica de la zona. Sus calles empedradas y bodegas
+                    tradicionales transportan al visitante a otro tiempo.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.7200</longitud>
+                    <latitud>41.1200</latitud>
+                    <altitud>720</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">9</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>corporario-aldea.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h2_5">
+                <nombre>Mirador de la Fregeneda</nombre>
+                <descripcion>
+                    La Fregeneda es famosa por su microclima mediterráneo que permite
+                    el cultivo de naranjos, limoneros y olivos a más de 600 metros de altitud.
+                    El mirador ofrece vistas únicas al meandro del Duero antes de entrar en Portugal.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.8950</longitud>
+                    <latitud>41.0050</latitud>
+                    <altitud>650</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">25</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>fregeneda-duero.jpg</foto>
+                    <foto>fregeneda-microclima.jpg</foto>
+                </fotos>
+            </hito>
+        </hitos>
+        <planimetria>xml/ruta2_planimetria.kml</planimetria>
+        <altimetria>xml/ruta2_altimetria.svg</altimetria>
+    </ruta>
+
+    <ruta id="ruta3">
+        <nombre>Ruta de La Alberca y Las Batuecas</nombre>
+        <tipo>Senderismo</tipo>
+        <transporte>A pie</transporte>
+        <fechaInicio opcional="true">2026-06-10</fechaInicio>
+        <horaInicio opcional="true">07:00</horaInicio>
+        <duracion>5 horas</duracion>
+        <agencia>Sierra de Francia Activa</agencia>
+        <descripcion>
+            Ruta de senderismo por la Sierra de Francia que atraviesa La Alberca —primer
+            Conjunto Histórico-Artístico declarado de España— y el Valle de Las Batuecas,
+            un paraje de extraordinaria belleza natural con pinturas rupestres prehistóricas.
+            La ruta combina patrimonio cultural e histórico con naturaleza exuberante.
+        </descripcion>
+        <personas>Se puede ir con niños mayores de 8 años. Calzado de montaña recomendado.</personas>
+        <lugarInicio>Plaza Pública de La Alberca</lugarInicio>
+        <direccionInicio>Plaza Pública, s/n, La Alberca (Salamanca)</direccionInicio>
+        <coordenadasInicio>
+            <longitud>-6.1158</longitud>
+            <latitud>40.4897</latitud>
+            <altitud>1048</altitud>
+        </coordenadasInicio>
+        <referencias>
+            <referencia>https://www.laalberca.com/</referencia>
+            <referencia>https://es.wikipedia.org/wiki/La_Alberca_(Salamanca)</referencia>
+            <referencia>https://es.wikipedia.org/wiki/Valle_de_Las_Batuecas</referencia>
+            <referencia>https://www.sierradefrancia.es/</referencia>
+        </referencias>
+        <recomendacion>9</recomendacion>
+        <hitos>
+            <hito id="h3_1">
+                <nombre>Plaza Pública de La Alberca</nombre>
+                <descripcion>
+                    La Alberca es el primer municipio declarado Conjunto Histórico-Artístico
+                    de España (1940). Su plaza porticada del siglo XVII es el corazón del
+                    pueblo y escenario de las fiestas tradicionales como La Loa o la Ofrenda
+                    a la Virgen de la Asunción. Las casas con entramado de madera y balcones
+                    floridos son características del estilo serrano.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.1158</longitud>
+                    <latitud>40.4897</latitud>
+                    <altitud>1048</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>alberca-plaza.jpg</foto>
+                    <foto>alberca-casas.jpg</foto>
+                    <foto>alberca-panoramica.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h3_2">
+                <nombre>Ermita de la Virgen de la Peña de Francia</nombre>
+                <descripcion>
+                    Situada en el Pico de la Peña de Francia a 1.723 metros, es el punto
+                    más alto de la Sierra de Francia. El convento dominico del siglo XV
+                    alberga la imagen de la Virgen de la Peña de Francia, patrona de la
+                    provincia. Las vistas desde la cima son excepcionales en días claros.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.1728</longitud>
+                    <latitud>40.5319</latitud>
+                    <altitud>1723</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">6</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>pena-francia-cima.jpg</foto>
+                    <foto>pena-francia-convento.jpg</foto>
+                </fotos>
+                <videos>
+                    <video>pena-francia-vistas.mp4</video>
+                </videos>
+            </hito>
+            <hito id="h3_3">
+                <nombre>Valle de Las Batuecas</nombre>
+                <descripcion>
+                    El Valle de Las Batuecas es un paraje de extraordinaria belleza
+                    situado en el corazón de la Sierra de Francia. El arroyo de Las Batuecas
+                    discurre por un valle cerrado y húmedo con una vegetación subtropical única.
+                    Alberga el Monasterio Carmelita fundado en 1600 y numerosas pinturas
+                    rupestres del Paleolítico y Neolítico.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.0970</longitud>
+                    <latitud>40.4560</latitud>
+                    <altitud>680</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">8</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>batuecas-valle.jpg</foto>
+                    <foto>batuecas-monasterio.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h3_4">
+                <nombre>Pinturas Rupestres de Las Batuecas</nombre>
+                <descripcion>
+                    El Valle de Las Batuecas concentra uno de los conjuntos de arte
+                    rupestre más importantes de la Meseta norte. Los abrigos de
+                    La Risca, Los Casares y El Milano conservan pinturas esquemáticas
+                    del Neolítico y Calcolítico (3000-2000 a.C.) con representaciones
+                    de figuras humanas, animales y signos abstractos.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.0840</longitud>
+                    <latitud>40.4490</latitud>
+                    <altitud>700</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">2</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>pinturas-rupestres.jpg</foto>
+                    <foto>batuecas-abrigo.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h3_5">
+                <nombre>Mogarraz</nombre>
+                <descripcion>
+                    Pueblo declarado Conjunto Histórico que conserva intacta la arquitectura
+                    serrana. Es famoso por el proyecto artístico de Florencio Maíllo que
+                    instaló 388 retratos de los habitantes del pueblo en las fachadas de
+                    sus casas. Un museo al aire libre único en el mundo. Cuenta con excelentes
+                    restaurantes de cocina tradicional serrana.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.0840</longitud>
+                    <latitud>40.5060</latitud>
+                    <altitud>820</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">7</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>mogarraz-retratos.jpg</foto>
+                    <foto>mogarraz-calle.jpg</foto>
+                    <foto>mogarraz-fachada.jpg</foto>
+                </fotos>
+            </hito>
+        </hitos>
+        <planimetria>xml/ruta3_planimetria.kml</planimetria>
+        <altimetria>xml/ruta3_altimetria.svg</altimetria>
+    </ruta>
+
+</rutas>

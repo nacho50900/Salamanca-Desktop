@@ -1,0 +1,62 @@
+<!-- rutas.dtd – Definición de Tipo de Documento para rutas turísticas de Salamanca -->
+<!-- UO300737 – Software y estándares para la Web -->
+
+<!ELEMENT rutas (ruta+)>
+<!ATTLIST rutas
+    provincia CDATA #REQUIRED>
+
+<!ELEMENT ruta (nombre, tipo, transporte, fechaInicio?, horaInicio?, duracion, agencia,
+                descripcion, personas, lugarInicio, direccionInicio, coordenadasInicio,
+                referencias, recomendacion, hitos, planimetria, altimetria)>
+<!ATTLIST ruta
+    id ID #REQUIRED>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT tipo (#PCDATA)>
+<!ELEMENT transporte (#PCDATA)>
+
+<!ELEMENT fechaInicio (#PCDATA)>
+<!ATTLIST fechaInicio
+    opcional (true|false) "true">
+
+<!ELEMENT horaInicio (#PCDATA)>
+<!ATTLIST horaInicio
+    opcional (true|false) "true">
+
+<!ELEMENT duracion (#PCDATA)>
+<!ELEMENT agencia (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT personas (#PCDATA)>
+<!ELEMENT lugarInicio (#PCDATA)>
+<!ELEMENT direccionInicio (#PCDATA)>
+
+<!ELEMENT coordenadasInicio (longitud, latitud, altitud)>
+<!ELEMENT longitud (#PCDATA)>
+<!ELEMENT latitud (#PCDATA)>
+<!ELEMENT altitud (#PCDATA)>
+
+<!ELEMENT referencias (referencia+)>
+<!ELEMENT referencia (#PCDATA)>
+
+<!ELEMENT recomendacion (#PCDATA)>
+
+<!ELEMENT hitos (hito+)>
+
+<!ELEMENT hito (nombre, descripcion, coordenadas, distanciaDesdeAnterior, fotos, videos?)>
+<!ATTLIST hito
+    id ID #REQUIRED>
+
+<!ELEMENT coordenadas (longitud, latitud, altitud)>
+
+<!ELEMENT distanciaDesdeAnterior (#PCDATA)>
+<!ATTLIST distanciaDesdeAnterior
+    unidades (m|km) #REQUIRED>
+
+<!ELEMENT fotos (foto+)>
+<!ELEMENT foto (#PCDATA)>
+
+<!ELEMENT videos (video+)>
+<!ELEMENT video (#PCDATA)>
+
+<!ELEMENT planimetria (#PCDATA)>
+<!ELEMENT altimetria (#PCDATA)>

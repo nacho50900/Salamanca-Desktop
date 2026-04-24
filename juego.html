@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Juego - Turismo Salamanca</title>
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/menu-movil.css" />
+    <link rel="icon" type="image/ico" href="multimedia/favicon.ico" />
+
+    <meta name="author" content="Ignacio - UO300737" />
+    <meta name="description" content="Juego de preguntas sobre los recursos turísticos de Salamanca" />
+    <meta name="keywords" content="juego, preguntas, Salamanca, turismo, test, quiz" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="js/juego.js"></script>
+    <script src="js/menu-movil.js"></script>
+</head>
+
+<body>
+    <h1>
+        <a href="index.html" title="Página principal">Turismo Salamanca</a>
+    </h1>
+
+    <header>
+        <nav>
+            <button id="btn-menu" aria-label="Abrir menú de navegación" aria-expanded="false">☰ Menú</button>
+            <a href="index.html" title="Página principal">Inicio</a>
+            <a href="gastronomia.html" title="Gastronomía de Salamanca">Gastronomía</a>
+            <a href="rutas.html" title="Rutas turísticas">Rutas</a>
+            <a href="meteorologia.html" title="Meteorología de Salamanca">Meteorología</a>
+            <a href="juego.html" title="Juego sobre Salamanca" class="active">Juego</a>
+            <a href="reservas.php" title="Reservas de recursos turísticos">Reservas</a>
+            <a href="ayuda.html" title="Ayuda y manual de uso">Ayuda</a>
+        </nav>
+
+        <p>Estás en: <a href="index.html" title="Página principal">Inicio</a> &gt;&gt; <strong>Juego</strong></p>
+    </header>
+
+    <main>
+        <h2>¿Cuánto sabes de Salamanca?</h2>
+        <p>Responde las 10 preguntas sobre los recursos turísticos de Salamanca. Cada respuesta correcta vale 1 punto. Debes responder todas las preguntas para ver tu puntuación.</p>
+
+        <section>
+            <div id="juego-inicio">
+                <p>El juego consta de <strong>10 preguntas</strong> de tipo test con 5 opciones cada una.</p>
+                <button id="btn-iniciar-juego">¡Comenzar juego!</button>
+            </div>
+
+            <div id="juego-pregunta" hidden>
+                <p id="progreso-juego">Pregunta <span id="num-pregunta">1</span> de 10</p>
+                <div id="barra-progreso" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+                    <div id="barra-progreso-relleno"></div>
+                </div>
+                <h2 id="texto-pregunta"></h2>
+                <ul id="opciones-lista"></ul>
+                <button id="btn-siguiente-pregunta" hidden>Siguiente pregunta</button>
+            </div>
+
+            <div id="juego-resultado" hidden>
+                <h2>¡Juego terminado!</h2>
+                <p>Tu puntuación: <strong><span id="puntuacion-final">0</span> / 10</strong></p>
+                <p id="mensaje-resultado"></p>
+                <button id="btn-reiniciar-juego">Jugar de nuevo</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Turismo Salamanca &mdash; UO300737 &mdash; Software y estándares para la Web</p>
+    </footer>
+</body>
+</html>

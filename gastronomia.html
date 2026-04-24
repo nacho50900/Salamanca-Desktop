@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gastronomía - Turismo Salamanca</title>
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/menu-movil.css" />
+    <link rel="icon" type="image/ico" href="multimedia/favicon.ico" />
+
+    <meta name="author" content="Ignacio - UO300737" />
+    <meta name="description" content="Gastronomía típica de la provincia de Salamanca" />
+    <meta name="keywords" content="gastronomía, Salamanca, hornazo, jamón, farinato, chanfaina" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="js/menu-movil.js"></script>
+</head>
+
+<body>
+    <h1>
+        <a href="index.html" title="Página principal">Turismo Salamanca</a>
+    </h1>
+
+    <header>
+        <nav>
+            <button id="btn-menu" aria-label="Abrir menú de navegación" aria-expanded="false">☰ Menú</button>
+            <a href="index.html" title="Página principal">Inicio</a>
+            <a href="gastronomia.html" title="Gastronomía de Salamanca" class="active">Gastronomía</a>
+            <a href="rutas.html" title="Rutas turísticas">Rutas</a>
+            <a href="meteorologia.html" title="Meteorología de Salamanca">Meteorología</a>
+            <a href="juego.html" title="Juego sobre Salamanca">Juego</a>
+            <a href="reservas.php" title="Reservas de recursos turísticos">Reservas</a>
+            <a href="ayuda.html" title="Ayuda y manual de uso">Ayuda</a>
+        </nav>
+
+        <p>Estás en: <a href="index.html" title="Página principal">Inicio</a> &gt;&gt; <strong>Gastronomía</strong></p>
+    </header>
+
+    <main>
+        <h2>Gastronomía de Salamanca</h2>
+        <p>
+            La cocina salmantina es rica, contundente y llena de sabor. Sus productos estrella,
+            el <strong>jamón ibérico de Guijuelo</strong> y el <strong>hornazo</strong>, son reconocidos
+            a nivel nacional e internacional.
+        </p>
+
+        <section>
+            <h2>Platos más populares</h2>
+            <ol>
+                <li>Hornazo salmantino</li>
+                <li>Chanfaina</li>
+                <li>Farinato con huevo</li>
+                <li>Patatas meneás</li>
+                <li>Sopa de ajo castellana</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Productos típicos de la provincia</h2>
+            <ul>
+                <li>
+                    Charcutería ibérica
+                    <ul>
+                        <li>Jamón ibérico de Guijuelo (D.O.P.)</li>
+                        <li>Lomo embuchado</li>
+                        <li>Chorizo ibérico</li>
+                    </ul>
+                </li>
+                <li>Queso Arribes del Duero</li>
+                <li>Vino D.O. Arribes</li>
+                <li>Hornazo de Salamanca</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Glosario gastronómico</h2>
+            <dl>
+                <dt>Hornazo</dt>
+                <dd>
+                    Empanada tradicional rellena de lomo, chorizo y huevo cocido, típica del
+                    Lunes de Aguas, celebrado el lunes siguiente al Domingo de Resurrección.
+                </dd>
+
+                <dt>Chanfaina</dt>
+                <dd>
+                    Guiso elaborado con arroz, menudillos de cordero o cerdo, pimentón y
+                    especias. Plato humilde de origen rural muy arraigado en la provincia.
+                </dd>
+
+                <dt>Farinato</dt>
+                <dd>
+                    Embutido típico de Ciudad Rodrigo elaborado con harina de trigo, manteca
+                    de cerdo, pimentón y anís. Se suele tomar frito con huevos.
+                </dd>
+
+                <dt>Patatas meneás</dt>
+                <dd>
+                    Puré rústico de patata con aceite de oliva, pimentón y trozos de chorizo
+                    o tocino. Plato de invierno muy reconfortante.
+                </dd>
+
+                <dt>Perrunillas</dt>
+                <dd>
+                    Dulce típico salmantino elaborado con harina, manteca de cerdo, azúcar,
+                    huevo y anís. Son las galletas más tradicionales de la provincia.
+                </dd>
+            </dl>
+        </section>
+
+        <section>
+            <h2>Restaurantes destacados de Salamanca</h2>
+            <table>
+                <caption>Restaurantes recomendados en la ciudad de Salamanca</caption>
+                <thead>
+                    <tr>
+                        <th id="col-nombre" scope="col">Restaurante</th>
+                        <th id="col-especialidad" scope="col">Especialidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td headers="col-nombre" data-label="Restaurante">Víctor Gutiérrez</td>
+                        <td headers="col-especialidad" data-label="Especialidad">Alta cocina fusión castellana</td>
+                    </tr>
+                    <tr>
+                        <td headers="col-nombre" data-label="Restaurante">El Mesón de Gonzalo</td>
+                        <td headers="col-especialidad" data-label="Especialidad">Cocina tradicional salmantina</td>
+                    </tr>
+                    <tr>
+                        <td headers="col-nombre" data-label="Restaurante">La Hoja 21</td>
+                        <td headers="col-especialidad" data-label="Especialidad">Cocina de mercado y temporada</td>
+                    </tr>
+                    <tr>
+                        <td headers="col-nombre" data-label="Restaurante">Tapas 3.0</td>
+                        <td headers="col-especialidad" data-label="Especialidad">Tapas creativas y pinchos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Galería gastronómica</h2>
+
+            <figure>
+                <img
+                    src="multimedia/gastronomia-hornazo.jpg"
+                    alt="Hornazo salmantino tradicional, empanada rellena de lomo y chorizo"
+                    width="800"
+                    height="533" />
+                <figcaption>El hornazo, el plato más representativo de Salamanca</figcaption>
+            </figure>
+
+            <figure>
+                <video controls width="800" height="450"
+                    aria-label="Vídeo sobre la elaboración del jamón ibérico de Guijuelo">
+                    <source src="multimedia/jamon-guijuelo.mp4" type="video/mp4" />
+                    <source src="multimedia/jamon-guijuelo.webm" type="video/webm" />
+                    <p>Tu navegador no soporta vídeo HTML5.
+                        <a href="multimedia/jamon-guijuelo.mp4">Descarga el vídeo</a>
+                    </p>
+                </video>
+                <figcaption>Elaboración artesanal del jamón ibérico de Guijuelo</figcaption>
+            </figure>
+
+            <figure>
+                <audio controls aria-label="Podcast sobre la gastronomía salmantina">
+                    <source src="multimedia/gastronomia-podcast.mp3" type="audio/mpeg" />
+                    <source src="multimedia/gastronomia-podcast.ogg" type="audio/ogg" />
+                    <p>Tu navegador no soporta audio HTML5.
+                        <a href="multimedia/gastronomia-podcast.mp3">Descarga el audio</a>
+                    </p>
+                </audio>
+                <figcaption>Podcast: Los sabores de Salamanca</figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Turismo Salamanca &mdash; UO300737 &mdash; Software y estándares para la Web</p>
+    </footer>
+</body>
+</html>

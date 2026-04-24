@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Ruta de los Arribes del Duero</name>
+    <description>Espectacular ruta en bicicleta por el Parque Natural de los Arribes del Duero,
+            donde el río Duero forma profundas gargantas entre las fronteras de España y Portugal.
+            La ruta ofrece vistas panorámicas impresionantes, pueblos medievales y una rica
+            biodiversidad con </description>
+
+    <!-- Estilo para los marcadores de hitos -->
+    <Style id="hitoStyle">
+      <IconStyle>
+        <color>ff1400ff</color>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ff1400ff</color>
+        <scale>0.8</scale>
+      </LabelStyle>
+    </Style>
+
+    <!-- Estilo para la línea de trazado -->
+    <Style id="lineaRuta">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+
+    <!-- Hito 0: Mirador de La Peña de Francia visible desde Aldeadávila -->
+    <Placemark>
+      <name>Mirador de La Peña de Francia visible desde Aldeadávila</name>
+      <description></description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.6178,41.2295,320.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 1: Mirador de la Presa de Aldeadávila -->
+    <Placemark>
+      <name>Mirador de la Presa de Aldeadávila</name>
+      <description>La presa de Aldeadávila es la mayor central hidroeléctrica de España y
+                    una de las más grandes de Europa. El mirador ofrece una vista privilegiada
+                    del embalse y </description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.6178,41.2295,320.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 2: Vilvestre -->
+    <Placemark>
+      <name>Vilvestre</name>
+      <description>Precioso pueblo con arquitectura tradicional de la raya hispanoportuguesa.
+                    Su iglesia parroquial de estilo románico tardío data del siglo XIII.
+                    Desde aquí se or</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.652,41.193,510.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 3: Mirador del Picón de Felipe -->
+    <Placemark>
+      <name>Mirador del Picón de Felipe</name>
+      <description>Uno de los miradores más espectaculares de los Arribes. Desde aquí
+                    se domina una panorámica de 360 grados del cañón del Duero y la frontera
+                    con Portugal. Es hab</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.701,41.145,680.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 4: Corporario -->
+    <Placemark>
+      <name>Corporario</name>
+      <description>Pequeña aldea prácticamente deshabitada que conserva la arquitectura
+                    de pizarra característica de la zona. Sus calles empedradas y bodegas
+                    tradicionales transpo</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.72,41.12,720.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 5: Mirador de la Fregeneda -->
+    <Placemark>
+      <name>Mirador de la Fregeneda</name>
+      <description>La Fregeneda es famosa por su microclima mediterráneo que permite
+                    el cultivo de naranjos, limoneros y olivos a más de 600 metros de altitud.
+                    El mirador ofrece v</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.895,41.005,650.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Trazado completo de la ruta -->
+    <Placemark>
+      <name>Trazado - Ruta de los Arribes del Duero</name>
+      <styleUrl>#lineaRuta</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>
+          -6.6178,41.2295,320.0
+          -6.6178,41.2295,320.0
+          -6.652,41.193,510.0
+          -6.701,41.145,680.0
+          -6.72,41.12,720.0
+          -6.895,41.005,650.0
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+  </Document>
+</kml>

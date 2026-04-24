@@ -1,0 +1,14 @@
+/* Ignacio Hoyos Diego - UO300737 */
+
+/* Estilos complementarios del menú móvil - Turismo Salamanca */
+
+/* Especificidad 002 */
+header nav.menu-visible {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Especificidad 003 */
+header nav a {
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.2s ease;
+}

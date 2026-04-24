@@ -1,0 +1,296 @@
+/* Ignacio Hoyos Diego - UO300737 */
+
+/* Maquetación y posicionamiento del proyecto Turismo Salamanca */
+/* Módulos permitidos: CSS Flexible Box Layout, CSS Grid Layout, CSS Multi-column Layout */
+
+/* Especificidad 001 */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Especificidad 001 */
+main {
+    flex: 1;
+}
+
+/* Especificidad 001 */
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Permite separar los elementos en filas, así las migas p van a la siguiente */
+    gap: 0px;
+}
+
+/* Especificidad 002 */
+header > nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 0px;
+}
+
+/* Especificidad 002 */
+header p {
+    flex-basis: 100%; /* ocupa toda la fila */
+    margin: 0;
+}
+
+/* Especificidad 002 */
+header button {
+    display: none;
+}
+
+/* Selector div permitido para mapas dinámicos según especificación del proyecto */
+/* Especificidad 001 */
+#mapa-ruta {
+    width: 100%;
+    height: 400px;
+    margin: 1em 0;
+}
+
+/* NOTICIAS - CSS Grid */
+
+/* Especificidad 001 */
+#noticias-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2em;
+}
+
+/* PREVISIÓN METEOROLÓGICA - CSS Grid */
+
+/* Especificidad 001 */
+#prevision-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.8em;
+}
+
+/* RUTAS - Grid para hitos */
+
+/* Especificidad 001 */
+.hitos-contenedor {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+}
+
+/* RESERVAS - Grid para formularios */
+
+/* Especificidad 001 */
+.formulario-campo {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0.5em;
+    align-items: center;
+    margin-bottom: 0.8em;
+}
+
+@media (max-width: 485px) {
+
+    /* Especificidad 001 */
+    header {
+        flex-direction: column;
+        /*Advertencia por redefinición de flex-direction*/
+        align-items: center;
+    }
+
+    /* Especificidad 002 */
+    header button {
+        display: block;
+        /*Advertencia por redefinición de display*/
+        background-color: #8B1A1A;
+        color: #F5F0E8;
+        border: none;
+        padding: 0.8em 1.5em;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 0.3em;
+        margin: 0.5em 0;
+        width: 100%;
+        text-align: center;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Especificidad 003 */
+    header button:hover {
+        background-color: #2C1A0E;
+        /*Advertencia por redefinición de background-color*/
+    }
+
+    /* Especificidad 003 */
+    header button:focus {
+        outline: 0.2em solid #C8960C;
+        outline-offset: 0.2em;
+    }
+
+    /* Especificidad 003 */
+    header button:active {
+        background-color: #5C1010;
+        /*Advertencia por redefinición de background-color*/
+    }
+
+    /* Especificidad 002 */
+    header > nav {
+        display: none;
+        /*Advertencia por redefinición de display*/
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    /* Especificidad 011 */
+    header nav.menu-visible {
+        display: flex;
+        /*Advertencia por redefinición de display y max-height*/
+        max-height: 50em;
+        animation: desplegar 0.4s ease-in-out;
+    }
+
+    /* Especificidad 003 */
+    header nav a {
+        padding: 1em;
+        /*Advertencia por redefinición de padding*/
+        margin: 0.2em 0;
+        text-align: center;
+        background-color: #2C1A0E;
+        border-radius: 0.3em;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        /*advertencia: color de fondo sobrescribe el heredado de nav (#8B1A1A)*/
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Especificidad 004 */
+    header nav a:hover {
+        background-color: #5C1010;
+        /*Advertencia por redefinición de background-color*/
+        transform: translateX(0.3em);
+    }
+
+    /* Especificidad 012 */
+    header nav a.active {
+        background-color: #C8960C;
+        /*Advertencia por redefinición de background-color*/
+        color: #2C1A0E;
+    }
+
+    /* Especificidad 013 */
+    header nav a.active:hover {
+        background-color: #A07008;
+        /*Advertencia por redefinición de background-color*/
+    }
+
+    /* Animación de despliegue del menú */
+    @keyframes desplegar {
+        from {
+            opacity: 0;
+            transform: translateY(-1em);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Especificidad 002 */
+    header p {
+        display: none; /* oculta las migas en móviles */
+        /*Advertencia por redefinición de display*/
+    }
+
+    /* Especificidad 001, 001 */
+    video, audio {
+        width: 100%;
+        height: auto;
+        /*advertencia: width sobrescribe cualquier ancho previo*/
+    }
+
+    /* Especificidad 001 */
+    .formulario-campo {
+        grid-template-columns: 1fr;
+        /*Advertencia por redefinición de grid-template-columns*/
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    /* Especificidad 001 */
+    #prevision-contenedor {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        /*Advertencia por redefinición de grid-template-columns*/
+    }
+
+    /* Especificidad 001 */
+    #noticias-contenedor {
+        grid-template-columns: 1fr;
+        /*Advertencia por redefinición de grid-template-columns*/
+    }
+
+    /* Especificidad 001 */
+    #mapa-ruta {
+        height: 300px;
+        /*Advertencia por redefinición de height*/
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+    /* Especificidad 001 */
+    #prevision-contenedor {
+        grid-template-columns: repeat(7, 1fr);
+        /*Advertencia por redefinición de grid-template-columns*/
+    }
+
+    /* Especificidad 001 */
+    .hitos-contenedor {
+        grid-template-columns: repeat(2, 1fr);
+        /*Advertencia por redefinición de grid-template-columns*/
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+
+    /* Especificidad 001 */
+    #prevision-contenedor {
+        grid-template-columns: repeat(7, 1fr);
+        /*Advertencia por redefinición de grid-template-columns*/
+    }
+
+    /* Especificidad 001 */
+    .hitos-contenedor {
+        grid-template-columns: repeat(2, 1fr);
+        /*Advertencia por redefinición de grid-template-columns*/
+    }
+}
+
+@media print {
+
+    /* Especificidad 001 */
+    nav {
+        display: none;
+        /*Advertencia por redefinición de display*/
+    }
+
+    /* Especificidad 001 */
+    footer {
+        position: fixed;
+        bottom: 0;
+        /*Advertencia por redefinición de position*/
+    }
+
+    /* Especificidad 001 */
+    button {
+        display: none;
+        /*Advertencia por redefinición de display*/
+    }
+}

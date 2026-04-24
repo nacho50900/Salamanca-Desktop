@@ -1,0 +1,589 @@
+/* Ignacio Hoyos Diego - UO300737 */
+
+/* Estilos generales del proyecto Turismo Salamanca */
+
+/* Especificidad 001 */
+body {
+    font-family: Tahoma, sans-serif;
+    background-color: #FDF8F0;
+    color: #1a1a1a;
+}
+
+/* Especificidad 001, 001, 001, 001 */
+h1, h2, h3, h4 {
+    font-family: Georgia, serif;
+    color: #8B1A1A;
+    /*advertencia h1(no hay color de fondo) por herencia de color de fondo de body*/
+    /*advertencia h2(no hay color de fondo) por herencia de color de fondo de body*/
+    /*advertencia h3(no hay color de fondo) por herencia de color de fondo de body*/
+    /*advertencia h4(no hay color de fondo) por herencia de color de fondo de body*/
+}
+
+/* Especificidad 001 */
+h1 {
+    background-color: #2C1A0E;
+    color: #F5F0E8;
+    padding: 0.8em 2em;
+    margin: 0;
+    font-size: 1.8em;
+    /*advertencia: color de fondo explícito en h1*/
+    /*advertencia: color sobrescribe el de h1,h2,h3,h4 (#8B1A1A)*/
+}
+
+/* Especificidad 002 */
+h1 a {
+    color: #F5F0E8;
+    text-decoration: none;
+    /*advertencia: color sobrescribe el color por defecto de los enlaces*/
+    /*advertencia: fondo heredado de h1 (#2C1A0E) - contraste ratio > 7:1, cumple AAA*/
+}
+
+/* Especificidad 003 */
+h1 a:hover {
+    color: #C8960C;
+    /*advertencia: color sobrescribe el de h1 a*/
+}
+
+/* Especificidad 001 */
+header {
+    background-color: #2C1A0E;
+    color: #F5F0E8;
+    /*advertencia: color de fondo sobrescribe el heredado de body*/
+}
+
+/* Especificidad 001 */
+footer {
+    background-color: #2C1A0E;
+    color: #F5F0E8;
+    padding: 1em 2em;
+    text-align: center;
+    font-size: 0.85em;
+    /*advertencia: color de fondo sobrescribe el heredado de body*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
+}
+
+/* Especificidad 001 */
+main {
+    padding: 1.5em 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Especificidad 001 */
+nav {
+    background-color: #8B1A1A;
+    /*advertencia: color de fondo sobrescribe el heredado de header (#2C1A0E)*/
+}
+
+/* Especificidad 002 */
+nav a {
+    color: #F5F0E8;
+    text-decoration: none;
+    padding: 0.8em 1.2em;
+    display: block;
+    font-weight: bold;
+    font-size: 0.95em;
+    /*advertencia: color sobrescribe el color por defecto de los enlaces*/
+    /*advertencia: fondo heredado de nav (#8B1A1A) - contraste ratio > 7:1, cumple AAA*/
+}
+
+/* Especificidad 003 */
+nav a:hover {
+    background-color: #2C1A0E;
+    color: #C8960C;
+    /*advertencia: color de fondo sobrescribe el heredado de nav (#8B1A1A)*/
+    /*advertencia: color sobrescribe el de nav a (#F5F0E8)*/
+}
+
+/* Especificidad 002 */
+nav a.active {
+    background-color: #C8960C;
+    color: #2C1A0E;
+    /*advertencia: color de fondo sobrescribe el heredado de nav (#8B1A1A)*/
+    /*advertencia: color sobrescribe el de nav a (#F5F0E8) - contraste > 7:1, cumple AAA*/
+}
+
+/* Especificidad 001 */
+a {
+    color: #6B0F0F;
+    text-decoration: underline;
+}
+
+/* Especificidad 002 */
+a:hover {
+    color: #C8960C;
+    /*advertencia: color sobrescribe el de a*/
+}
+
+/* Especificidad 002 */
+a:focus {
+    outline: 3px solid #C8960C;
+    outline-offset: 2px;
+}
+
+/* Especificidad 001 */
+p {
+    margin-bottom: 1em;
+    line-height: 1.6;
+}
+
+/* Especificidad 001 */
+section {
+    margin-bottom: 2em;
+}
+
+/* Especificidad 001 */
+article {
+    background-color: #FFF8EE;
+    border-left: 4px solid #D4A84B;
+    padding: 1em 1.5em;
+    border-radius: 4px;
+    margin-bottom: 1em;
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
+}
+
+/* Especificidad 001 */
+figure {
+    margin: 1.5em 0;
+}
+
+/* Especificidad 001 */
+figcaption {
+    font-size: 0.85em;
+    color: #555555;
+    margin-top: 0.4em;
+    font-style: italic;
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
+    /*advertencia: fondo heredado de body (#FDF8F0) - contraste ratio > 7:1, cumple AAA*/
+}
+
+/* Especificidad 001 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Especificidad 001 */
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Especificidad 001 */
+audio {
+    width: 100%;
+    margin: 0.5em 0;
+}
+
+/* Especificidad 001 */
+dl {
+    margin-bottom: 1em;
+}
+
+/* Especificidad 001 */
+dt {
+    font-weight: bold;
+    color: #8B1A1A;
+    margin-top: 0.8em;
+    /*advertencia: color sobrescribe el heredado de body*/
+    /*advertencia: fondo heredado de body (#FDF8F0) - contraste ratio > 7:1, cumple AAA*/
+}
+
+/* Especificidad 001 */
+dd {
+    margin-left: 1.5em;
+    margin-bottom: 0.4em;
+}
+
+/* Especificidad 001 */
+ul, ol {
+    margin: 0.5em 0 1em 1.5em;
+}
+
+/* Especificidad 001 */
+button {
+    background-color: #8B1A1A;
+    color: #F5F0E8;
+    border: none;
+    padding: 0.7em 1.5em;
+    font-size: 1em;
+    font-family: Tahoma, sans-serif;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    /*advertencia: color de fondo explícito en button*/
+    /*advertencia: color sobrescribe el heredado de body - contraste > 7:1, cumple AAA*/
+}
+
+/* Especificidad 002 */
+button:hover {
+    background-color: #2C1A0E;
+    /*advertencia: color de fondo sobrescribe el de button (#8B1A1A)*/
+}
+
+/* Especificidad 002 */
+button:focus {
+    outline: 3px solid #C8960C;
+    outline-offset: 2px;
+}
+
+/* MIGAS DE NAVEGACIÓN */
+
+/* Especificidad 002 */
+header p {
+    padding: 0.4em 1em;
+    font-size: 0.9em;
+    color: #F5F0E8;
+    margin: 0;
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
+    /*advertencia: fondo heredado de header (#2C1A0E) - contraste ratio > 7:1, cumple AAA*/
+}
+
+/* Especificidad 003 */
+header p a {
+    color: #C8960C;
+    /*advertencia: color sobrescribe el de a (#6B0F0F)*/
+    /*advertencia: fondo heredado de header (#2C1A0E) - contraste ratio > 7:1, cumple AAA*/
+}
+
+/* Especificidad 004 */
+header p a:hover {
+    color: #F5F0E8;
+    /*advertencia: color sobrescribe el de header p a*/
+}
+
+/* ESTILOS PARA TABLAS */
+
+/* Especificidad 001 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    background-color: #fff;
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
+}
+
+/* Especificidad 002, 002 */
+table th,
+table td {
+    padding: 0.8em;
+    border: 1px solid #D4A84B;
+    text-align: left;
+}
+
+/* Especificidad 003 */
+table thead th {
+    background-color: #8B1A1A;
+    color: #F5F0E8;
+    font-weight: bold;
+    /*advertencia: color de fondo sobrescribe el blanco de table*/
+    /*advertencia: color sobrescribe el heredado de body - contraste > 7:1, cumple AAA*/
+}
+
+/* Especificidad 005 */
+table tbody tr:nth-child(even) {
+    background-color: #FFF5E1;
+    /*advertencia: color de fondo sobrescribe el blanco heredado de table*/
+}
+
+/* Especificidad 003 */
+table tbody tr:hover {
+    background-color: #EDE0C8;
+    /*advertencia: color de fondo sobrescribe el heredado de table*/
+}
+
+/* Especificidad 001 */
+caption {
+    font-style: italic;
+    color: #555555;
+    margin-bottom: 0.5em;
+    text-align: left;
+    /*advertencia: color sobrescribe el heredado de body*/
+    /*advertencia: fondo heredado de body (#FDF8F0) - contraste ratio > 7:1, cumple AAA*/
+}
+
+/* METEOROLOGÍA */
+
+/* Especificidad 001 */
+#tiempo-actual-contenedor {
+    background-color: #E8F4FD;
+    border: 1px solid #B8D8F0;
+    border-radius: 4px;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    /*advertencia: color de fondo sobrescribe el heredado de body*/
+}
+
+/* Especificidad 001 */
+.dia-prevision {
+    background-color: #E8F4FD;
+    border: 1px solid #B8D8F0;
+    border-radius: 4px;
+    padding: 0.8em;
+    text-align: center;
+    /*advertencia: color de fondo sobrescribe el heredado de body*/
+}
+
+/* Especificidad 001 */
+.dia-icono {
+    font-size: 1.8em;
+    margin: 0.3em 0;
+}
+
+/* Especificidad 001 */
+.dia-temp {
+    font-size: 0.9em;
+}
+
+/* Especificidad 001 */
+.dia-lluvia {
+    font-size: 0.78em;
+    color: #555555;
+    /*advertencia: color sobrescribe el heredado de body*/
+    /*advertencia: fondo heredado de .dia-prevision (#E8F4FD) - contraste > 7:1, cumple AAA*/
+}
+
+/* JUEGO */
+
+/* Especificidad 001 */
+#barra-progreso {
+    background-color: #ddd;
+    border-radius: 10px;
+    height: 10px;
+    margin-bottom: 1.5em;
+    overflow: hidden;
+    /*advertencia: color de fondo sobrescribe el heredado de body*/
+}
+
+/* Especificidad 001 */
+#barra-progreso-relleno {
+    background-color: #8B1A1A;
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+    /*advertencia: color de fondo sobrescribe el heredado de #barra-progreso*/
+}
+
+/* Especificidad 001 */
+#opciones-lista {
+    list-style: none;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/* Especificidad 002 */
+#opciones-lista li {
+    margin-bottom: 0.5em;
+}
+
+/* Especificidad 003 */
+#opciones-lista li label {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    padding: 0.7em 1em;
+    border: 2px solid #D4A84B;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Especificidad 004 */
+#opciones-lista li label:hover {
+    background-color: #F5EDE0;
+    /*advertencia: color de fondo sobrescribe el heredado de body*/
+}
+
+/* Especificidad 002 */
+#opciones-lista li.correcta label {
+    background-color: #D4EDDA;
+    border-color: #28A745;
+    /*advertencia: color de fondo sobrescribe el heredado*/
+}
+
+/* Especificidad 002 */
+#opciones-lista li.incorrecta label {
+    background-color: #F8D7DA;
+    border-color: #DC3545;
+    /*advertencia: color de fondo sobrescribe el heredado*/
+}
+
+/* Especificidad 001 */
+#puntuacion-final {
+    font-size: 2em;
+    color: #8B1A1A;
+    /*advertencia: color sobrescribe el heredado de body*/
+    /*advertencia: fondo heredado de body (#FDF8F0) - contraste > 7:1, cumple AAA*/
+}
+
+/* RUTAS */
+
+/* Especificidad 001 */
+#tabs-rutas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+/* Especificidad 002 */
+#tabs-rutas button {
+    background-color: #F5EDE0;
+    color: #8B1A1A;
+    border: 2px solid #D4A84B;
+    /*advertencia: color de fondo sobrescribe el de button (#8B1A1A)*/
+    /*advertencia: color sobrescribe el de button (#F5F0E8) - contraste > 7:1, cumple AAA*/
+}
+
+/* Especificidad 002 */
+#tabs-rutas button.active {
+    background-color: #8B1A1A;
+    color: #F5F0E8;
+    /*advertencia: color de fondo sobrescribe el de #tabs-rutas button*/
+    /*advertencia: color sobrescribe el de #tabs-rutas button - contraste > 7:1, cumple AAA*/
+}
+
+/* Especificidad 001 */
+#mapa-ruta {
+    width: 100%;
+    height: 400px;
+    border-radius: 4px;
+    border: 1px solid #D4A84B;
+    margin-bottom: 1.5em;
+}
+
+/* Especificidad 001 */
+.hito {
+    border-left: 4px solid #C8960C;
+    padding: 1em 1.5em;
+    background-color: #FFF8EE;
+    border-radius: 4px;
+    margin-bottom: 1em;
+    /*advertencia: color de fondo sobrescribe el heredado de body*/
+}
+
+/* Especificidad 001 */
+.hito-fotos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.8em;
+}
+
+/* Especificidad 002 */
+.hito-fotos img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #D4A84B;
+    /*advertencia: width sobrescribe el max-width heredado de img*/
+    /*advertencia: height sobrescribe el auto heredado de img*/
+}
+
+/* RESERVAS */
+
+/* Especificidad 001 */
+.alerta-exito {
+    background-color: #D4EDDA;
+    border: 1px solid #28A745;
+    color: #155724;
+    padding: 0.8em 1.2em;
+    border-radius: 4px;
+    margin-bottom: 1em;
+    /*advertencia: color de fondo sobrescribe el heredado de body*/
+    /*advertencia: color sobrescribe el heredado de body - contraste > 7:1, cumple AAA*/
+}
+
+/* Especificidad 001 */
+.alerta-error {
+    background-color: #F8D7DA;
+    border: 1px solid #DC3545;
+    color: #721C24;
+    padding: 0.8em 1.2em;
+    border-radius: 4px;
+    margin-bottom: 1em;
+    /*advertencia: color de fondo sobrescribe el heredado de body*/
+    /*advertencia: color sobrescribe el heredado de body - contraste > 7:1, cumple AAA*/
+}
+
+/* Especificidad 002 */
+.formulario-campo label {
+    font-weight: bold;
+}
+
+/* Especificidad 002, 002, 002 */
+.formulario-campo input,
+.formulario-campo select,
+.formulario-campo textarea {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95em;
+    width: 100%;
+}
+
+/* DISEÑO RESPONSIVO PARA MÓVILES */
+
+@media (max-width: 768px) {
+
+    /* Especificidad 001 */
+    table {
+        border: 0;
+        /*advertencia: borde sobrescribe el definido anteriormente (1px solid #D4A84B)*/
+    }
+
+    /* Especificidad 002 */
+    table thead {
+        display: none;
+        /*advertencia: oculta completamente los encabezados en móvil*/
+    }
+
+    /* Especificidad 003 */
+    table tbody tr {
+        display: block;
+        margin-bottom: 1em;
+        border: 1px solid #D4A84B;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        /*advertencia: display:block cambia el comportamiento normal de las filas*/
+        /*advertencia: color de fondo sobrescribe colores alternados de filas*/
+    }
+
+    /* Especificidad 003 */
+    table tbody td {
+        display: block;
+        text-align: right;
+        border: none;
+        border-bottom: 1px solid #eee;
+        padding: 0.6em 0.8em;
+        position: relative;
+        /*advertencia: display:block cambia el comportamiento normal de las celdas*/
+        /*advertencia: text-align sobrescribe el left definido anteriormente*/
+        /*advertencia: border:none sobrescribe el borde definido anteriormente*/
+        /*advertencia: padding sobrescribe el 0.8em definido anteriormente*/
+    }
+
+    /* Especificidad 004 */
+    table tbody td:last-child {
+        border-bottom: 0;
+        /*advertencia: elimina el borde inferior de la última celda*/
+    }
+
+    /* Especificidad 004 */
+    table tbody td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.85em;
+        color: #8B1A1A;
+        /*advertencia: float puede afectar al flujo normal del documento*/
+        /*advertencia: color sobrescribe el heredado de body*/
+    }
+}

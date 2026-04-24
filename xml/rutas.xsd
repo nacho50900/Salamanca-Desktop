@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- rutas.xsd – XML Schema para rutas turísticas de Salamanca -->
+<!-- UO300737 – Software y estándares para la Web -->
+<!-- Generado a partir de rutas.dtd, añadiendo validación de tipos de datos -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Elemento raíz -->
+    <xs:element name="rutas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ruta" type="tipoRuta" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="provincia" type="xs:string" use="required"/>
+        </xs:complexType>
+        <!-- Restricción: los id de las rutas deben ser únicos -->
+        <xs:key name="claveRuta">
+            <xs:selector xpath="ruta"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <!-- Restricción: los id de los hitos deben ser únicos -->
+        <xs:key name="claveHito">
+            <xs:selector xpath="ruta/hitos/hito"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+    </xs:element>
+
+    <!-- Tipo para cada ruta -->
+    <xs:complexType name="tipoRuta">
+        <xs:sequence>
+            <xs:element name="nombre"           type="xs:string"/>
+            <xs:element name="tipo"             type="xs:string"/>
+            <xs:element name="transporte"       type="xs:string"/>
+            <xs:element name="fechaInicio"      type="tipoFechaOpcional"   minOccurs="0"/>
+            <xs:element name="horaInicio"       type="tipoHoraOpcional"    minOccurs="0"/>
+            <xs:element name="duracion"         type="xs:string"/>
+            <xs:element name="agencia"          type="xs:string"/>
+            <xs:element name="descripcion"      type="xs:string"/>
+            <xs:element name="personas"         type="xs:string"/>
+            <xs:element name="lugarInicio"      type="xs:string"/>
+            <xs:element name="direccionInicio"  type="xs:string"/>
+            <xs:element name="coordenadasInicio" type="tipoCoordenadas"/>
+            <xs:element name="referencias"      type="tipoReferencias"/>
+            <xs:element name="recomendacion"    type="tipoRecomendacion"/>
+            <xs:element name="hitos"            type="tipoHitos"/>
+            <xs:element name="planimetria"      type="xs:string"/>
+            <xs:element name="altimetria"       type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <!-- Tipo para fecha opcional -->
+    <xs:complexType name="tipoFechaOpcional">
+        <xs:simpleContent>
+            <xs:extension base="xs:date">
+                <xs:attribute name="opcional" type="xs:boolean" default="true"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- Tipo para hora opcional -->
+    <xs:complexType name="tipoHoraOpcional">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="opcional" type="xs:boolean" default="true"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- Tipo para coordenadas geográficas -->
+    <xs:complexType name="tipoCoordenadas">
+        <xs:sequence>
+            <xs:element name="longitud" type="tipoLongitud"/>
+            <xs:element name="latitud"  type="tipoLatitud"/>
+            <xs:element name="altitud"  type="tipoAltitud"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Longitud: entre -180 y 180 grados -->
+    <xs:simpleType name="tipoLongitud">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-180"/>
+            <xs:maxInclusive value="180"/>
+            <xs:fractionDigits value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Latitud: entre -90 y 90 grados -->
+    <xs:simpleType name="tipoLatitud">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-90"/>
+            <xs:maxInclusive value="90"/>
+            <xs:fractionDigits value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Altitud: en metros, valor positivo o cero -->
+    <xs:simpleType name="tipoAltitud">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Tipo para referencias -->
+    <xs:complexType name="tipoReferencias">
+        <xs:sequence>
+            <xs:element name="referencia" type="xs:anyURI" minOccurs="3" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Recomendación: entero entre 0 y 10 -->
+    <xs:simpleType name="tipoRecomendacion">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Tipo para el conjunto de hitos -->
+    <xs:complexType name="tipoHitos">
+        <xs:sequence>
+            <xs:element name="hito" type="tipoHito" minOccurs="5" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Tipo para un hito individual -->
+    <xs:complexType name="tipoHito">
+        <xs:sequence>
+            <xs:element name="nombre"               type="xs:string"/>
+            <xs:element name="descripcion"          type="xs:string"/>
+            <xs:element name="coordenadas"          type="tipoCoordenadas"/>
+            <xs:element name="distanciaDesdeAnterior" type="tipoDistancia"/>
+            <xs:element name="fotos"                type="tipoFotos"/>
+            <xs:element name="videos"               type="tipoVideos" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <!-- Tipo para la distancia desde el hito anterior -->
+    <xs:complexType name="tipoDistancia">
+        <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+                <xs:attribute name="unidades" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="m"/>
+                            <xs:enumeration value="km"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- Tipo para la galería de fotos -->
+    <xs:complexType name="tipoFotos">
+        <xs:sequence>
+            <xs:element name="foto" type="tipoNombreArchivo" minOccurs="1" maxOccurs="5"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Tipo para la galería de vídeos -->
+    <xs:complexType name="tipoVideos">
+        <xs:sequence>
+            <xs:element name="video" type="tipoNombreArchivo" minOccurs="0" maxOccurs="3"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Nombre de archivo: no puede estar vacío -->
+    <xs:simpleType name="tipoNombreArchivo">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

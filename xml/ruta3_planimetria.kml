@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Ruta de La Alberca y Las Batuecas</name>
+    <description>Ruta de senderismo por la Sierra de Francia que atraviesa La Alberca —primer
+            Conjunto Histórico-Artístico declarado de España— y el Valle de Las Batuecas,
+            un paraje de extraordinaria belleza natural con pinturas rupestres prehistóricas.
+            La ruta combina patrimonio </description>
+
+    <!-- Estilo para los marcadores de hitos -->
+    <Style id="hitoStyle">
+      <IconStyle>
+        <color>ff1400ff</color>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ff1400ff</color>
+        <scale>0.8</scale>
+      </LabelStyle>
+    </Style>
+
+    <!-- Estilo para la línea de trazado -->
+    <Style id="lineaRuta">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+
+    <!-- Hito 0: Plaza Pública de La Alberca -->
+    <Placemark>
+      <name>Plaza Pública de La Alberca</name>
+      <description></description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.1158,40.4897,1048.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 1: Plaza Pública de La Alberca -->
+    <Placemark>
+      <name>Plaza Pública de La Alberca</name>
+      <description>La Alberca es el primer municipio declarado Conjunto Histórico-Artístico
+                    de España (1940). Su plaza porticada del siglo XVII es el corazón del
+                    pueblo y escenari</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.1158,40.4897,1048.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 2: Ermita de la Virgen de la Peña de Francia -->
+    <Placemark>
+      <name>Ermita de la Virgen de la Peña de Francia</name>
+      <description>Situada en el Pico de la Peña de Francia a 1.723 metros, es el punto
+                    más alto de la Sierra de Francia. El convento dominico del siglo XV
+                    alberga la imagen de la</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.1728,40.5319,1723.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 3: Valle de Las Batuecas -->
+    <Placemark>
+      <name>Valle de Las Batuecas</name>
+      <description>El Valle de Las Batuecas es un paraje de extraordinaria belleza
+                    situado en el corazón de la Sierra de Francia. El arroyo de Las Batuecas
+                    discurre por un valle c</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.097,40.456,680.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 4: Pinturas Rupestres de Las Batuecas -->
+    <Placemark>
+      <name>Pinturas Rupestres de Las Batuecas</name>
+      <description>El Valle de Las Batuecas concentra uno de los conjuntos de arte
+                    rupestre más importantes de la Meseta norte. Los abrigos de
+                    La Risca, Los Casares y El Milano co</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.084,40.449,700.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 5: Mogarraz -->
+    <Placemark>
+      <name>Mogarraz</name>
+      <description>Pueblo declarado Conjunto Histórico que conserva intacta la arquitectura
+                    serrana. Es famoso por el proyecto artístico de Florencio Maíllo que
+                    instaló 388 retrat</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.084,40.506,820.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Trazado completo de la ruta -->
+    <Placemark>
+      <name>Trazado - Ruta de La Alberca y Las Batuecas</name>
+      <styleUrl>#lineaRuta</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>
+          -6.1158,40.4897,1048.0
+          -6.1158,40.4897,1048.0
+          -6.1728,40.5319,1723.0
+          -6.097,40.456,680.0
+          -6.084,40.449,700.0
+          -6.084,40.506,820.0
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+  </Document>
+</kml>
