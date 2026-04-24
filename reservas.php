@@ -281,16 +281,16 @@ class Reservas {
             <?php endif; ?>
         </section>
 
-        <?php if ($this->reservaPresupuesto): ?>
         <section>
             <h2>Presupuesto de tu reserva</h2>
+            <?php if ($this->reservaPresupuesto): ?>
             <article>
                 <p><strong>Reserva nº:</strong> <?php echo (int)$this->reservaPresupuesto["id_reserva"]; ?></p>
                 <p><strong>Recurso:</strong> <?php echo htmlspecialchars($this->reservaPresupuesto["recurso_nombre"], ENT_QUOTES); ?></p>
                 <p><strong>Tipo:</strong> <?php echo htmlspecialchars($this->reservaPresupuesto["tipo"], ENT_QUOTES); ?></p>
                 <p><strong>Disponible:</strong>
                     <?php echo (new DateTime($this->reservaPresupuesto["fecha_inicio"]))->format("d/m/Y H:i"); ?>
-                    – <?php echo (new DateTime($this->reservaPresupuesto["fecha_fin"]))->format("d/m/Y H:i"); ?>
+                    - <?php echo (new DateTime($this->reservaPresupuesto["fecha_fin"]))->format("d/m/Y H:i"); ?>
                 </p>
                 <p><strong>Personas:</strong> <?php echo (int)$this->reservaPresupuesto["num_personas"]; ?></p>
                 <p><strong>Precio/persona:</strong> <?php echo number_format((float)$this->reservaPresupuesto["precio_unitario"], 2); ?> €</p>
@@ -310,8 +310,10 @@ class Reservas {
                 </form>
                 <?php endif; ?>
             </article>
+            <?php else: ?>
+            <p>No hay ninguna reserva seleccionada.</p>
+            <?php endif; ?>
         </section>
-        <?php endif; ?>
 
         <section>
             <h2>Mis reservas</h2>
@@ -339,9 +341,6 @@ class Reservas {
                         <input type="hidden" name="id_reserva" value="<?php echo (int)$reserva["id_reserva"]; ?>" />
                         <button type="submit">Anular reserva</button>
                     </form>
-                    <?php endif; ?>
-                    <?php if ($reserva["estado"] === "pendiente"): ?>
-                    <p><a href="reservas.php?id_reserva=<?php echo (int)$reserva["id_reserva"]; ?>">Ver presupuesto y confirmar</a></p>
                     <?php endif; ?>
                 </article>
                 <?php endforeach; ?>
@@ -374,13 +373,15 @@ $reservas->procesarAccion();
 </head>
 
 <body>
-    <h1>
-        <a href="index.html" title="Página principal">Turismo Salamanca</a>
-    </h1>
 
     <header>
+        <h1>
+            <a href="index.html" title="Página principal">Turismo Salamanca</a>
+        </h1>
+
+        <button id="btn-menu" aria-label="Abrir menú de navegación" aria-expanded="false">☰ Menú</button>
+
         <nav>
-            <button id="btn-menu" aria-label="Abrir menú de navegación" aria-expanded="false">☰ Menú</button>
             <a href="index.html" title="Página principal">Inicio</a>
             <a href="gastronomia.html" title="Gastronomía de Salamanca">Gastronomía</a>
             <a href="rutas.html" title="Rutas turísticas">Rutas</a>
@@ -402,7 +403,7 @@ $reservas->procesarAccion();
     </main>
 
     <footer>
-        <p>&copy; 2026 Turismo Salamanca &mdash; UO300737 &mdash; Software y estándares para la Web</p>
+        <p>&copy; 2026 Turismo Salamanca - UO300737 - Software y estándares para la Web</p>
     </footer>
 </body>
 </html>

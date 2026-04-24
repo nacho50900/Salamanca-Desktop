@@ -67,11 +67,11 @@ class ReservaDAO {
                     rv.estado, rv.precio_total, rv.notas,
                     r.nombre AS recurso_nombre, r.fecha_inicio, r.fecha_fin,
                     t.nombre AS tipo
-             FROM reserva rv
-             JOIN recurso_turistico r ON rv.id_recurso = r.id_recurso
-             JOIN tipo_recurso t ON r.id_tipo = t.id_tipo
-             WHERE rv.id_usuario = ?
-             ORDER BY rv.fecha_reserva DESC"
+            FROM reserva rv
+            JOIN recurso_turistico r ON rv.id_recurso = r.id_recurso
+            JOIN tipo_recurso t ON r.id_tipo = t.id_tipo
+            WHERE rv.id_usuario = ? AND rv.estado = 'confirmada'
+            ORDER BY rv.fecha_reserva DESC"
         );
         $stmt->bind_param("i", $idUsuario);
         $stmt->execute();

@@ -25,6 +25,12 @@ header {
 }
 
 /* Especificidad 002 */
+header > h1 {
+    flex-basis: 100%; /* ocupa toda la fila, empuja nav abajo */
+    margin: 0;
+}
+
+/* Especificidad 002 */
 header > nav {
     display: flex;
     flex-direction: row;
@@ -209,10 +215,15 @@ header button {
     }
 
     /* Especificidad 001, 001 */
-    video, audio {
+    video {
         width: 100%;
+         /*advertencia: width sobrescribe cualquier ancho previo*/
         height: auto;
-        /*advertencia: width sobrescribe cualquier ancho previo*/
+    }
+
+    audio {
+        width: 100%;
+         /*advertencia: width sobrescribe cualquier ancho previo*/
     }
 
     /* Especificidad 001 */

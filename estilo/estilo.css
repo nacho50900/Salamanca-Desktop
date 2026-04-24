@@ -65,8 +65,8 @@ footer {
 /* Especificidad 001 */
 main {
     padding: 1.5em 2em;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1600px;
+    /*margin: 0 auto;*/
 }
 
 /* Especificidad 001 */
@@ -589,8 +589,6 @@ caption {
 }
 
 
-
-
 /* CARRUSEL */
 /* Selector estructural: header + article es el article insertado tras el header por JS */
 /* No se usan selectores de id ni de class, cumple la especificacion del PDF */
@@ -631,7 +629,7 @@ header + article figure {
 /* Especificidad 004 */
 header + article figure img {
     width: 100%;
-    height: 460px;
+    height: 580px;
     object-fit: cover;
     display: block;
     border-radius: 0;
@@ -651,4 +649,17 @@ header + article figure figcaption {
     font-family: Georgia, serif;
     /*advertencia: color de fondo sobrescribe el heredado de header + article*/
     /*advertencia: color sobrescribe el de figcaption (#555555)*/
+}
+
+
+@media (max-width: 768px) {
+    header + article figure img {
+        height: 560px;
+    }
+}
+
+@media (max-width: 485px) {
+    header + article figure img {
+        height: 440px;
+    }
 }
