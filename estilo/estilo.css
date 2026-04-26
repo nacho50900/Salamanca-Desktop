@@ -268,9 +268,7 @@ button:focus {
     outline-offset: 2px;
 }
 
-/* ============================================================
-   MIGAS DE NAVEGACIÓN
-   ============================================================ */
+/*  MIGAS DE NAVEGACIÓN */
 
 /* Especificidad 002 */
 header p {
@@ -498,7 +496,7 @@ main section article > p:first-of-type {
 /* Noticias - h3 de tarjeta */
 /* Especificidad 005 */
 main > section > aside > article > h3 {
-    font-size: 1em;
+    font-size: 1.5em;
     margin: 0 0 0.3em 0;
     /*advertencia: font-size sobrescribe el heredado de h1,h2,h3,h4*/
 }
@@ -675,11 +673,9 @@ main form > div textarea {
     }
 }
 
-/* ============================================================
-   CARRUSEL (index.html)
+/* CARRUSEL (index.html)
    header + article: el article del carrusel insertado por JS
-   justo después del header. Sin ID ni class.
-   ============================================================ */
+   justo después del header. Sin ID ni class. */
 
 /* Especificidad 002 */
 header + article {
