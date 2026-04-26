@@ -163,8 +163,12 @@ class Reservas {
 
     public function mostrarMensajes() {
         foreach ($this->mensajes as $msg) {
-            $clase = $msg["tipo"] === "exito" ? "alerta-exito" : "alerta-error";
-            echo "<p class='" . $clase . "'>" . htmlspecialchars($msg["texto"], ENT_QUOTES) . "</p>";
+            /* Sin clases: éxito → aria-live="polite", error → role="alert" */
+            if ($msg["tipo"] === "exito") {
+                echo "<p aria-live='polite'>" . htmlspecialchars($msg["texto"], ENT_QUOTES) . "</p>";
+            } else {
+                echo "<p role='alert'>" . htmlspecialchars($msg["texto"], ENT_QUOTES) . "</p>";
+            }
         }
     }
 
@@ -178,11 +182,11 @@ class Reservas {
                 <h3>Iniciar sesión</h3>
                 <form method="post" action="reservas.php">
                     <input type="hidden" name="accion" value="login" />
-                    <div class="formulario-campo">
+                    <div>
                         <label for="login-email">Email <abbr title="obligatorio">*</abbr></label>
                         <input type="email" id="login-email" name="email" required autocomplete="email" placeholder="tu@email.com" />
                     </div>
-                    <div class="formulario-campo">
+                    <div>
                         <label for="login-password">Contraseña <abbr title="obligatorio">*</abbr></label>
                         <input type="password" id="login-password" name="password" required autocomplete="current-password" />
                     </div>
@@ -194,23 +198,23 @@ class Reservas {
                 <h3>Crear cuenta nueva</h3>
                 <form method="post" action="reservas.php">
                     <input type="hidden" name="accion" value="registrar" />
-                    <div class="formulario-campo">
+                    <div>
                         <label for="reg-nombre">Nombre <abbr title="obligatorio">*</abbr></label>
                         <input type="text" id="reg-nombre" name="nombre" required autocomplete="given-name" />
                     </div>
-                    <div class="formulario-campo">
+                    <div>
                         <label for="reg-apellidos">Apellidos <abbr title="obligatorio">*</abbr></label>
                         <input type="text" id="reg-apellidos" name="apellidos" required autocomplete="family-name" />
                     </div>
-                    <div class="formulario-campo">
+                    <div>
                         <label for="reg-email">Email <abbr title="obligatorio">*</abbr></label>
                         <input type="email" id="reg-email" name="email" required autocomplete="email" />
                     </div>
-                    <div class="formulario-campo">
+                    <div>
                         <label for="reg-password">Contraseña <abbr title="obligatorio">*</abbr></label>
                         <input type="password" id="reg-password" name="password" required autocomplete="new-password" minlength="6" />
                     </div>
-                    <div class="formulario-campo">
+                    <div>
                         <label for="reg-telefono">Teléfono</label>
                         <input type="tel" id="reg-telefono" name="telefono" autocomplete="tel" placeholder="+34 600 000 000" />
                     </div>
@@ -262,7 +266,7 @@ class Reservas {
                     <form method="post" action="reservas.php">
                         <input type="hidden" name="accion" value="reservar" />
                         <input type="hidden" name="id_recurso" value="<?php echo (int)$recurso["id_recurso"]; ?>" />
-                        <div class="formulario-campo">
+                        <div>
                             <label for="personas-<?php echo (int)$recurso["id_recurso"]; ?>">Número de personas</label>
                             <input type="number"
                                    id="personas-<?php echo (int)$recurso["id_recurso"]; ?>"
@@ -270,7 +274,7 @@ class Reservas {
                                    max="<?php echo $this->recursoDAO->plazasDisponibles((int)$recurso["id_recurso"]); ?>"
                                    value="1" />
                         </div>
-                        <div class="formulario-campo">
+                        <div>
                             <label for="notas-<?php echo (int)$recurso["id_recurso"]; ?>">Notas</label>
                             <textarea id="notas-<?php echo (int)$recurso["id_recurso"]; ?>" name="notas" rows="2"></textarea>
                         </div>

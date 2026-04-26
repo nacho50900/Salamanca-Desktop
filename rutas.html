@@ -20,7 +20,7 @@
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"></script>
 
-    <!-- Google Maps API-->
+    <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeKMC4IblZcvdzUbSrbx_01_lYh_k2V38&callback=Function.prototype" defer></script>
 
     <script src="js/rutas.js"></script>
@@ -50,26 +50,30 @@
     </header>
 
     <main>
+        
         <h2>Rutas Turísticas por Salamanca</h2>
         <p>Descubre la provincia de Salamanca a través de sus rutas más emblemáticas. Selecciona una ruta para ver toda la información, el mapa y el perfil de altimetría.</p>
 
         <section>
             <h2>Selecciona una ruta</h2>
-            <div id="tabs-rutas">
+            <nav id="tabs-rutas" aria-label="Selector de rutas">
                 <p>Cargando rutas...</p>
-            </div>
+            </nav>
         </section>
 
-        <section id="detalle-ruta" hidden>
-            <div id="info-ruta"></div>
+        <!-- div permitido para contenido generado dinámicamente por JS -->
+        <div id="info-ruta" hidden></div>
 
+        <section>
             <h2>Planimetría de la ruta</h2>
-            <!-- div permitido para mapas dinámicos según especificación del proyecto -->
             <div id="mapa-ruta"></div>
+        </section>
 
+        <section>
             <h2>Altimetría de la ruta</h2>
             <div id="altimetria-ruta"></div>
         </section>
+
     </main>
 
     <footer>

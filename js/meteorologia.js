@@ -98,18 +98,14 @@ class Meteorologia {
                 month: "short"
             });
 
-            let div = $("<div>").addClass("dia-prevision");
-            let timeElem = $("<p>").append($("<time>").attr("datetime", fecha).text(fechaFormateada));
-            let icono = $("<p>").addClass("dia-icono").attr("aria-label", info.desc).text(info.icono);
-            let temp = $("<p>").addClass("dia-temp").html(
-                "<strong>" + daily.temperature_2m_max[i] + "°</strong> / " + daily.temperature_2m_min[i] + "°"
-            );
-            let lluvia = $("<p>").addClass("dia-lluvia").text(
-                "💧 " + daily.precipitation_sum[i] + " " + dailyUnits.precipitation_sum
-            );
+            let $article = $("<article>");
+            let $fecha = $("<p>").append($("<time>").attr("datetime", fecha).text(fechaFormateada));
+            let $icono = $("<p>").attr("aria-label", info.desc).text(info.icono);
+            let $temp = $("<p>").html("<strong>" + daily.temperature_2m_max[i] + "°</strong> / " + daily.temperature_2m_min[i] + "°");
+            let $lluvia = $("<p>").text("💧 " + daily.precipitation_sum[i] + " " + dailyUnits.precipitation_sum);
 
-            div.append(timeElem).append(icono).append(temp).append(lluvia);
-            $contenedor.append(div);
+            $article.append($fecha).append($icono).append($temp).append($lluvia);
+            $contenedor.append($article);
         });
 
         console.log("Previsión insertada en el DOM");

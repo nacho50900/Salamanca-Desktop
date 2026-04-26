@@ -6,7 +6,6 @@ class GestorRutas {
         this.rutas = [];
         this.indiceActivo = 0;
 
-        // Llamar al método para cargar el XML
         this.cargarXML();
     }
 
@@ -23,7 +22,7 @@ class GestorRutas {
             },
             error: (jqXHR, textStatus, errorThrown) => {
                 console.error("Error al cargar rutas.xml:", textStatus, errorThrown);
-                $("#tabs-rutas").html("<p>Error al cargar las rutas. Comprueba que rutas.xml está disponible.</p>");
+                $("main > section nav").html("<p>Error al cargar las rutas. Comprueba que rutas.xml está disponible.</p>");
             }
         });
     }
@@ -88,7 +87,7 @@ class GestorRutas {
     }
 
     renderizarTabs() {
-        let $tabs = $("#tabs-rutas");
+        let $tabs = $("main > section nav");
         $tabs.empty();
 
         this.rutas.forEach((ruta, indice) => {
@@ -110,7 +109,13 @@ class GestorRutas {
         this.indiceActivo = indice;
         let ruta = this.rutas[indice];
 
-        $("#detalle-ruta").prop("hidden", false);
+        // Mostrar los contenedores que estaban ocultos
+        $("#info-ruta").prop("hidden", false);
+        $("#mapa-ruta").prop("hidden", false);
+        $("#altimetria-ruta").prop("hidden", false);
+        $("main > h2:nth-of-type(2)").prop("hidden", false);
+        $("main > h2:nth-of-type(3)").prop("hidden", false);
+
         this.renderizarInfoRuta(ruta);
         this.cargarMapa(ruta);
         this.cargarAltimetria(ruta);
@@ -126,13 +131,13 @@ class GestorRutas {
                 ? "<p><strong>Distancia desde anterior:</strong> " + hito.distancia + " " + hito.unidadesDistancia + "</p>"
                 : "";
 
-            return "<article class='hito'>" +
+            return "<article>" +
                 "<h3>" + hito.nombre + "</h3>" +
                 "<p>" + hito.descripcion + "</p>" +
                 distTexto +
                 "<p><strong>Coordenadas:</strong> Lat: " + hito.latitud +
                 ", Lon: " + hito.longitud + ", Alt: " + hito.altitud + " m</p>" +
-                "<div class='hito-fotos'>" + fotosHtml + "</div>" +
+                "<div>" + fotosHtml + "</div>" +
                 "</article>";
         }).join("");
 
@@ -152,7 +157,7 @@ class GestorRutas {
             "</ul>" +
             "<p>" + ruta.descripcion + "</p>" +
             "<h3>Hitos de la ruta</h3>" +
-            "<div class='hitos-contenedor'>" + hitosHtml + "</div>" +
+            "<section>" + hitosHtml + "</section>" +
             "<h3>Referencias</h3>" +
             "<ul>" + referenciasHtml + "</ul>";
 
@@ -163,7 +168,6 @@ class GestorRutas {
         let contenedorMapa = document.getElementById("mapa-ruta");
         contenedorMapa.innerHTML = "";
 
-        // Verificar que la API de Google Maps esté disponible
         if (typeof google === "undefined" || typeof google.maps === "undefined") {
             contenedorMapa.innerHTML = "<p>El mapa no está disponible. Añade tu API Key de Google Maps en rutas.html.</p>";
             return;
@@ -175,7 +179,6 @@ class GestorRutas {
             mapTypeId: "terrain"
         });
 
-        // Marcadores para cada hito
         ruta.hitos.forEach((hito, i) => {
             let marcador = new google.maps.Marker({
                 position: { lat: hito.latitud, lng: hito.longitud },
@@ -192,7 +195,6 @@ class GestorRutas {
             marcador.addListener("click", () => ventana.open(mapa, marcador));
         });
 
-        // Trazar la línea de la ruta
         let coordenadas = ruta.hitos.map(h => ({ lat: h.latitud, lng: h.longitud }));
         new google.maps.Polyline({
             path: coordenadas,
@@ -225,7 +227,6 @@ class GestorRutas {
     }
 }
 
-// Inicializar rutas cuando el documento esté listo
 $(document).ready(() => {
     console.log("Documento listo, iniciando gestor de rutas...");
     new GestorRutas("xml/rutas.xml");

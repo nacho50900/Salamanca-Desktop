@@ -3,6 +3,21 @@
 /* Maquetación y posicionamiento del proyecto Turismo Salamanca */
 /* Módulos permitidos: CSS Flexible Box Layout, CSS Grid Layout, CSS Multi-column Layout */
 
+/* ============================================================
+   SELECTORES SIN ID NI CLASS — ESTRUCTURA HTML POR PÁGINA
+   ─ index.html
+       main > section:last-of-type > section > article
+                                   → grid de noticias (auto-fill)
+   ─ meteorologia.html
+       main > section:last-of-type > div
+                                   → grid previsión 7 días
+   ─ rutas.html
+       main > section > div        → mapa dinámico y altimetría
+                                     (div permitido por spec)
+   ─ reservas.php
+       main form > div             → grid label + control formulario
+   ============================================================ */
+
 /* Especificidad 001 */
 body {
     display: flex;
@@ -14,13 +29,15 @@ body {
 /* Especificidad 001 */
 main {
     flex: 1;
+    padding: 1.5em 2em;
+    margin: 0;
 }
 
 /* Especificidad 001 */
 header {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; /* Permite separar los elementos en filas, así las migas p van a la siguiente */
+    flex-wrap: wrap;
     gap: 0px;
 }
 
@@ -52,65 +69,68 @@ header button {
     display: none;
 }
 
-/* Selector div permitido para mapas dinámicos según especificación del proyecto */
-/* Especificidad 001 */
-#mapa-ruta {
-    width: 100%;
-    height: 400px;
-    margin: 1em 0;
-}
-
-/* NOTICIAS - CSS Grid */
-
-/* Especificidad 001 */
-#noticias-contenedor {
+/* NOTICIAS (index.html)
+   main > section:last-of-type > section > article
+   El article es el contenedor donde JS inserta las tarjetas de noticias */
+/* Especificidad 004 */
+main > section:last-of-type > section > article {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.2em;
 }
 
-/* PREVISIÓN METEOROLÓGICA - CSS Grid */
-
-/* Especificidad 001 */
-#prevision-contenedor {
+/* PREVISIÓN METEOROLÓGICA (meteorologia.html)
+   main > section:last-of-type > div
+   El div#prevision-contenedor donde JS inserta los articles de cada día */
+/* Especificidad 003 */
+main > section:last-of-type > div {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 0.8em;
 }
 
-/* RUTAS - Grid para hitos */
-
-/* Especificidad 001 */
-.hitos-contenedor {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1em;
+/* RUTAS - Mapas dinámicos (rutas.html)
+   div permitido para mapas dinámicos según especificación del proyecto */
+/* Especificidad 004 */
+main > section > section > div {
+    width: 100%;
+    height: 400px;
+    margin: 1em 0;
 }
 
-/* RESERVAS - Grid para formularios */
-
-/* Especificidad 001 */
-.formulario-campo {
+/* RESERVAS - Grid para campos de formulario (reservas.php) */
+/* Especificidad 003 */
+main form > div {
     display: grid;
     grid-template-columns: 160px 1fr;
     gap: 0.5em;
     align-items: center;
     margin-bottom: 0.8em;
 }
+/* NOTICIAS (index.html) */
+/* Especificidad 003 */
+
+main > section:last-of-type > aside {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2em;
+}
+
+/* MÓVIL — max-width: 485px */
 
 @media (max-width: 485px) {
 
     /* Especificidad 001 */
     header {
         flex-direction: column;
-        /*Advertencia por redefinición de flex-direction*/
+        /*advertencia: redefinición de flex-direction por media query*/
         align-items: center;
     }
 
     /* Especificidad 002 */
     header button {
         display: block;
-        /*Advertencia por redefinición de display*/
+        /*advertencia: redefinición de display por media query*/
         background-color: #8B1A1A;
         color: #F5F0E8;
         border: none;
@@ -123,12 +143,14 @@ header button {
         width: 100%;
         text-align: center;
         transition: background-color 0.3s ease;
+        /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
+        /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
     }
 
     /* Especificidad 003 */
     header button:hover {
         background-color: #2C1A0E;
-        /*Advertencia por redefinición de background-color*/
+        /*advertencia: redefinición de background-color por media query*/
     }
 
     /* Especificidad 003 */
@@ -140,13 +162,13 @@ header button {
     /* Especificidad 003 */
     header button:active {
         background-color: #5C1010;
-        /*Advertencia por redefinición de background-color*/
+        /*advertencia: redefinición de background-color por media query*/
     }
 
     /* Especificidad 002 */
     header > nav {
         display: none;
-        /*Advertencia por redefinición de display*/
+        /*advertencia: redefinición de display por media query*/
         flex-direction: column;
         width: 100%;
         max-height: 0;
@@ -154,10 +176,11 @@ header button {
         transition: max-height 0.4s ease-in-out;
     }
 
+    /* Selector de class permitido: menú móvil visible — gestionado por menu-movil.js */
     /* Especificidad 011 */
     header nav.menu-visible {
         display: flex;
-        /*Advertencia por redefinición de display y max-height*/
+        /*advertencia: redefinición de display y max-height por media query*/
         max-height: 50em;
         animation: desplegar 0.4s ease-in-out;
     }
@@ -165,7 +188,7 @@ header button {
     /* Especificidad 003 */
     header nav a {
         padding: 1em;
-        /*Advertencia por redefinición de padding*/
+        /*advertencia: redefinición de padding por media query*/
         margin: 0.2em 0;
         text-align: center;
         background-color: #2C1A0E;
@@ -179,24 +202,24 @@ header button {
     /* Especificidad 004 */
     header nav a:hover {
         background-color: #5C1010;
-        /*Advertencia por redefinición de background-color*/
+        /*advertencia: redefinición de background-color por media query*/
         transform: translateX(0.3em);
     }
 
+    /* Selector de class permitido: opción activa en móvil */
     /* Especificidad 012 */
     header nav a.active {
         background-color: #C8960C;
-        /*Advertencia por redefinición de background-color*/
+        /*advertencia: redefinición de background-color por media query*/
         color: #2C1A0E;
     }
 
     /* Especificidad 013 */
     header nav a.active:hover {
         background-color: #A07008;
-        /*Advertencia por redefinición de background-color*/
+        /*advertencia: redefinición de background-color por media query*/
     }
 
-    /* Animación de despliegue del menú */
     @keyframes desplegar {
         from {
             opacity: 0;
@@ -210,98 +233,121 @@ header button {
 
     /* Especificidad 002 */
     header p {
-        display: none; /* oculta las migas en móviles */
-        /*Advertencia por redefinición de display*/
+        display: none;
+        /*advertencia: redefinición de display por media query*/
     }
 
-    /* Especificidad 001, 001 */
+    /* Especificidad 001 */
     video {
         width: 100%;
-         /*advertencia: width sobrescribe cualquier ancho previo*/
+        /*advertencia: redefinición de width por media query*/
         height: auto;
     }
 
+    /* Especificidad 001 */
     audio {
         width: 100%;
-         /*advertencia: width sobrescribe cualquier ancho previo*/
+        /*advertencia: redefinición de width por media query*/
     }
 
-    /* Especificidad 001 */
-    .formulario-campo {
+    /* Especificidad 003 */
+    main form > div {
         grid-template-columns: 1fr;
-        /*Advertencia por redefinición de grid-template-columns*/
+        /*advertencia: redefinición de grid-template-columns por media query*/
+    }
+
+    /* Especificidad 004 */
+    main > section:last-of-type > section > article {
+        grid-template-columns: 1fr;
+        /*advertencia: redefinición de grid-template-columns por media query*/
+    }
+
+    /* NOTICIAS (index.html) */
+    /* Especificidad 003 */
+    main > section:last-of-type > aside {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.2em;
+    }
+
+    /* Especificidad 003 */
+    main > section:last-of-type > div {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        /*advertencia: redefinición de grid-template-columns por media query*/
+    }
+
+    /* Especificidad 003 */
+    main > section > div {
+        height: 300px;
+        /*advertencia: redefinición de height por media query*/
     }
 }
+
+/* TABLET — max-width: 768px */
 
 @media only screen and (max-width: 768px) {
 
-    /* Especificidad 001 */
-    #prevision-contenedor {
+    /* Especificidad 003 */
+    main > section:last-of-type > div {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-        /*Advertencia por redefinición de grid-template-columns*/
+        /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
-    /* Especificidad 001 */
-    #noticias-contenedor {
+    /* Especificidad 004 */
+    main > section:last-of-type > section > article {
         grid-template-columns: 1fr;
-        /*Advertencia por redefinición de grid-template-columns*/
+        /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
-    /* Especificidad 001 */
-    #mapa-ruta {
+    /* Especificidad 003 */
+    main > section > div {
         height: 300px;
-        /*Advertencia por redefinición de height*/
+        /*advertencia: redefinición de height por media query*/
     }
 }
+
+/* TABLET GRANDE — 769px a 1024px */
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 
-    /* Especificidad 001 */
-    #prevision-contenedor {
+    /* Especificidad 003 */
+    main > section:last-of-type > div {
         grid-template-columns: repeat(7, 1fr);
-        /*Advertencia por redefinición de grid-template-columns*/
-    }
-
-    /* Especificidad 001 */
-    .hitos-contenedor {
-        grid-template-columns: repeat(2, 1fr);
-        /*Advertencia por redefinición de grid-template-columns*/
+        /*advertencia: redefinición de grid-template-columns por media query*/
     }
 }
+
+/* ESCRITORIO — min-width: 1025px */
 
 @media only screen and (min-width: 1025px) {
 
-    /* Especificidad 001 */
-    #prevision-contenedor {
+    /* Especificidad 003 */
+    main > section:last-of-type > div {
         grid-template-columns: repeat(7, 1fr);
-        /*Advertencia por redefinición de grid-template-columns*/
-    }
-
-    /* Especificidad 001 */
-    .hitos-contenedor {
-        grid-template-columns: repeat(2, 1fr);
-        /*Advertencia por redefinición de grid-template-columns*/
+        /*advertencia: redefinición de grid-template-columns por media query*/
     }
 }
+
+/* IMPRESIÓN */
 
 @media print {
 
     /* Especificidad 001 */
     nav {
         display: none;
-        /*Advertencia por redefinición de display*/
+        /*advertencia: redefinición de display por media query*/
     }
 
     /* Especificidad 001 */
     footer {
         position: fixed;
         bottom: 0;
-        /*Advertencia por redefinición de position*/
+        /*advertencia: redefinición de position por media query*/
     }
 
     /* Especificidad 001 */
     button {
         display: none;
-        /*Advertencia por redefinición de display*/
+        /*advertencia: redefinición de display por media query*/
     }
 }

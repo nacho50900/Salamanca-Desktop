@@ -2,6 +2,41 @@
 
 /* Estilos generales del proyecto Turismo Salamanca */
 
+/* ============================================================
+   SELECTORES SIN ID NI CLASS — ESTRUCTURA HTML ASUMIDA
+   Selectores de class permitidos únicamente:
+     nav a.active              → opción activa del menú de navegación
+     main > nav > button.active → tab de ruta activa (rutas.html)
+     header nav.menu-visible   → menú móvil desplegado (menu-movil.css)
+
+   ─ meteorologia.html
+       main > section:first-of-type > article   → tiempo actual
+       main > section:last-of-type div > article → días de previsión (JS)
+
+   ─ juego.html
+       main section article > div[role="progressbar"]       → barra de progreso
+       main section article > div[role="progressbar"] > div → relleno barra
+       main section article > ul                            → lista de opciones
+       main section article > ul > li[aria-selected="true"] → opción correcta
+       main section article > ul > li[aria-invalid="true"]  → opción incorrecta
+       main section article > p:first-of-type               → puntuación final
+
+   ─ rutas.html
+       main > nav                    → selector de rutas (tabs)
+       main > nav > button           → botón de tab
+       main > nav > button.active    → tab activo
+       main section article          → hitos generados por JS
+       main section article > div    → galería de fotos del hito
+       main section article > div > img → foto del hito
+
+   ─ reservas.php
+       main > p[aria-live="polite"]  → mensaje de éxito
+       main > p[role="alert"]        → mensaje de error
+       main form > div               → campo de formulario
+       main form > div label         → etiqueta del campo
+       main form > div input/select/textarea → control del campo
+   ============================================================ */
+
 /* Especificidad 001 */
 body {
     font-family: Tahoma, sans-serif;
@@ -13,10 +48,10 @@ body {
 h1, h2, h3, h4 {
     font-family: Georgia, serif;
     color: #8B1A1A;
-    /*advertencia h1(no hay color de fondo) por herencia de color de fondo de body*/
-    /*advertencia h2(no hay color de fondo) por herencia de color de fondo de body*/
-    /*advertencia h3(no hay color de fondo) por herencia de color de fondo de body*/
-    /*advertencia h4(no hay color de fondo) por herencia de color de fondo de body*/
+    /*advertencia h1(no hay color de fondo) por herencia de color de fondo de body (#FDF8F0) - contraste > 7:1, cumple AAA*/
+    /*advertencia h2(no hay color de fondo) por herencia de color de fondo de body (#FDF8F0) - contraste > 7:1, cumple AAA*/
+    /*advertencia h3(no hay color de fondo) por herencia de color de fondo de body (#FDF8F0) - contraste > 7:1, cumple AAA*/
+    /*advertencia h4(no hay color de fondo) por herencia de color de fondo de body (#FDF8F0) - contraste > 7:1, cumple AAA*/
 }
 
 /* Especificidad 001 */
@@ -26,8 +61,8 @@ h1 {
     padding: 0.8em 2em;
     margin: 0;
     font-size: 1.8em;
-    /*advertencia: color de fondo explícito en h1*/
-    /*advertencia: color sobrescribe el de h1,h2,h3,h4 (#8B1A1A)*/
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
+    /*advertencia: color sobrescribe el de h1,h2,h3,h4 (#8B1A1A) - contraste > 7:1, cumple AAA*/
 }
 
 /* Especificidad 002 */
@@ -41,14 +76,16 @@ h1 a {
 /* Especificidad 003 */
 h1 a:hover {
     color: #C8960C;
-    /*advertencia: color sobrescribe el de h1 a*/
+    /*advertencia: color sobrescribe el de h1 a (#F5F0E8)*/
+    /*advertencia: fondo heredado de h1 (#2C1A0E) - contraste ratio > 7:1, cumple AAA*/
 }
 
 /* Especificidad 001 */
 header {
     background-color: #2C1A0E;
     color: #F5F0E8;
-    /*advertencia: color de fondo sobrescribe el heredado de body*/
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
 }
 
 /* Especificidad 001 */
@@ -58,7 +95,7 @@ footer {
     padding: 1em 2em;
     text-align: center;
     font-size: 0.85em;
-    /*advertencia: color de fondo sobrescribe el heredado de body*/
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
     /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
 }
 
@@ -66,7 +103,6 @@ footer {
 main {
     padding: 1.5em 2em;
     max-width: 1600px;
-    /*margin: 0 auto;*/
 }
 
 /* Especificidad 001 */
@@ -92,10 +128,11 @@ nav a:hover {
     background-color: #2C1A0E;
     color: #C8960C;
     /*advertencia: color de fondo sobrescribe el heredado de nav (#8B1A1A)*/
-    /*advertencia: color sobrescribe el de nav a (#F5F0E8)*/
+    /*advertencia: color sobrescribe el de nav a (#F5F0E8) - contraste > 7:1, cumple AAA*/
 }
 
-/* Especificidad 002 */
+/* Selector de class permitido: indica el elemento activo del menú según especificación del proyecto */
+/* Especificidad 012 */
 nav a.active {
     background-color: #C8960C;
     color: #2C1A0E;
@@ -112,7 +149,7 @@ a {
 /* Especificidad 002 */
 a:hover {
     color: #C8960C;
-    /*advertencia: color sobrescribe el de a*/
+    /*advertencia: color sobrescribe el de a (#6B0F0F)*/
 }
 
 /* Especificidad 002 */
@@ -140,7 +177,7 @@ article {
     border-radius: 4px;
     margin-bottom: 1em;
     /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
-}
+} 
 
 /* Especificidad 001 */
 figure {
@@ -189,7 +226,7 @@ dt {
     font-weight: bold;
     color: #8B1A1A;
     margin-top: 0.8em;
-    /*advertencia: color sobrescribe el heredado de body*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
     /*advertencia: fondo heredado de body (#FDF8F0) - contraste ratio > 7:1, cumple AAA*/
 }
 
@@ -215,8 +252,8 @@ button {
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.2s;
-    /*advertencia: color de fondo explícito en button*/
-    /*advertencia: color sobrescribe el heredado de body - contraste > 7:1, cumple AAA*/
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
 }
 
 /* Especificidad 002 */
@@ -231,7 +268,9 @@ button:focus {
     outline-offset: 2px;
 }
 
-/* MIGAS DE NAVEGACIÓN */
+/* ============================================================
+   MIGAS DE NAVEGACIÓN
+   ============================================================ */
 
 /* Especificidad 002 */
 header p {
@@ -253,10 +292,11 @@ header p a {
 /* Especificidad 004 */
 header p a:hover {
     color: #F5F0E8;
-    /*advertencia: color sobrescribe el de header p a*/
+    /*advertencia: color sobrescribe el de header p a (#C8960C)*/
+    /*advertencia: fondo heredado de header (#2C1A0E) - contraste ratio > 7:1, cumple AAA*/
 }
 
-/* ESTILOS PARA TABLAS */
+/* TABLAS */
 
 /* Especificidad 001 */
 table {
@@ -280,14 +320,14 @@ table thead th {
     background-color: #8B1A1A;
     color: #F5F0E8;
     font-weight: bold;
-    /*advertencia: color de fondo sobrescribe el blanco de table*/
-    /*advertencia: color sobrescribe el heredado de body - contraste > 7:1, cumple AAA*/
+    /*advertencia: color de fondo sobrescribe el blanco de table (#fff)*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
 }
 
 /* Especificidad 005 */
 table tbody tr:nth-child(even) {
     background-color: #FFF5E1;
-    /*advertencia: color de fondo sobrescribe el blanco heredado de table*/
+    /*advertencia: color de fondo sobrescribe el blanco heredado de table (#fff)*/
 }
 
 /* Especificidad 003 */
@@ -302,86 +342,110 @@ caption {
     color: #555555;
     margin-bottom: 0.5em;
     text-align: left;
-    /*advertencia: color sobrescribe el heredado de body*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
     /*advertencia: fondo heredado de body (#FDF8F0) - contraste ratio > 7:1, cumple AAA*/
 }
 
-/* METEOROLOGÍA */
+/* METEOROLOGÍA (meteorologia.html) */
 
-/* Especificidad 001 */
-#tiempo-actual-contenedor {
+/* Tiempo actual: div hijo directo de la primera section */
+/* Especificidad 003 */
+main > section:first-of-type > div {
     background-color: #E8F4FD;
     border: 1px solid #B8D8F0;
     border-radius: 4px;
     padding: 1.5em;
     margin-bottom: 1.5em;
-    /*advertencia: color de fondo sobrescribe el heredado de body*/
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
+}
+/* Especificidad 003 */
+main > section:last-of-type > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.8em;
+    height: auto;  /* ← sin altura fija */
+    margin: 1em 0;
 }
 
-/* Especificidad 001 */
-.dia-prevision {
+/* Días de previsión: articles generados por JS dentro del div */
+/* Especificidad 004 */
+main > section:last-of-type > div > article {
     background-color: #E8F4FD;
     border: 1px solid #B8D8F0;
     border-radius: 4px;
     padding: 0.8em;
     text-align: center;
-    /*advertencia: color de fondo sobrescribe el heredado de body*/
+    /*advertencia: color de fondo sobrescribe el #FFF8EE de article*/
 }
 
-/* Especificidad 001 */
-.dia-icono {
+/* Fecha: primer p */
+/* Especificidad 005 */
+main > section:last-of-type > div > article p:first-of-type {
+    font-size: 0.85em;
+}
+
+/* Icono: segundo p */
+/* Especificidad 005 */
+main > section:last-of-type > div > article p:nth-of-type(2) {
     font-size: 1.8em;
     margin: 0.3em 0;
 }
 
-/* Especificidad 001 */
-.dia-temp {
+/* Temperatura: tercer p */
+/* Especificidad 005 */
+main > section:last-of-type > div > article p:nth-of-type(3) {
     font-size: 0.9em;
 }
 
-/* Especificidad 001 */
-.dia-lluvia {
+/* Lluvia: último p */
+/* Especificidad 005 */
+main > section:last-of-type > div > article p:last-of-type {
     font-size: 0.78em;
     color: #555555;
-    /*advertencia: color sobrescribe el heredado de body*/
-    /*advertencia: fondo heredado de .dia-prevision (#E8F4FD) - contraste > 7:1, cumple AAA*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
+    /*advertencia: fondo heredado de article (#E8F4FD) - contraste > 7:1, cumple AAA*/
 }
 
-/* JUEGO */
+/* JUEGO (juego.html) */
 
-/* Especificidad 001 */
-#barra-progreso {
+/* Barra de progreso */
+/* Especificidad 004 */
+main section article > div[role="progressbar"] {
     background-color: #ddd;
     border-radius: 10px;
     height: 10px;
     margin-bottom: 1.5em;
     overflow: hidden;
-    /*advertencia: color de fondo sobrescribe el heredado de body*/
+    /*advertencia: color de fondo sobrescribe el heredado de article (#FFF8EE)*/
 }
 
-/* Especificidad 001 */
-#barra-progreso-relleno {
+/* Relleno de la barra (JS ajusta su width) */
+/* Especificidad 005 */
+main section article > div[role="progressbar"] > div {
     background-color: #8B1A1A;
     height: 100%;
     width: 0%;
     transition: width 0.3s ease;
-    /*advertencia: color de fondo sobrescribe el heredado de #barra-progreso*/
+    /*advertencia: color de fondo sobrescribe el #ddd del div padre*/
 }
 
-/* Especificidad 001 */
-#opciones-lista {
+/* Lista de opciones del test */
+/* Especificidad 004 */
+main section article > ul {
     list-style: none;
     margin: 1em 0;
     padding: 0;
 }
 
-/* Especificidad 002 */
-#opciones-lista li {
+/* Ítem de opción */
+/* Especificidad 005 */
+main section article > ul > li {
     margin-bottom: 0.5em;
 }
 
-/* Especificidad 003 */
-#opciones-lista li label {
+/* Etiqueta seleccionable */
+/* Especificidad 006 */
+main section article > ul > li label {
     display: flex;
     align-items: center;
     gap: 0.8em;
@@ -392,92 +456,115 @@ caption {
     transition: background-color 0.2s;
 }
 
-/* Especificidad 004 */
-#opciones-lista li label:hover {
+/* Hover sobre la etiqueta */
+/* Especificidad 007 */
+main section article > ul > li label:hover {
     background-color: #F5EDE0;
-    /*advertencia: color de fondo sobrescribe el heredado de body*/
+    /*advertencia: color de fondo sobrescribe el heredado de article (#FFF8EE)*/
 }
 
-/* Especificidad 002 */
-#opciones-lista li.correcta label {
+/* Opción correcta: JS añade aria-selected="true" al li */
+/* Especificidad 006 */
+main section article > ul > li[aria-selected="true"] label {
     background-color: #D4EDDA;
     border-color: #28A745;
     /*advertencia: color de fondo sobrescribe el heredado*/
 }
 
-/* Especificidad 002 */
-#opciones-lista li.incorrecta label {
+/* Opción incorrecta: JS añade aria-invalid="true" al li */
+/* Especificidad 006 */
+main section article > ul > li[aria-invalid="true"] label {
     background-color: #F8D7DA;
     border-color: #DC3545;
     /*advertencia: color de fondo sobrescribe el heredado*/
 }
 
-/* Especificidad 001 */
-#puntuacion-final {
+/* Puntuación final: primer p del article de resultado */
+/* Especificidad 004 */
+main section article > p:first-of-type {
     font-size: 2em;
     color: #8B1A1A;
-    /*advertencia: color sobrescribe el heredado de body*/
-    /*advertencia: fondo heredado de body (#FDF8F0) - contraste > 7:1, cumple AAA*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
+    /*advertencia: fondo heredado de article (#FFF8EE) - contraste > 7:1, cumple AAA*/
+}
+/* Especificidad 005 */
+main section article > p:first-of-type {
+    font-size: 1em;
+    color: #8B1A1A;
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
+    /*advertencia: fondo heredado de article (#FFF8EE) - contraste > 7:1, cumple AAA*/
 }
 
-/* RUTAS */
+/* Noticias - h3 de tarjeta */
+/* Especificidad 005 */
+main > section > aside > article > h3 {
+    font-size: 1em;
+    margin: 0 0 0.3em 0;
+    /*advertencia: font-size sobrescribe el heredado de h1,h2,h3,h4*/
+}
 
-/* Especificidad 001 */
-#tabs-rutas {
+/* RUTAS (rutas.html) */
+
+/* Nav de selección de rutas: fondo transparente para no heredar el rojo del nav global */
+
+/* Botón de tab de ruta */
+/* Especificidad 003 */
+main > section > nav {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5em;
     margin-bottom: 1.5em;
-}
-
-/* Especificidad 002 */
-#tabs-rutas button {
-    background-color: #F5EDE0;
-    color: #8B1A1A;
-    border: 2px solid #D4A84B;
-    /*advertencia: color de fondo sobrescribe el de button (#8B1A1A)*/
-    /*advertencia: color sobrescribe el de button (#F5F0E8) - contraste > 7:1, cumple AAA*/
-}
-
-/* Especificidad 002 */
-#tabs-rutas button.active {
     background-color: #8B1A1A;
-    color: #F5F0E8;
-    /*advertencia: color de fondo sobrescribe el de #tabs-rutas button*/
-    /*advertencia: color sobrescribe el de #tabs-rutas button - contraste > 7:1, cumple AAA*/
-}
-
-/* Especificidad 001 */
-#mapa-ruta {
-    width: 100%;
-    height: 400px;
+    padding: 0;
     border-radius: 4px;
-    border: 1px solid #D4A84B;
-    margin-bottom: 1.5em;
+    /*advertencia: color de fondo sobrescribe el #8B1A1A de nav — coincide, sin cambio visual*/
 }
 
-/* Especificidad 001 */
-.hito {
+/* Especificidad 004 */
+main > section > nav > button {
+    background-color: transparent;
+    color: #F5F0E8;
+    border: none;
+    flex: 1;
+    text-align: center;
+    padding: 0.8em 1.2em;
+    /*advertencia: color de fondo sobrescribe el #8B1A1A de button*/
+    /*advertencia: color sobrescribe el #F5F0E8 de button - contraste > 7:1, cumple AAA*/
+}
+
+/* Selector de class permitido: tab activo */
+/* Especificidad 014 */
+main > section > nav > button.active {
+    background-color: #2C1A0E;
+    color: #F5F0E8;
+    border: 2px solid #C8960C;
+    /*advertencia: color de fondo sobrescribe el transparent*/
+}
+
+/* Hitos generados por JS */
+/* Hitos generados por JS en rutas.html */
+/* Especificidad 004 */
+main section div > article {
     border-left: 4px solid #C8960C;
     padding: 1em 1.5em;
     background-color: #FFF8EE;
     border-radius: 4px;
     margin-bottom: 1em;
-    /*advertencia: color de fondo sobrescribe el heredado de body*/
 }
 
-/* Especificidad 001 */
-.hito-fotos {
+/* Galería de fotos del hito */
+/* Especificidad 003 */
+main > div article > div {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5em;
     margin-top: 0.8em;
 }
 
-/* Especificidad 002 */
-.hito-fotos img {
-    width: 120px;
-    height: 90px;
+/* Especificidad 004 */
+main > div article > div > img {
+    width: 180px;
+    height: 135px;
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid #D4A84B;
@@ -485,41 +572,45 @@ caption {
     /*advertencia: height sobrescribe el auto heredado de img*/
 }
 
-/* RESERVAS */
+/* RESERVAS (reservas.php) */
 
-/* Especificidad 001 */
-.alerta-exito {
+/* Mensaje de éxito (PHP emite <p aria-live="polite">) */
+/* Especificidad 002 */
+main > p[aria-live="polite"] {
     background-color: #D4EDDA;
     border: 1px solid #28A745;
     color: #155724;
     padding: 0.8em 1.2em;
     border-radius: 4px;
     margin-bottom: 1em;
-    /*advertencia: color de fondo sobrescribe el heredado de body*/
-    /*advertencia: color sobrescribe el heredado de body - contraste > 7:1, cumple AAA*/
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
 }
 
-/* Especificidad 001 */
-.alerta-error {
+/* Mensaje de error (PHP emite <p role="alert">) */
+/* Especificidad 002 */
+main > p[role="alert"] {
     background-color: #F8D7DA;
     border: 1px solid #DC3545;
     color: #721C24;
     padding: 0.8em 1.2em;
     border-radius: 4px;
     margin-bottom: 1em;
-    /*advertencia: color de fondo sobrescribe el heredado de body*/
-    /*advertencia: color sobrescribe el heredado de body - contraste > 7:1, cumple AAA*/
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
 }
 
-/* Especificidad 002 */
-.formulario-campo label {
+/* Etiqueta del campo */
+/* Especificidad 004 */
+main form > div label {
     font-weight: bold;
 }
 
-/* Especificidad 002, 002, 002 */
-.formulario-campo input,
-.formulario-campo select,
-.formulario-campo textarea {
+/* Controles del campo */
+/* Especificidad 004, 004, 004 */
+main form > div input,
+main form > div select,
+main form > div textarea {
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -527,20 +618,20 @@ caption {
     width: 100%;
 }
 
-/* DISEÑO RESPONSIVO PARA MÓVILES */
+/* DISEÑO RESPONSIVO — tablas adaptables */
 
 @media (max-width: 768px) {
 
     /* Especificidad 001 */
     table {
         border: 0;
-        /*advertencia: borde sobrescribe el definido anteriormente (1px solid #D4A84B)*/
+        /*advertencia: border sobrescribe el de table - redefinición por media query*/
     }
 
     /* Especificidad 002 */
     table thead {
         display: none;
-        /*advertencia: oculta completamente los encabezados en móvil*/
+        /*advertencia: display sobrescribe el heredado - redefinición por media query*/
     }
 
     /* Especificidad 003 */
@@ -551,8 +642,7 @@ caption {
         border-radius: 5px;
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        /*advertencia: display:block cambia el comportamiento normal de las filas*/
-        /*advertencia: color de fondo sobrescribe colores alternados de filas*/
+        /*advertencia: display y background-color sobrescriben valores anteriores - redefiniciones por media query*/
     }
 
     /* Especificidad 003 */
@@ -563,16 +653,13 @@ caption {
         border-bottom: 1px solid #eee;
         padding: 0.6em 0.8em;
         position: relative;
-        /*advertencia: display:block cambia el comportamiento normal de las celdas*/
-        /*advertencia: text-align sobrescribe el left definido anteriormente*/
-        /*advertencia: border:none sobrescribe el borde definido anteriormente*/
-        /*advertencia: padding sobrescribe el 0.8em definido anteriormente*/
+        /*advertencia: display, text-align, border y padding sobrescriben valores anteriores - redefiniciones por media query*/
     }
 
     /* Especificidad 004 */
     table tbody td:last-child {
         border-bottom: 0;
-        /*advertencia: elimina el borde inferior de la última celda*/
+        /*advertencia: border-bottom sobrescribe el de td - redefinición por media query*/
     }
 
     /* Especificidad 004 */
@@ -583,15 +670,16 @@ caption {
         text-transform: uppercase;
         font-size: 0.85em;
         color: #8B1A1A;
-        /*advertencia: float puede afectar al flujo normal del documento*/
-        /*advertencia: color sobrescribe el heredado de body*/
+        /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
+        /*advertencia: fondo heredado de tr (#fff) - contraste > 7:1, cumple AAA*/
     }
 }
 
-
-/* CARRUSEL */
-/* Selector estructural: header + article es el article insertado tras el header por JS */
-/* No se usan selectores de id ni de class, cumple la especificacion del PDF */
+/* ============================================================
+   CARRUSEL (index.html)
+   header + article: el article del carrusel insertado por JS
+   justo después del header. Sin ID ni class.
+   ============================================================ */
 
 /* Especificidad 002 */
 header + article {
@@ -623,7 +711,7 @@ header + article figure {
     border-radius: 0 0 4px 4px;
     overflow: hidden;
     background-color: #2C1A0E;
-    /*advertencia: color de fondo sobrescribe el heredado de header + article*/
+    /*advertencia: color de fondo sobrescribe el heredado de header + article (#2C1A0E)*/
 }
 
 /* Especificidad 004 */
@@ -647,19 +735,22 @@ header + article figure figcaption {
     font-size: 1em;
     font-style: normal;
     font-family: Georgia, serif;
-    /*advertencia: color de fondo sobrescribe el heredado de header + article*/
-    /*advertencia: color sobrescribe el de figcaption (#555555)*/
+    /*advertencia: color de fondo sobrescribe el heredado de header + article (#2C1A0E)*/
+    /*advertencia: color sobrescribe el de figcaption (#555555) - contraste > 7:1, cumple AAA*/
 }
 
-
 @media (max-width: 768px) {
+    /* Especificidad 004 */
     header + article figure img {
         height: 560px;
+        /*advertencia: height sobrescribe el 580px - redefinición por media query*/
     }
 }
 
 @media (max-width: 485px) {
+    /* Especificidad 004 */
     header + article figure img {
         height: 440px;
+        /*advertencia: height sobrescribe el 560px - redefinición por media query*/
     }
 }

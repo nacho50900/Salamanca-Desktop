@@ -26,7 +26,7 @@
             <a href="index.html" title="Página principal">Turismo Salamanca</a>
         </h1>
 
-        <button id="btn-menu" aria-label="Abrir menú de navegación" aria-expanded="false">☰ Menú</button>
+        <button aria-label="Abrir menú de navegación" aria-expanded="false">☰ Menú</button>
 
         <nav>
             <a href="index.html" title="Página principal">Inicio</a>
@@ -46,27 +46,32 @@
         <p>Responde las 10 preguntas sobre los recursos turísticos de Salamanca. Cada respuesta correcta vale 1 punto. Debes responder todas las preguntas para ver tu puntuación.</p>
 
         <section>
-            <div id="juego-inicio">
+            <!-- Pantalla de inicio: JS la oculta al empezar -->
+            <article id="juego-inicio">
                 <p>El juego consta de <strong>10 preguntas</strong> de tipo test con 5 opciones cada una.</p>
                 <button id="btn-iniciar-juego">¡Comenzar juego!</button>
-            </div>
+            </article>
 
-            <div id="juego-pregunta" hidden>
+            <!-- Pantalla de pregunta activa -->
+            <article id="juego-pregunta" hidden>
                 <p id="progreso-juego">Pregunta <span id="num-pregunta">1</span> de 10</p>
-                <div id="barra-progreso" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
-                    <div id="barra-progreso-relleno"></div>
+                <!-- Barra de progreso: primer div hijo de article#juego-pregunta -->
+                <div role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+                    <div></div>
                 </div>
                 <h2 id="texto-pregunta"></h2>
+                <!-- Lista de opciones: primer ul hijo de article#juego-pregunta -->
                 <ul id="opciones-lista"></ul>
                 <button id="btn-siguiente-pregunta" hidden>Siguiente pregunta</button>
-            </div>
+            </article>
 
-            <div id="juego-resultado" hidden>
+            <!-- Pantalla de resultado final -->
+            <article id="juego-resultado" hidden>
                 <h2>¡Juego terminado!</h2>
                 <p>Tu puntuación: <strong><span id="puntuacion-final">0</span> / 10</strong></p>
                 <p id="mensaje-resultado"></p>
                 <button id="btn-reiniciar-juego">Jugar de nuevo</button>
-            </div>
+            </article>
         </section>
     </main>
 

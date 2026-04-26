@@ -29,8 +29,10 @@ class Juego {
         this.elBtnSiguiente  = document.getElementById("btn-siguiente-pregunta");
         this.elPuntuacion    = document.getElementById("puntuacion-final");
         this.elMensaje       = document.getElementById("mensaje-resultado");
-        this.elBarraRelleno  = document.getElementById("barra-progreso-relleno");
-        this.elBarra         = document.getElementById("barra-progreso");
+        // Sin ID: la barra es el div[role="progressbar"] dentro del article de pregunta
+        // y el relleno es su único div hijo
+        this.elBarra         = this.elPregunta.querySelector("div[role='progressbar']");
+        this.elBarraRelleno  = this.elBarra.querySelector("div");
 
         this.vincularBotones();
     }
@@ -113,14 +115,14 @@ class Juego {
             this.puntuacion++;
         }
 
-        // Colorear opciones
+        // Marcar con atributos ARIA (sin clases): CSS usa li[aria-selected] y li[aria-invalid]
         let items = this.elOpciones.querySelectorAll("li");
         items.forEach((li, i) => {
             li.querySelector("input").disabled = true;
             if (i === pregunta.correcta) {
-                li.classList.add("correcta");
+                li.setAttribute("aria-selected", "true");
             } else if (i === indice && !esCorrecta) {
-                li.classList.add("incorrecta");
+                li.setAttribute("aria-invalid", "true");
             }
         });
 

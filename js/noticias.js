@@ -36,7 +36,7 @@ class Noticias {
     }
 
     mostrarNoticias(noticias) {
-        let $contenedor = $("#noticias-contenedor");
+        let $contenedor = $("main > section:last-of-type > aside");
         $contenedor.empty();
 
         noticias.forEach((noticia) => {
@@ -68,7 +68,7 @@ class Noticias {
     }
 
     mostrarError() {
-        $("#noticias-contenedor").html(
+        $("main > section:last-of-type > aside").html(
             "<p>No se pudieron cargar las noticias en este momento. " +
             "Consulta las últimas noticias sobre Salamanca en " +
             "<a href='https://www.elnortedecastilla.es/salamanca/' " +
