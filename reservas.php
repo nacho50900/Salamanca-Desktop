@@ -241,12 +241,13 @@ class Reservas {
             </form>
         </section>
 
-        <section>
+        <div>
             <h2>Recursos turísticos disponibles</h2>
-            <?php if (empty($recursos)): ?>
-                <p>No hay recursos disponibles en este momento.</p>
-            <?php else: ?>
-                <?php foreach ($recursos as $recurso): ?>
+            <section>
+                <?php if (empty($recursos)): ?>
+                    <p>No hay recursos disponibles en este momento.</p>
+                <?php else: ?>
+                    <?php foreach ($recursos as $recurso): ?>
                 <article>
                     <h3>
                         <?php echo htmlspecialchars($recurso["nombre"], ENT_QUOTES); ?>
@@ -282,8 +283,9 @@ class Reservas {
                     </form>
                 </article>
                 <?php endforeach; ?>
-            <?php endif; ?>
-        </section>
+                <?php endif; ?>
+            </section>
+        </div>
 
         <section>
             <h2>Presupuesto de tu reserva</h2>
@@ -395,7 +397,7 @@ $reservas->procesarAccion();
             <a href="ayuda.html" title="Ayuda y manual de uso">Ayuda</a>
         </nav>
 
-        <p>Estás en: <a href="index.html" title="Página principal">Inicio</a> &gt;&gt; <strong>Reservas</strong></p>
+        <p>Estás en: <a href="index.html" title="Página principal">Inicio</a> >> <strong>Reservas</strong></p>
     </header>
 
     <main>

@@ -88,6 +88,13 @@ main > section:last-of-type > div {
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 0.8em;
 }
+/* RUTAS - Hitos en 2 columnas en escritorio */
+/* Especificidad 002 */
+main > div > section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+}
 
 /* RUTAS - Mapas dinámicos (rutas.html)
    div permitido para mapas dinámicos según especificación del proyecto */
@@ -145,6 +152,11 @@ main > section:last-of-type > aside {
         transition: background-color 0.3s ease;
         /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
         /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
+    }
+    /* Especificidad 002 */
+    main > div > section {
+        grid-template-columns: 1fr;
+        /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
     /* Especificidad 003 */
