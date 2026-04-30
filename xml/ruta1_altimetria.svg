@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400"
+<svg xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 800 400" role="img"
+     width="100%" height="auto" preserveAspectRatio="xMidYMid meet"
      aria-label="Altimetría de la ruta Ruta Monumental de Salamanca">
   <title>Altimetría – Ruta Monumental de Salamanca</title>
   <desc>Perfil de alturas de la ruta Ruta Monumental de Salamanca, distancia total 1.4 km</desc>
 
   <!-- Fondo -->
-  <rect width="800" height="400" fill="#f8f8f0" stroke="#ccc"/>
+  <rect width="100%" height="100%" fill="#f8f8f0" stroke="#ccc"/>
 
   <!-- Título -->
   <text x="400" y="20" text-anchor="middle"

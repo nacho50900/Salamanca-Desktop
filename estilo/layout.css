@@ -10,7 +10,7 @@
                                    → grid de noticias (auto-fill)
    ─ meteorologia.html
        main > section:last-of-type > div
-                                   → grid previsión 7 días
+                                   → grid previsión 7 días (en estilo.css)
    ─ rutas.html
        main > section > div        → mapa dinámico y altimetría
                                      (div permitido por spec)
@@ -79,15 +79,6 @@ main > section:last-of-type > section > article {
     gap: 1.2em;
 }
 
-/* PREVISIÓN METEOROLÓGICA (meteorologia.html)
-   main > section:last-of-type > div
-   El div#prevision-contenedor donde JS inserta los articles de cada día */
-/* Especificidad 003 */
-main > section:last-of-type > div {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 0.8em;
-}
 /* RUTAS - Hitos en 2 columnas en escritorio */
 /* Especificidad 002 */
 main > div > section {
@@ -114,9 +105,9 @@ main form > div {
     align-items: center;
     margin-bottom: 0.8em;
 }
+
 /* NOTICIAS (index.html) */
 /* Especificidad 003 */
-
 main > section:last-of-type > aside {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -153,6 +144,7 @@ main > section:last-of-type > aside {
         /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
         /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
     }
+
     /* Especificidad 002 */
     main > div > section {
         grid-template-columns: 1fr;
@@ -186,61 +178,6 @@ main > section:last-of-type > aside {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease-in-out;
-    }
-
-    /* Selector de class permitido: menú móvil visible — gestionado por menu-movil.js */
-    /* Especificidad 011 */
-    header nav.menu-visible {
-        display: flex;
-        /*advertencia: redefinición de display y max-height por media query*/
-        max-height: 50em;
-        animation: desplegar 0.4s ease-in-out;
-    }
-
-    /* Especificidad 003 */
-    header nav a {
-        padding: 1em;
-        /*advertencia: redefinición de padding por media query*/
-        margin: 0.2em 0;
-        text-align: center;
-        background-color: #2C1A0E;
-        border-radius: 0.3em;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        /*advertencia: color de fondo sobrescribe el heredado de nav (#8B1A1A)*/
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* Especificidad 004 */
-    header nav a:hover {
-        background-color: #5C1010;
-        /*advertencia: redefinición de background-color por media query*/
-        transform: translateX(0.3em);
-    }
-
-    /* Selector de class permitido: opción activa en móvil */
-    /* Especificidad 012 */
-    header nav a.active {
-        background-color: #C8960C;
-        /*advertencia: redefinición de background-color por media query*/
-        color: #2C1A0E;
-    }
-
-    /* Especificidad 013 */
-    header nav a.active:hover {
-        background-color: #A07008;
-        /*advertencia: redefinición de background-color por media query*/
-    }
-
-    @keyframes desplegar {
-        from {
-            opacity: 0;
-            transform: translateY(-1em);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 
     /* Especificidad 002 */

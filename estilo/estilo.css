@@ -480,13 +480,6 @@ main section article > ul > li[aria-invalid="true"] label {
 /* Puntuación final: primer p del article de resultado */
 /* Especificidad 004 */
 main section article > p:first-of-type {
-    font-size: 2em;
-    color: #8B1A1A;
-    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
-    /*advertencia: fondo heredado de article (#FFF8EE) - contraste > 7:1, cumple AAA*/
-}
-/* Especificidad 005 */
-main section article > p:first-of-type {
     font-size: 1em;
     color: #8B1A1A;
     /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
@@ -528,6 +521,27 @@ main > section > nav > button {
     padding: 0.8em 1.2em;
     /*advertencia: color de fondo sobrescribe el #8B1A1A de button*/
     /*advertencia: color sobrescribe el #F5F0E8 de button - contraste > 7:1, cumple AAA*/
+}
+
+/* Referencias de rutas - URLs largas (rutas.html) */
+/* Especificidad 004 */
+main > div > ul > li > a {
+    word-break: break-all;
+}
+
+/* Altimetría - contenedor y SVG adaptable (rutas.html) */
+/* Especificidad 003 */
+main > section:nth-of-type(3) > div {
+    overflow: auto;
+    width: 100%;
+}
+
+
+/* Especificidad 004 */
+main > section:nth-of-type(3) > div > svg {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Selector de class permitido: tab activo */

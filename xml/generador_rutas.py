@@ -209,15 +209,16 @@ def generar_svg(ruta: ET.Element, output_path: str) -> None:
     # Generar SVG
     svg_lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{SVG_W}" height="{SVG_H}"',
+        f'<svg xmlns="http://www.w3.org/2000/svg"',
         f'     viewBox="0 0 {SVG_W} {SVG_H}" role="img"',
+        f'     width="100%" height="auto" preserveAspectRatio="xMidYMid meet"',
         f'     aria-label="Altimetría de la ruta {_escape_xml(nombre_ruta)}">',
         f'  <title>Altimetría – {_escape_xml(nombre_ruta)}</title>',
         f'  <desc>Perfil de alturas de la ruta {_escape_xml(nombre_ruta)}, '
         f'distancia total {dist_max:.1f} km</desc>',
         '',
         '  <!-- Fondo -->',
-        f'  <rect width="{SVG_W}" height="{SVG_H}" fill="#f8f8f0" stroke="#ccc"/>',
+        f'  <rect width="100%" height="100%" fill="#f8f8f0" stroke="#ccc"/>',
         '',
         f'  <!-- Título -->',
         f'  <text x="{SVG_W // 2}" y="20" text-anchor="middle"',
