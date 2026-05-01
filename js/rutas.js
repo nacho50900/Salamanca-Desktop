@@ -217,7 +217,7 @@ class GestorRutas {
             method: "GET",
             dataType: "text",
             success: (svgTexto) => {
-                $contenedor.html("<div class='altimetria-scroll'>" + svgTexto + "</div>");
+                $contenedor.html(svgTexto);
                 console.log("SVG de altimetría cargado");
             },
             error: () => {

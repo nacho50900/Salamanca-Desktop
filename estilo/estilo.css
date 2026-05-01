@@ -95,6 +95,7 @@ footer {
     padding: 1em 2em;
     text-align: center;
     font-size: 0.85em;
+    flex-shrink: 0;
     /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
     /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
 }
@@ -534,6 +535,7 @@ main > div > ul > li > a {
 main > section:nth-of-type(3) > div {
     overflow: auto;
     width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 
@@ -542,6 +544,7 @@ main > section:nth-of-type(3) > div > svg {
     width: 100%;
     height: auto;
     display: block;
+    min-width: 800px;
 }
 
 /* Selector de class permitido: tab activo */
@@ -567,19 +570,19 @@ main section div > article {
 /* Galería de fotos del hito */
 /* Especificidad 003 */
 main > div article > div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-    margin-top: 0.8em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.8em;
+    margin-top: 1em;
 }
 
 /* Especificidad 004 */
 main > div article > div > img {
-    width: 180px;
-    height: 135px;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
     border-radius: 4px;
-    border: 1px solid #D4A84B;
+    border: 2px solid #D4A84B;
     /*advertencia: width sobrescribe el max-width heredado de img*/
     /*advertencia: height sobrescribe el auto heredado de img*/
 }

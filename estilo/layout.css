@@ -4,7 +4,7 @@
 /* Módulos permitidos: CSS Flexible Box Layout, CSS Grid Layout, CSS Multi-column Layout */
 
 /* ============================================================
-   SELECTORES SIN ID NI CLASS — ESTRUCTURA HTML POR PÁGINA
+   SELECTORES SIN ID NI CLASS - ESTRUCTURA HTML POR PÁGINA
    ─ index.html
        main > section:last-of-type > section > article
                                    → grid de noticias (auto-fill)
@@ -22,8 +22,8 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     margin: 0;
+    min-height: 100vh;
 }
 
 /* Especificidad 001 */
@@ -87,10 +87,11 @@ main > div > section {
     gap: 1em;
 }
 
-/* RUTAS - Mapas dinámicos (rutas.html)
-   div permitido para mapas dinámicos según especificación del proyecto */
+/* RUTAS - Mapa dinámico planimetría (rutas.html)
+   :has(~ section:nth-of-type(3)) selecciona la section 2 solo cuando existe una section 3
+   en meteorologia.html solo hay 2 sections, por lo que no aplica */
 /* Especificidad 004 */
-main > section > section > div {
+main > section:has(~ section:nth-of-type(3)) > div {
     width: 100%;
     height: 400px;
     margin: 1em 0;
@@ -114,7 +115,7 @@ main > section:last-of-type > aside {
     gap: 1.2em;
 }
 
-/* MÓVIL — max-width: 485px */
+/* MÓVIL - max-width: 485px */
 
 @media (max-width: 485px) {
 
@@ -222,19 +223,26 @@ main > section:last-of-type > aside {
     /* Especificidad 003 */
     main > section:last-of-type > div {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-        /*advertencia: redefinición de grid-template-columns por media query*/
+        height: auto;
+        /*advertencia: redefinición de grid-template-columns y height por media query*/
     }
 
-    /* Especificidad 003 */
-    main > section > div {
+    /* Especificidad 004 */
+    main > section:has(~ section:nth-of-type(3)) > div {
         height: 300px;
         /*advertencia: redefinición de height por media query*/
     }
 }
 
-/* TABLET — max-width: 768px */
+/* TABLET - max-width: 768px */
 
 @media only screen and (max-width: 768px) {
+
+    /* Especificidad 002 */
+    main > div > section {
+        grid-template-columns: 1fr;
+        /*advertencia: redefinición de grid-template-columns por media query*/
+    }
 
     /* Especificidad 003 */
     main > section:last-of-type > div {
@@ -248,14 +256,14 @@ main > section:last-of-type > aside {
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
-    /* Especificidad 003 */
-    main > section > div {
+    /* Especificidad 004 */
+    main > section:has(~ section:nth-of-type(3)) > div {
         height: 300px;
         /*advertencia: redefinición de height por media query*/
     }
 }
 
-/* TABLET GRANDE — 769px a 1024px */
+/* TABLET GRANDE - 769px a 1024px */
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 
@@ -266,7 +274,7 @@ main > section:last-of-type > aside {
     }
 }
 
-/* ESCRITORIO — min-width: 1025px */
+/* ESCRITORIO - min-width: 1025px */
 
 @media only screen and (min-width: 1025px) {
 
@@ -285,13 +293,6 @@ main > section:last-of-type > aside {
     nav {
         display: none;
         /*advertencia: redefinición de display por media query*/
-    }
-
-    /* Especificidad 001 */
-    footer {
-        position: fixed;
-        bottom: 0;
-        /*advertencia: redefinición de position por media query*/
     }
 
     /* Especificidad 001 */
