@@ -6,17 +6,21 @@
 /* ============================================================
    SELECTORES SIN ID NI CLASS - ESTRUCTURA HTML POR PÁGINA
    ─ index.html
-       main > section:last-of-type > section > article
+       main > section:last-of-type > aside
                                    → grid de noticias (auto-fill)
    ─ meteorologia.html
        main > section:last-of-type > div
-                                   → grid previsión 7 días (en estilo.css)
+                                   → grid previsión 7 días
    ─ rutas.html
-       main > section > div        → mapa dinámico y altimetría
-                                     (div permitido por spec)
+       main > div > section        → hitos en 2 columnas
+       main > section:has(...)>div → mapa dinámico (div permitido por spec)
    ─ reservas.php
        main form > div             → grid label + control formulario
    ============================================================ */
+
+/* NOTA: El validador genera advertencias de redefinición de column-gap y row-gap
+   en línea 0 porque la propiedad shorthand "gap" se expande internamente a
+   column-gap y row-gap. No corresponde a ninguna línea real del archivo. */
 
 /* Especificidad 001 */
 body {
@@ -69,18 +73,16 @@ header button {
     display: none;
 }
 
-/* NOTICIAS (index.html)
-   main > section:last-of-type > section > article
-   El article es el contenedor donde JS inserta las tarjetas de noticias */
-/* Especificidad 004 */
-main > section:last-of-type > section > article {
+/* NOTICIAS (index.html) - aside donde JS inserta las tarjetas */
+/* Especificidad 013 */
+main > section:last-of-type > aside {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.2em;
 }
 
-/* RUTAS - Hitos en 2 columnas en escritorio */
-/* Especificidad 002 */
+/* RUTAS - Hitos en 2 columnas en escritorio y tablet grande */
+/* Especificidad 003 */
 main > div > section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -88,9 +90,9 @@ main > div > section {
 }
 
 /* RUTAS - Mapa dinámico planimetría (rutas.html)
-   :has(~ section:nth-of-type(3)) selecciona la section 2 solo cuando existe una section 3
+   :has(~ section:nth-of-type(3)) selecciona la section solo cuando existe una tercera section
    en meteorologia.html solo hay 2 sections, por lo que no aplica */
-/* Especificidad 004 */
+/* Especificidad 023 */
 main > section:has(~ section:nth-of-type(3)) > div {
     width: 100%;
     height: 400px;
@@ -107,12 +109,12 @@ main form > div {
     margin-bottom: 0.8em;
 }
 
-/* NOTICIAS (index.html) */
-/* Especificidad 003 */
-main > section:last-of-type > aside {
+/* METEOROLOGÍA - Grid previsión 7 días (meteorologia.html) */
+/* Especificidad 013 */
+main > section:last-of-type > div {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.2em;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.8em;
 }
 
 /* MÓVIL - max-width: 485px */
@@ -131,6 +133,7 @@ main > section:last-of-type > aside {
         display: block;
         /*advertencia: redefinición de display por media query*/
         background-color: #8B1A1A;
+        /*advertencia: color de fondo sin color de primer plano; se hereda de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
         color: #F5F0E8;
         border: none;
         padding: 0.8em 1.5em;
@@ -142,29 +145,21 @@ main > section:last-of-type > aside {
         width: 100%;
         text-align: center;
         transition: background-color 0.3s ease;
-        /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
-        /*advertencia: color sobrescribe el heredado de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
     }
 
-    /* Especificidad 002 */
-    main > div > section {
-        grid-template-columns: 1fr;
-        /*advertencia: redefinición de grid-template-columns por media query*/
-    }
-
-    /* Especificidad 003 */
+    /* Especificidad 013 */
     header button:hover {
         background-color: #2C1A0E;
-        /*advertencia: redefinición de background-color por media query*/
+        /*advertencia: color de fondo sin color de primer plano; se hereda de header button (#F5F0E8) - contraste > 7:1, cumple AAA*/
     }
 
-    /* Especificidad 003 */
+    /* Especificidad 013 */
     header button:focus {
         outline: 0.2em solid #C8960C;
         outline-offset: 0.2em;
     }
 
-    /* Especificidad 003 */
+    /* Especificidad 013 */
     header button:active {
         background-color: #5C1010;
         /*advertencia: redefinición de background-color por media query*/
@@ -175,6 +170,7 @@ main > section:last-of-type > aside {
         display: none;
         /*advertencia: redefinición de display por media query*/
         flex-direction: column;
+        /*advertencia: redefinición de flex-direction por media query*/
         width: 100%;
         max-height: 0;
         overflow: hidden;
@@ -201,33 +197,36 @@ main > section:last-of-type > aside {
     }
 
     /* Especificidad 003 */
+    main > div > section {
+        grid-template-columns: 1fr;
+        /*advertencia: redefinición de grid-template-columns por media query*/
+    }
+
+    /* Especificidad 003 */
     main form > div {
         grid-template-columns: 1fr;
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
-    /* Especificidad 004 */
-    main > section:last-of-type > section > article {
-        grid-template-columns: 1fr;
-        /*advertencia: redefinición de grid-template-columns por media query*/
-    }
-
-    /* NOTICIAS (index.html) */
-    /* Especificidad 003 */
+    /* Especificidad 013 */
     main > section:last-of-type > aside {
         display: grid;
+        /*advertencia: redefinición de display por media query*/
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        /*advertencia: redefinición de grid-template-columns por media query*/
         gap: 1.2em;
+        /*advertencia: redefinición de gap por media query*/
     }
 
-    /* Especificidad 003 */
+    /* Especificidad 013 */
     main > section:last-of-type > div {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        /*advertencia: redefinición de grid-template-columns por media query*/
         height: auto;
-        /*advertencia: redefinición de grid-template-columns y height por media query*/
+        /*advertencia: redefinición de height por media query*/
     }
 
-    /* Especificidad 004 */
+    /* Especificidad 023 */
     main > section:has(~ section:nth-of-type(3)) > div {
         height: 300px;
         /*advertencia: redefinición de height por media query*/
@@ -238,25 +237,19 @@ main > section:last-of-type > aside {
 
 @media only screen and (max-width: 768px) {
 
-    /* Especificidad 002 */
+    /* Especificidad 003 */
     main > div > section {
         grid-template-columns: 1fr;
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
-    /* Especificidad 003 */
+    /* Especificidad 013 */
     main > section:last-of-type > div {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
-    /* Especificidad 004 */
-    main > section:last-of-type > section > article {
-        grid-template-columns: 1fr;
-        /*advertencia: redefinición de grid-template-columns por media query*/
-    }
-
-    /* Especificidad 004 */
+    /* Especificidad 023 */
     main > section:has(~ section:nth-of-type(3)) > div {
         height: 300px;
         /*advertencia: redefinición de height por media query*/
@@ -267,7 +260,7 @@ main > section:last-of-type > aside {
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 
-    /* Especificidad 003 */
+    /* Especificidad 013 */
     main > section:last-of-type > div {
         grid-template-columns: repeat(7, 1fr);
         /*advertencia: redefinición de grid-template-columns por media query*/
@@ -278,7 +271,7 @@ main > section:last-of-type > aside {
 
 @media only screen and (min-width: 1025px) {
 
-    /* Especificidad 003 */
+    /* Especificidad 013 */
     main > section:last-of-type > div {
         grid-template-columns: repeat(7, 1fr);
         /*advertencia: redefinición de grid-template-columns por media query*/

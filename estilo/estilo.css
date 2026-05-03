@@ -536,6 +536,7 @@ main > section:nth-of-type(3) > div {
     overflow: auto;
     width: 100%;
     -webkit-overflow-scrolling: touch;
+    /*NO SE PUEDE USAR ES UNA EXTENSIÓN*/
 }
 
 

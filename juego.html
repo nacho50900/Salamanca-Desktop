@@ -46,6 +46,8 @@
         <p>Responde las 10 preguntas sobre los recursos turísticos de Salamanca. Cada respuesta correcta vale 1 punto. Debes responder todas las preguntas para ver tu puntuación.</p>
 
         <section>
+            <h2 hidden>Juego de preguntas</h2>
+    
             <!-- Pantalla de inicio: JS la oculta al empezar -->
             <article id="juego-inicio">
                 <p>El juego consta de <strong>10 preguntas</strong> de tipo test con 5 opciones cada una.</p>
@@ -59,7 +61,7 @@
                 <div role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
                     <div></div>
                 </div>
-                <h2 id="texto-pregunta"></h2>
+                <h2 id="texto-pregunta">Cargando pregunta...</h2>
                 <!-- Lista de opciones: primer ul hijo de article#juego-pregunta -->
                 <ul id="opciones-lista"></ul>
                 <button id="btn-siguiente-pregunta" hidden>Siguiente pregunta</button>
