@@ -50,6 +50,7 @@
     
             <!-- Pantalla de inicio: JS la oculta al empezar -->
             <article id="juego-inicio">
+                <h3>Instrucciones</h3>
                 <p>El juego consta de <strong>10 preguntas</strong> de tipo test con 5 opciones cada una.</p>
                 <button id="btn-iniciar-juego">¡Comenzar juego!</button>
             </article>
@@ -63,7 +64,7 @@
                 </div>
                 <h2 id="texto-pregunta">Cargando pregunta...</h2>
                 <!-- Lista de opciones: primer ul hijo de article#juego-pregunta -->
-                <ul id="opciones-lista"></ul>
+                <ul id="opciones-lista" role="listbox" aria-label="Opciones de respuesta"></ul>
                 <button id="btn-siguiente-pregunta" hidden>Siguiente pregunta</button>
             </article>
 

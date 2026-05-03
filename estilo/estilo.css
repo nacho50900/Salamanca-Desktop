@@ -5,29 +5,29 @@
 /* ============================================================
    SELECTORES SIN ID NI CLASS — ESTRUCTURA HTML ASUMIDA
    Selectores de class permitidos únicamente:
-     nav a.active              → opción activa del menú de navegación
-     main > nav > button.active → tab de ruta activa (rutas.html)
-     header nav.menu-visible   → menú móvil desplegado (menu-movil.css)
+     nav a.active                   → opción activa del menú de navegación
+     main > section > nav > button.active → tab de ruta activa (rutas.html)
+     header nav.menu-visible        → menú móvil desplegado (menu-movil.css)
 
    ─ meteorologia.html
-       main > section:first-of-type > article   → tiempo actual
-       main > section:last-of-type div > article → días de previsión (JS)
+       main > section:first-of-type > div          → tiempo actual
+       main > section:last-of-type > div > article → días de previsión (JS)
 
    ─ juego.html
-       main section article > div[role="progressbar"]       → barra de progreso
-       main section article > div[role="progressbar"] > div → relleno barra
-       main section article > ul                            → lista de opciones
-       main section article > ul > li[aria-selected="true"] → opción correcta
-       main section article > ul > li[aria-invalid="true"]  → opción incorrecta
-       main section article > p:first-of-type               → puntuación final
+       main section article > div[role="progressbar"]        → barra de progreso
+       main section article > div[role="progressbar"] > div  → relleno barra
+       main section article > ul                             → lista de opciones
+       main section article > ul > li[aria-selected="true"]  → opción correcta
+       main section article > ul > li[data-incorrecta="true"]→ opción incorrecta
+       main section article > p:first-of-type                → puntuación final
 
    ─ rutas.html
-       main > nav                    → selector de rutas (tabs)
-       main > nav > button           → botón de tab
-       main > nav > button.active    → tab activo
-       main section article          → hitos generados por JS
-       main section article > div    → galería de fotos del hito
-       main section article > div > img → foto del hito
+       main > section > nav                  → selector de rutas (tabs)
+       main > section > nav > button         → botón de tab
+       main > section > nav > button.active  → tab activo
+       main section div > article            → hitos generados por JS
+       main > div article > div             → galería de fotos del hito
+       main > div article > div > img       → foto del hito
 
    ─ reservas.php
        main > p[aria-live="polite"]  → mensaje de éxito
@@ -133,7 +133,7 @@ nav a:hover {
 }
 
 /* Selector de class permitido: indica el elemento activo del menú según especificación del proyecto */
-/* Especificidad 012 */
+/* Especificidad 011 */
 nav a.active {
     background-color: #C8960C;
     color: #2C1A0E;
@@ -178,7 +178,7 @@ article {
     border-radius: 4px;
     margin-bottom: 1em;
     /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
-} 
+}
 
 /* Especificidad 001 */
 figure {
@@ -269,7 +269,7 @@ button:focus {
     outline-offset: 2px;
 }
 
-/*  MIGAS DE NAVEGACIÓN */
+/* MIGAS DE NAVEGACIÓN */
 
 /* Especificidad 002 */
 header p {
@@ -347,7 +347,7 @@ caption {
 
 /* METEOROLOGÍA (meteorologia.html) */
 
-/* Tiempo actual: div hijo directo de la primera section */
+/* Tiempo actual: div hijo directo de la primera section de main */
 /* Especificidad 003 */
 main > section:first-of-type > div {
     background-color: #E8F4FD;
@@ -357,16 +357,8 @@ main > section:first-of-type > div {
     margin-bottom: 1.5em;
     /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
 }
-/* Especificidad 003 */
-main > section:last-of-type > div {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 0.8em;
-    height: auto;  /* ← sin altura fija */
-    margin: 1em 0;
-}
 
-/* Días de previsión: articles generados por JS dentro del div */
+/* Días de previsión: articles generados por JS dentro del div de la segunda section */
 /* Especificidad 004 */
 main > section:last-of-type > div > article {
     background-color: #E8F4FD;
@@ -377,22 +369,16 @@ main > section:last-of-type > div > article {
     /*advertencia: color de fondo sobrescribe el #FFF8EE de article*/
 }
 
-/* Fecha: primer p */
+/* Icono: primer p (h3 es la fecha, no cuenta como p) */
 /* Especificidad 005 */
 main > section:last-of-type > div > article p:first-of-type {
-    font-size: 0.85em;
-}
-
-/* Icono: segundo p */
-/* Especificidad 005 */
-main > section:last-of-type > div > article p:nth-of-type(2) {
     font-size: 1.8em;
     margin: 0.3em 0;
 }
 
-/* Temperatura: tercer p */
+/* Temperatura: segundo p */
 /* Especificidad 005 */
-main > section:last-of-type > div > article p:nth-of-type(3) {
+main > section:last-of-type > div > article p:nth-of-type(2) {
     font-size: 0.9em;
 }
 
@@ -404,6 +390,8 @@ main > section:last-of-type > div > article p:last-of-type {
     /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
     /*advertencia: fondo heredado de article (#E8F4FD) - contraste > 7:1, cumple AAA*/
 }
+
+
 
 /* JUEGO (juego.html) */
 
@@ -462,7 +450,7 @@ main section article > ul > li label:hover {
     /*advertencia: color de fondo sobrescribe el heredado de article (#FFF8EE)*/
 }
 
-/* Opción correcta: JS añade aria-selected="true" al li */
+/* Opción correcta: JS añade aria-selected="true" al li (válido en role="option") */
 /* Especificidad 006 */
 main section article > ul > li[aria-selected="true"] label {
     background-color: #D4EDDA;
@@ -470,9 +458,9 @@ main section article > ul > li[aria-selected="true"] label {
     /*advertencia: color de fondo sobrescribe el heredado*/
 }
 
-/* Opción incorrecta: JS añade aria-invalid="true" al li */
+/* Opción incorrecta: JS añade data-incorrecta="true" al li */
 /* Especificidad 006 */
-main section article > ul > li[aria-invalid="true"] label {
+main section article > ul > li[data-incorrecta="true"] label {
     background-color: #F8D7DA;
     border-color: #DC3545;
     /*advertencia: color de fondo sobrescribe el heredado*/
@@ -487,7 +475,7 @@ main section article > p:first-of-type {
     /*advertencia: fondo heredado de article (#FFF8EE) - contraste > 7:1, cumple AAA*/
 }
 
-/* Noticias - h3 de tarjeta */
+/* Noticias - h3 de tarjeta (index.html) */
 /* Especificidad 005 */
 main > section > aside > article > h3 {
     font-size: 1.5em;
@@ -497,9 +485,7 @@ main > section > aside > article > h3 {
 
 /* RUTAS (rutas.html) */
 
-/* Nav de selección de rutas: fondo transparente para no heredar el rojo del nav global */
-
-/* Botón de tab de ruta */
+/* Nav de selección de rutas dentro de section */
 /* Especificidad 003 */
 main > section > nav {
     display: flex;
@@ -509,9 +495,10 @@ main > section > nav {
     background-color: #8B1A1A;
     padding: 0;
     border-radius: 4px;
-    /*advertencia: color de fondo sobrescribe el #8B1A1A de nav — coincide, sin cambio visual*/
+    /*advertencia: color de fondo coincide con nav global (#8B1A1A) - sin cambio visual*/
 }
 
+/* Botón de tab de ruta */
 /* Especificidad 004 */
 main > section > nav > button {
     background-color: transparent;
@@ -524,41 +511,17 @@ main > section > nav > button {
     /*advertencia: color sobrescribe el #F5F0E8 de button - contraste > 7:1, cumple AAA*/
 }
 
-/* Referencias de rutas - URLs largas (rutas.html) */
-/* Especificidad 004 */
-main > div > ul > li > a {
-    word-break: break-all;
-}
-
-/* Altimetría - contenedor y SVG adaptable (rutas.html) */
-/* Especificidad 003 */
-main > section:nth-of-type(3) > div {
-    overflow: auto;
-    width: 100%;
-    -webkit-overflow-scrolling: touch;
-    /*NO SE PUEDE USAR ES UNA EXTENSIÓN*/
-}
-
-
-/* Especificidad 004 */
-main > section:nth-of-type(3) > div > svg {
-    width: 100%;
-    height: auto;
-    display: block;
-    min-width: 800px;
-}
-
-/* Selector de class permitido: tab activo */
-/* Especificidad 014 */
+/* Selector de class permitido: tab activo según especificación del proyecto */
+/* Especificidad 013 */
 main > section > nav > button.active {
     background-color: #2C1A0E;
     color: #F5F0E8;
     border: 2px solid #C8960C;
-    /*advertencia: color de fondo sobrescribe el transparent*/
+    /*advertencia: color de fondo sobrescribe el transparent de main > section > nav > button*/
+    /*advertencia: color sobrescribe el #F5F0E8 de button - contraste > 7:1, cumple AAA*/
 }
 
 /* Hitos generados por JS */
-/* Hitos generados por JS en rutas.html */
 /* Especificidad 004 */
 main section div > article {
     border-left: 4px solid #C8960C;
@@ -566,6 +529,7 @@ main section div > article {
     background-color: #FFF8EE;
     border-radius: 4px;
     margin-bottom: 1em;
+    /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
 }
 
 /* Galería de fotos del hito */
@@ -577,6 +541,7 @@ main > div article > div {
     margin-top: 1em;
 }
 
+/* Foto de la galería */
 /* Especificidad 004 */
 main > div article > div > img {
     width: 100%;
@@ -586,6 +551,27 @@ main > div article > div > img {
     border: 2px solid #D4A84B;
     /*advertencia: width sobrescribe el max-width heredado de img*/
     /*advertencia: height sobrescribe el auto heredado de img*/
+}
+
+/* Referencias de rutas - URLs largas */
+/* Especificidad 004 */
+main > div > ul > li > a {
+    word-break: break-all;
+}
+
+/* Altimetría - SVG adaptable */
+/* Especificidad 003 */
+main > section:nth-of-type(3) > div {
+    overflow: auto;
+    width: 100%;
+}
+
+/* Especificidad 004 */
+main > section:nth-of-type(3) > div > svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    min-width: 800px;
 }
 
 /* RESERVAS (reservas.php) */

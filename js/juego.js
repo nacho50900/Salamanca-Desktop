@@ -82,6 +82,7 @@ class Juego {
         this.elOpciones.innerHTML = "";
         pregunta.opciones.forEach((texto, indice) => {
             let li = document.createElement("li");
+            li.setAttribute("role", "option");
             let inputId = "opcion-" + indice;
 
             let input = document.createElement("input");
@@ -122,7 +123,7 @@ class Juego {
             if (i === pregunta.correcta) {
                 li.setAttribute("aria-selected", "true");
             } else if (i === indice && !esCorrecta) {
-                li.setAttribute("aria-invalid", "true");
+                li.setAttribute("data-incorrecta", "true");
             }
         });
 
@@ -185,9 +186,10 @@ let preguntas = [
         1
     ),
     new Pregunta(
-        "¿Cuál es el embutido típico de Ciudad Rodrigo elaborado con harina de trigo, manteca de cerdo y anís?",
-        ["Chorizo ibérico", "Morcilla de Burgos", "Farinato", "Lomo embuchado", "Salchichón"],
-        2
+        "¿Cuál es el nombre del puente romano que cruza el río Tormes en Salamanca?",
+        ["Puente de Alcántara", "Puente Romano de Salamanca", "Puente San Martín",
+         "Puente del Diablo", "Puente de los Milagros"],
+        1
     ),
     new Pregunta(
         "¿Qué denominación de origen tiene el jamón más famoso de la provincia de Salamanca?",
@@ -196,9 +198,9 @@ let preguntas = [
         3
     ),
     new Pregunta(
-        "¿Cómo se llama el dulce típico salmantino elaborado con harina, manteca de cerdo, azúcar y anís?",
-        ["Polvorones", "Mantecados", "Rosquillas", "Perrunillas", "Pestiños"],
-        3
+        "¿Cuál fue el primer municipio de España declarado Conjunto Histórico-Artístico?",
+        ["Ciudad Rodrigo", "Béjar", "La Alberca", "Mogarraz", "Ledesma"],
+        2
     ),
     new Pregunta(
         "¿En qué año fue declarado el casco histórico de Salamanca Patrimonio de la Humanidad por la UNESCO?",

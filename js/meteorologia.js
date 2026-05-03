@@ -98,9 +98,9 @@ class Meteorologia {
                 month: "short"
             });
 
-            let $article = $("<article>");
-            let $fecha = $("<p>").append($("<time>").attr("datetime", fecha).text(fechaFormateada));
-            let $icono = $("<p>").attr("aria-label", info.desc).text(info.icono);
+            let $article = $("<article>").attr("aria-label", info.desc);
+            let $fecha = $("<h3>").append($("<time>").attr("datetime", fecha).text(fechaFormateada));
+            let $icono = $("<p>").text(info.icono);
             let $temp = $("<p>").html("<strong>" + daily.temperature_2m_max[i] + "°</strong> / " + daily.temperature_2m_min[i] + "°");
             let $lluvia = $("<p>").text("💧 " + daily.precipitation_sum[i] + " " + dailyUnits.precipitation_sum);
 

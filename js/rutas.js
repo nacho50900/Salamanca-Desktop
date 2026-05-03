@@ -157,7 +157,7 @@ class GestorRutas {
             "</ul>" +
             "<p>" + ruta.descripcion + "</p>" +
             "<h3>Hitos de la ruta</h3>" +
-            "<section>" + hitosHtml + "</section>" +
+            "<section><h3 hidden>Hitos</h3>" + hitosHtml + "</section>"
             "<h3>Referencias</h3>" +
             "<ul>" + referenciasHtml + "</ul>";
 

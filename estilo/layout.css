@@ -147,19 +147,19 @@ main > section:last-of-type > div {
         transition: background-color 0.3s ease;
     }
 
-    /* Especificidad 013 */
+    /* Especificidad 012 */
     header button:hover {
         background-color: #2C1A0E;
         /*advertencia: color de fondo sin color de primer plano; se hereda de header button (#F5F0E8) - contraste > 7:1, cumple AAA*/
     }
 
-    /* Especificidad 013 */
+    /* Especificidad 012 */
     header button:focus {
         outline: 0.2em solid #C8960C;
         outline-offset: 0.2em;
     }
 
-    /* Especificidad 013 */
+    /* Especificidad 012 */
     header button:active {
         background-color: #5C1010;
         /*advertencia: redefinición de background-color por media query*/
