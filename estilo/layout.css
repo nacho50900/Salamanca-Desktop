@@ -81,7 +81,7 @@ main > section:last-of-type > aside {
     gap: 1.2em;
 }
 
-/* RUTAS - Hitos en 2 columnas en escritorio y tablet grande */
+/* RUTAS Y RESERVAS - Hitos y Reservas en 2 columnas en escritorio y tablet grande */
 /* Especificidad 003 */
 main > div > section {
     display: grid;
@@ -147,19 +147,19 @@ main > section:last-of-type > div {
         transition: background-color 0.3s ease;
     }
 
-    /* Especificidad 012 */
+    /* Especificidad 013 */
     header button:hover {
         background-color: #2C1A0E;
         /*advertencia: color de fondo sin color de primer plano; se hereda de header button (#F5F0E8) - contraste > 7:1, cumple AAA*/
     }
 
-    /* Especificidad 012 */
+    /* Especificidad 013 */
     header button:focus {
         outline: 0.2em solid #C8960C;
         outline-offset: 0.2em;
     }
 
-    /* Especificidad 012 */
+    /* Especificidad 013 */
     header button:active {
         background-color: #5C1010;
         /*advertencia: redefinición de background-color por media query*/

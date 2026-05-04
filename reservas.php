@@ -65,9 +65,16 @@ class Reservas {
         $password  = $_POST["password"] ?? "";
         $telefono  = trim(htmlspecialchars($_POST["telefono"]  ?? "", ENT_QUOTES));
 
-        if (!$nombre || !$apellidos || !$email || strlen($password) < 6) {
-            $this->mensajes[] = ["tipo" => "error",
-                "texto" => "Completa todos los campos. La contraseña debe tener al menos 6 caracteres."];
+        if (!$nombre || !$apellidos) {
+            $this->mensajes[] = ["tipo" => "error", "texto" => "El nombre y apellidos son obligatorios."];
+            return;
+        }
+        if (!$email) {
+            $this->mensajes[] = ["tipo" => "error", "texto" => "El email debe seguir el formato x@x.com"];
+            return;
+        }
+        if (strlen($password) < 6) {
+            $this->mensajes[] = ["tipo" => "error", "texto" => "La contraseña debe tener al menos 6 caracteres."];
             return;
         }
 
@@ -174,6 +181,14 @@ class Reservas {
 
     public function mostrarFormularioAcceso() {
         if (SesionManager::estaAutenticado()) return;
+
+        /* Recuperar valores del POST para repoblar el formulario de registro en caso de error */
+        $regNombre    = htmlspecialchars($_POST["nombre"]    ?? "", ENT_QUOTES);
+        $regApellidos = htmlspecialchars($_POST["apellidos"] ?? "", ENT_QUOTES);
+        $regEmail     = htmlspecialchars($_POST["email"]     ?? "", ENT_QUOTES);
+        $regTelefono  = htmlspecialchars($_POST["telefono"]  ?? "", ENT_QUOTES);
+        /* Solo repoblar si el formulario que se envió fue el de registro */
+        $esRegistro   = ($_POST["accion"] ?? "") === "registrar";
         ?>
         <section>
             <h2>Accede o regístrate para reservar</h2>
@@ -200,15 +215,18 @@ class Reservas {
                     <input type="hidden" name="accion" value="registrar" />
                     <div>
                         <label for="reg-nombre">Nombre <abbr title="obligatorio">*</abbr></label>
-                        <input type="text" id="reg-nombre" name="nombre" required autocomplete="given-name" />
+                        <input type="text" id="reg-nombre" name="nombre" required autocomplete="given-name"
+                            value="<?php echo $esRegistro ? $regNombre : ''; ?>" />
                     </div>
                     <div>
                         <label for="reg-apellidos">Apellidos <abbr title="obligatorio">*</abbr></label>
-                        <input type="text" id="reg-apellidos" name="apellidos" required autocomplete="family-name" />
+                        <input type="text" id="reg-apellidos" name="apellidos" required autocomplete="family-name"
+                            value="<?php echo $esRegistro ? $regApellidos : ''; ?>" />
                     </div>
                     <div>
                         <label for="reg-email">Email <abbr title="obligatorio">*</abbr></label>
-                        <input type="email" id="reg-email" name="email" required autocomplete="email" />
+                        <input type="email" id="reg-email" name="email" required autocomplete="email"
+                            value="<?php echo $esRegistro ? $regEmail : ''; ?>" />
                     </div>
                     <div>
                         <label for="reg-password">Contraseña <abbr title="obligatorio">*</abbr></label>
@@ -216,7 +234,8 @@ class Reservas {
                     </div>
                     <div>
                         <label for="reg-telefono">Teléfono</label>
-                        <input type="tel" id="reg-telefono" name="telefono" autocomplete="tel" placeholder="+34 600 000 000" />
+                        <input type="tel" id="reg-telefono" name="telefono" autocomplete="tel" placeholder="+34 600 000 000"
+                            value="<?php echo $esRegistro ? $regTelefono : ''; ?>" />
                     </div>
                     <button type="submit">Crear cuenta</button>
                 </form>
@@ -245,6 +264,7 @@ class Reservas {
             <h2>Presupuesto de tu reserva</h2>
             <?php if ($this->reservaPresupuesto): ?>
             <article>
+                <h3><?php echo htmlspecialchars($this->reservaPresupuesto["recurso_nombre"], ENT_QUOTES); ?></h3>
                 <p><strong>Reserva nº:</strong> <?php echo (int)$this->reservaPresupuesto["id_reserva"]; ?></p>
                 <p><strong>Recurso:</strong> <?php echo htmlspecialchars($this->reservaPresupuesto["recurso_nombre"], ENT_QUOTES); ?></p>
                 <p><strong>Tipo:</strong> <?php echo htmlspecialchars($this->reservaPresupuesto["tipo"], ENT_QUOTES); ?></p>
@@ -306,49 +326,50 @@ class Reservas {
                 <?php endforeach; ?>
             <?php endif; ?>
         </section>
-        
+
         <div>
             <h2>Recursos turísticos disponibles</h2>
             <section>
+                <h2 hidden>Lista de recursos</h2>
                 <?php if (empty($recursos)): ?>
                     <p>No hay recursos disponibles en este momento.</p>
                 <?php else: ?>
                     <?php foreach ($recursos as $recurso): ?>
-                <article>
-                    <h3>
-                        <?php echo htmlspecialchars($recurso["nombre"], ENT_QUOTES); ?>
-                        <small>(<?php echo htmlspecialchars($recurso["tipo"], ENT_QUOTES); ?>)</small>
-                    </h3>
-                    <p><?php echo htmlspecialchars($recurso["descripcion"], ENT_QUOTES); ?></p>
-                    <ul>
-                        <li><strong>Precio:</strong> <?php echo number_format((float)$recurso["precio"], 2); ?> €/persona</li>
-                        <li><strong>Disponible:</strong>
-                            <?php echo (new DateTime($recurso["fecha_inicio"]))->format("d/m/Y H:i"); ?>
-                            al <?php echo (new DateTime($recurso["fecha_fin"]))->format("d/m/Y H:i"); ?>
-                        </li>
-                        <li><strong>Plazas disponibles:</strong>
-                            <?php echo $this->recursoDAO->plazasDisponibles((int)$recurso["id_recurso"]); ?>
-                        </li>
-                    </ul>
-                    <form method="post" action="reservas.php">
-                        <input type="hidden" name="accion" value="reservar" />
-                        <input type="hidden" name="id_recurso" value="<?php echo (int)$recurso["id_recurso"]; ?>" />
-                        <div>
-                            <label for="personas-<?php echo (int)$recurso["id_recurso"]; ?>">Número de personas</label>
-                            <input type="number"
-                                   id="personas-<?php echo (int)$recurso["id_recurso"]; ?>"
-                                   name="num_personas" min="1"
-                                   max="<?php echo $this->recursoDAO->plazasDisponibles((int)$recurso["id_recurso"]); ?>"
-                                   value="1" />
-                        </div>
-                        <div>
-                            <label for="notas-<?php echo (int)$recurso["id_recurso"]; ?>">Notas</label>
-                            <textarea id="notas-<?php echo (int)$recurso["id_recurso"]; ?>" name="notas" rows="2"></textarea>
-                        </div>
-                        <button type="submit">Reservar</button>
-                    </form>
-                </article>
-                <?php endforeach; ?>
+                    <article>
+                        <h3>
+                            <?php echo htmlspecialchars($recurso["nombre"], ENT_QUOTES); ?>
+                            <small>(<?php echo htmlspecialchars($recurso["tipo"], ENT_QUOTES); ?>)</small>
+                        </h3>
+                        <p><?php echo htmlspecialchars($recurso["descripcion"], ENT_QUOTES); ?></p>
+                        <ul>
+                            <li><strong>Precio:</strong> <?php echo number_format((float)$recurso["precio"], 2); ?> €/persona</li>
+                            <li><strong>Disponible:</strong>
+                                <?php echo (new DateTime($recurso["fecha_inicio"]))->format("d/m/Y H:i"); ?>
+                                al <?php echo (new DateTime($recurso["fecha_fin"]))->format("d/m/Y H:i"); ?>
+                            </li>
+                            <li><strong>Plazas disponibles:</strong>
+                                <?php echo $this->recursoDAO->plazasDisponibles((int)$recurso["id_recurso"]); ?>
+                            </li>
+                        </ul>
+                        <form method="post" action="reservas.php">
+                            <input type="hidden" name="accion" value="reservar" />
+                            <input type="hidden" name="id_recurso" value="<?php echo (int)$recurso["id_recurso"]; ?>" />
+                            <div>
+                                <label for="personas-<?php echo (int)$recurso["id_recurso"]; ?>">Número de personas</label>
+                                <input type="number"
+                                    id="personas-<?php echo (int)$recurso["id_recurso"]; ?>"
+                                    name="num_personas" min="1"
+                                    max="<?php echo $this->recursoDAO->plazasDisponibles((int)$recurso["id_recurso"]); ?>"
+                                    value="1" />
+                            </div>
+                            <div>
+                                <label for="notas-<?php echo (int)$recurso["id_recurso"]; ?>">Notas</label>
+                                <textarea id="notas-<?php echo (int)$recurso["id_recurso"]; ?>" name="notas" rows="2"></textarea>
+                            </div>
+                            <button type="submit">Reservar</button>
+                        </form>
+                    </article>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </section>
         </div>
@@ -398,7 +419,7 @@ $reservas->procesarAccion();
             <a href="ayuda.html" title="Ayuda y manual de uso">Ayuda</a>
         </nav>
 
-        <p>Estás en: <a href="index.html" title="Página principal">Inicio</a> >> <strong>Reservas</strong></p>
+        <p>Estás en: <a href="index.html" title="Página principal">Inicio</a> &gt;&gt; <strong>Reservas</strong></p>
     </header>
 
     <main>
