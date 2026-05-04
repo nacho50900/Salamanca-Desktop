@@ -211,7 +211,7 @@ def generar_svg(ruta: ET.Element, output_path: str) -> None:
         '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg"',
         f'     viewBox="0 0 {SVG_W} {SVG_H}" role="img"',
-        f'     width="100%" height="auto" preserveAspectRatio="xMidYMid meet"',
+        f'     width="100%" height="{SVG_H}" preserveAspectRatio="xMidYMid meet"',
         f'     aria-label="Altimetría de la ruta {_escape_xml(nombre_ruta)}">',
         f'  <title>Altimetría – {_escape_xml(nombre_ruta)}</title>',
         f'  <desc>Perfil de alturas de la ruta {_escape_xml(nombre_ruta)}, '
