@@ -419,7 +419,7 @@ $reservas->procesarAccion();
             <a href="ayuda.html" title="Ayuda y manual de uso">Ayuda</a>
         </nav>
 
-        <p>Estás en: <a href="index.html" title="Página principal">Inicio</a> &gt;&gt; <strong>Reservas</strong></p>
+        <p>Estás en: <a href="index.html" title="Página principal">Inicio</a> >> <strong>Reservas</strong></p>
     </header>
 
     <main>
