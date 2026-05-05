@@ -9,13 +9,16 @@
        main > section:last-of-type > aside
                                    → grid de noticias (auto-fill)
    ─ meteorologia.html
-       main > section:last-of-type > div
+       main > section:last-of-type > section
                                    → grid previsión 7 días
    ─ rutas.html
-       main > div > section        → hitos en 2 columnas
-       main > section:has(...)>div → mapa dinámico (div permitido por spec)
+       main > section:nth-of-type(2) > section
+                                   → hitos en 2 columnas
+       main > section:nth-of-type(3) > div
+                                   → mapa dinámico (div permitido por spec)
    ─ reservas.php
-       main form > div             → grid label + control formulario
+       main form fieldset          → agrupa label + control semánticamente
+                                     (sin div wrapper; label y control directos)
    ============================================================ */
 
 /* NOTA: El validador genera advertencias de redefinición de column-gap y row-gap
@@ -81,37 +84,51 @@ main > section:last-of-type > aside {
     gap: 1.2em;
 }
 
-/* RUTAS Y RESERVAS - Hitos y Reservas en 2 columnas en escritorio y tablet grande */
-/* Especificidad 003 */
-main > div > section {
+/* RUTAS - Hitos en 2 columnas en escritorio y tablet grande.
+   section:nth-of-type(2) es la section#info-ruta (segunda en main de rutas.html).
+   En meteorologia.html main tiene solo 2 sections y no hay section anidada con hitos,
+   por lo que este selector no colisiona. */
+/* Especificidad 013 */
+main > section:nth-of-type(2) > section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
 }
 
 /* RUTAS - Mapa dinámico planimetría (rutas.html)
-   :has(~ section:nth-of-type(3)) selecciona la section solo cuando existe una tercera section
-   en meteorologia.html solo hay 2 sections, por lo que no aplica */
-/* Especificidad 023 */
-main > section:has(~ section:nth-of-type(3)) > div {
+   section:nth-of-type(3) es la section de planimetría en rutas.html.
+   En meteorologia.html solo hay 2 sections, por lo que no aplica. */
+/* Especificidad 013 */
+main > section:nth-of-type(3) > div {
     width: 100%;
     height: 400px;
     margin: 1em 0;
 }
 
-/* RESERVAS - Grid para campos de formulario (reservas.php) */
-/* Especificidad 003 */
-main form > div {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 0.5em;
-    align-items: center;
-    margin-bottom: 0.8em;
+/* RESERVAS - Campos de formulario agrupados en fieldset; label y control directos sin div */
+/* Especificidad 002 */
+main form fieldset {
+    border: 1px solid #D4A84B;
+    border-radius: 4px;
+    padding: 1em;
+    margin-bottom: 1em;
 }
 
-/* METEOROLOGÍA - Grid previsión 7 días (meteorologia.html) */
+/* Especificidad 002 */
+main form legend {
+    font-weight: bold;
+    padding: 0 0.5em;
+    color: #8B1A1A;
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
+    /*advertencia: fondo heredado de body (#FDF8F0) - contraste > 7:1, cumple AAA*/
+}
+
+/* METEOROLOGÍA - Grid previsión 7 días (meteorologia.html)
+   section:last-of-type > section apunta a la section#prevision-contenedor anidada.
+   En rutas.html la última section contiene section#altimetria-ruta (no hitos),
+   por lo que el grid de auto-fill no colisiona con el de 2 columnas de hitos. */
 /* Especificidad 013 */
-main > section:last-of-type > div {
+main > section:last-of-type > section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 0.8em;
@@ -147,19 +164,19 @@ main > section:last-of-type > div {
         transition: background-color 0.3s ease;
     }
 
-    /* Especificidad 013 */
+    /* Especificidad 012 */
     header button:hover {
         background-color: #2C1A0E;
         /*advertencia: color de fondo sin color de primer plano; se hereda de header button (#F5F0E8) - contraste > 7:1, cumple AAA*/
     }
 
-    /* Especificidad 013 */
+    /* Especificidad 012 */
     header button:focus {
         outline: 0.2em solid #C8960C;
         outline-offset: 0.2em;
     }
 
-    /* Especificidad 013 */
+    /* Especificidad 012 */
     header button:active {
         background-color: #5C1010;
         /*advertencia: redefinición de background-color por media query*/
@@ -196,14 +213,8 @@ main > section:last-of-type > div {
         /*advertencia: redefinición de width por media query*/
     }
 
-    /* Especificidad 003 */
-    main > div > section {
-        grid-template-columns: 1fr;
-        /*advertencia: redefinición de grid-template-columns por media query*/
-    }
-
-    /* Especificidad 003 */
-    main form > div {
+    /* Especificidad 013 */
+    main > section:nth-of-type(2) > section {
         grid-template-columns: 1fr;
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
@@ -219,38 +230,33 @@ main > section:last-of-type > div {
     }
 
     /* Especificidad 013 */
-    main > section:last-of-type > div {
+    main > section:last-of-type > section {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         /*advertencia: redefinición de grid-template-columns por media query*/
         height: auto;
         /*advertencia: redefinición de height por media query*/
     }
 
-    /* Especificidad 023 */
-    main > section:has(~ section:nth-of-type(3)) > div {
-        height: 300px;
-        /*advertencia: redefinición de height por media query*/
-    }
 }
 
 /* TABLET - max-width: 768px */
 
 @media only screen and (max-width: 768px) {
 
-    /* Especificidad 003 */
-    main > div > section {
+    /* Especificidad 013 */
+    main > section:nth-of-type(2) > section {
         grid-template-columns: 1fr;
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
     /* Especificidad 013 */
-    main > section:last-of-type > div {
+    main > section:last-of-type > section {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
-    /* Especificidad 023 */
-    main > section:has(~ section:nth-of-type(3)) > div {
+    /* Especificidad 013 */
+    main > section:nth-of-type(3) > div {
         height: 300px;
         /*advertencia: redefinición de height por media query*/
     }
@@ -261,7 +267,7 @@ main > section:last-of-type > div {
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 
     /* Especificidad 013 */
-    main > section:last-of-type > div {
+    main > section:last-of-type > section {
         grid-template-columns: repeat(7, 1fr);
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
@@ -272,7 +278,7 @@ main > section:last-of-type > div {
 @media only screen and (min-width: 1025px) {
 
     /* Especificidad 013 */
-    main > section:last-of-type > div {
+    main > section:last-of-type > section {
         grid-template-columns: repeat(7, 1fr);
         /*advertencia: redefinición de grid-template-columns por media query*/
     }

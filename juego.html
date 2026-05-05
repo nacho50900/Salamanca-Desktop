@@ -58,10 +58,8 @@
             <!-- Pantalla de pregunta activa -->
             <article id="juego-pregunta" hidden>
                 <p id="progreso-juego">Pregunta <span id="num-pregunta">1</span> de 10</p>
-                <!-- Barra de progreso: primer div hijo de article#juego-pregunta -->
-                <div role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
-                    <div></div>
-                </div>
+                <!-- Barra de progreso: meter es el elemento nativo HTML5 para valores medibles -->
+                <meter id="progreso-barra" min="0" max="10" value="0" aria-label="Progreso del juego"></meter>
                 <h2 id="texto-pregunta">Cargando pregunta...</h2>
                 <!-- Lista de opciones: primer ul hijo de article#juego-pregunta -->
                 <ul id="opciones-lista" role="listbox" aria-label="Opciones de respuesta"></ul>

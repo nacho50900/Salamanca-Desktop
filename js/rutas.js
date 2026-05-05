@@ -137,7 +137,7 @@ class GestorRutas {
                 distTexto +
                 "<p><strong>Coordenadas:</strong> Lat: " + hito.latitud +
                 ", Lon: " + hito.longitud + ", Alt: " + hito.altitud + " m</p>" +
-                "<div>" + fotosHtml + "</div>" +
+                "<figure>" + fotosHtml + "</figure>" +
                 "</article>";
         }).join("");
 
@@ -145,7 +145,10 @@ class GestorRutas {
             "<li><a href='" + ref + "' target='_blank' rel='noopener noreferrer'>" + ref + "</a></li>"
         ).join("");
 
-        let html = "<h2>" + ruta.nombre + "</h2>" +
+        // Todo el contenido va dentro de un article para no romper el modelo
+        // de contenido de section#info-ruta con h2 sueltos
+        let html = "<article>" +
+            "<h2>" + ruta.nombre + "</h2>" +
             "<ul>" +
             "<li><strong>Tipo:</strong> " + ruta.tipo + "</li>" +
             "<li><strong>Transporte:</strong> " + ruta.transporte + "</li>" +
@@ -157,9 +160,10 @@ class GestorRutas {
             "</ul>" +
             "<p>" + ruta.descripcion + "</p>" +
             "<h3>Hitos de la ruta</h3>" +
-            "<section><h3 hidden>Hitos</h3>" + hitosHtml + "</section>"
+            "<section><h3 hidden>Hitos</h3>" + hitosHtml + "</section>" +
             "<h3>Referencias</h3>" +
-            "<ul>" + referenciasHtml + "</ul>";
+            "<ul>" + referenciasHtml + "</ul>" +
+            "</article>";
 
         $("#info-ruta").html(html);
     }

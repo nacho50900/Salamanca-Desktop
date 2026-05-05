@@ -29,10 +29,8 @@ class Juego {
         this.elBtnSiguiente  = document.getElementById("btn-siguiente-pregunta");
         this.elPuntuacion    = document.getElementById("puntuacion-final");
         this.elMensaje       = document.getElementById("mensaje-resultado");
-        // Sin ID: la barra es el div[role="progressbar"] dentro del article de pregunta
-        // y el relleno es su único div hijo
-        this.elBarra         = this.elPregunta.querySelector("div[role='progressbar']");
-        this.elBarraRelleno  = this.elBarra.querySelector("div");
+        // meter nativo HTML5: value, min y max ya son atributos propios
+        this.elBarra = document.getElementById("progreso-barra");
 
         this.vincularBotones();
     }
@@ -72,8 +70,7 @@ class Juego {
         // Actualizar número y barra de progreso
         this.elNumPregunta.textContent = numero;
         let porcentaje = ((numero - 1) / this.preguntas.length) * 100;
-        this.elBarraRelleno.style.width = porcentaje + "%";
-        this.elBarra.setAttribute("aria-valuenow", numero - 1);
+        this.elBarra.value = numero - 1;
 
         // Actualizar texto de la pregunta
         this.elTextoPregunta.textContent = pregunta.enunciado;
@@ -147,8 +144,7 @@ class Juego {
         this.elPregunta.hidden = true;
         this.elResultado.hidden = false;
         this.elPuntuacion.textContent = this.puntuacion;
-        this.elBarraRelleno.style.width = "100%";
-        this.elBarra.setAttribute("aria-valuenow", this.preguntas.length);
+        this.elBarra.value = this.preguntas.length;
 
         let mensaje;
         if (this.puntuacion === 10) {
