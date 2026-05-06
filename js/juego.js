@@ -113,12 +113,12 @@ class Juego {
             this.puntuacion++;
         }
 
-        // Marcar con atributos ARIA (sin clases): CSS usa li[aria-selected] y li[aria-invalid]
+        // Marcar con data-* (sin clases): CSS usa li[data-correcta] y li[data-incorrecta]
         let items = this.elOpciones.querySelectorAll("li");
         items.forEach((li, i) => {
             li.querySelector("input").disabled = true;
             if (i === pregunta.correcta) {
-                li.setAttribute("aria-selected", "true");
+                li.setAttribute("data-correcta", "true");
             } else if (i === indice && !esCorrecta) {
                 li.setAttribute("data-incorrecta", "true");
             }
