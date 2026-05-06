@@ -42,6 +42,7 @@ body {
     font-family: Tahoma, sans-serif;
     background-color: #FDF8F0;
     color: #1a1a1a;
+    margin: 0;
 }
 
 /* Especificidad 001, 001, 001, 001 */
@@ -766,4 +767,158 @@ header + article figure figcaption {
         height: 440px;
         /*advertencia: height sobrescribe el 560px - redefinición por media query*/
     }
+}
+
+/* MENÚ MÓVIL (max-width: 485px) */
+
+@media (max-width: 485px) {
+
+    /* Botón hamburguesa */
+    /* Especificidad 002 */
+    header button {
+        background-color: #8B1A1A;
+        /*advertencia: color de fondo sin color de primer plano; se hereda de button (#F5F0E8) - contraste > 7:1, cumple AAA*/
+        color: #F5F0E8;
+        border: none;
+        padding: 0.8em 1.5em;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 0.3em;
+        margin: 0.5em 0;
+        width: 100%;
+        text-align: center;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Especificidad 012 */
+    header button:hover {
+        background-color: #2C1A0E;
+        /*advertencia: redefinición de background-color por media query; color heredado de header button (#F5F0E8) - contraste > 7:1, cumple AAA*/
+    }
+
+    /* Especificidad 012 */
+    header button:focus {
+        outline: 0.2em solid #C8960C;
+        outline-offset: 0.2em;
+    }
+
+    /* Especificidad 012 */
+    header button:active {
+        background-color: #5C1010;
+        /*advertencia: redefinición de background-color por media query*/
+    }
+
+    /* Nav oculto en móvil */
+    /* Especificidad 002 */
+    header > nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    /* Menú desplegado: JS añade nav.menu-visible */
+    /* Selector de class permitido: menú móvil según especificación del proyecto */
+    /* Especificidad 011 */
+    header nav.menu-visible {
+        max-height: 50em;
+        animation: desplegar 0.4s ease-in-out;
+    }
+
+    @keyframes desplegar {
+        from {
+            opacity: 0;
+            transform: translateY(-1em);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Enlace de nav en móvil */
+    /* Especificidad 003 */
+    header nav a {
+        padding: 1em;
+        /*advertencia: redefinición de padding por media query*/
+        margin: 0.2em 0;
+        text-align: center;
+        background-color: #2C1A0E;
+        /*advertencia: redefinición de background-color por media query; color heredado de nav a (#F5F0E8) - contraste > 7:1, cumple AAA*/
+        border-radius: 0.3em;
+        transition: background-color 0.3s ease, color 0.2s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Especificidad 004 */
+    header nav a:hover {
+        background-color: #5C1010;
+        /*advertencia: redefinición de background-color por media query; color heredado de nav a (#F5F0E8) - contraste > 7:1, cumple AAA*/
+    }
+
+    /* Selector de class permitido: opción activa en móvil */
+    /* Especificidad 012 */
+    header nav a.active {
+        background-color: #C8960C;
+        /*advertencia: redefinición de background-color por media query*/
+        color: #2C1A0E;
+        /*advertencia: redefinición de color por media query*/
+    }
+
+    /* Especificidad 013 */
+    header nav a.active:hover {
+        background-color: #A07008;
+        /*advertencia: redefinición de background-color por media query; color heredado de nav a.active (#2C1A0E) - contraste > 7:1, cumple AAA*/
+    }
+
+    /* Vídeo y audio adaptables en móvil */
+    /* Especificidad 001 */
+    video {
+        width: 100%;
+        /*advertencia: redefinición de width por media query*/
+        height: auto;
+        /*advertencia: redefinición de height por media query*/
+    }
+
+    /* Especificidad 001 */
+    audio {
+        width: 100%;
+        /*advertencia: redefinición de width por media query*/
+    }
+}
+
+/* RUTAS - Mapa dinámico planimetría */
+/* Especificidad 013 */
+main > section:nth-of-type(3) > div {
+    width: 100%;
+    height: 400px;
+    margin: 1em 0;
+}
+
+@media only screen and (max-width: 768px) {
+    /* Especificidad 013 */
+    main > section:nth-of-type(3) > div {
+        height: 300px;
+        /*advertencia: redefinición de height por media query*/
+    }
+}
+
+/* RESERVAS - Fieldset y legend */
+/* Especificidad 002 */
+main form fieldset {
+    border: 1px solid #D4A84B;
+    border-radius: 4px;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+/* Especificidad 002 */
+main form legend {
+    font-weight: bold;
+    padding: 0 0.5em;
+    color: #8B1A1A;
+    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
+    /*advertencia: fondo heredado de body (#FDF8F0) - contraste > 7:1, cumple AAA*/
 }

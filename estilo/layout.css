@@ -12,13 +12,12 @@
        main > section:last-of-type > article
                                    → grid previsión 7 días
    ─ rutas.html
-       main > section:nth-of-type(2) > section
+       main > section:nth-of-type(2) > article > section
                                    → hitos en 2 columnas
        main > section:nth-of-type(3) > div
                                    → mapa dinámico (div permitido por spec)
    ─ reservas.php
        main form fieldset          → agrupa label + control semánticamente
-                                     (sin div wrapper; label y control directos)
    ============================================================ */
 
 /* NOTA: El validador genera advertencias de redefinición de column-gap y row-gap
@@ -29,15 +28,12 @@
 body {
     display: flex;
     flex-direction: column;
-    margin: 0;
     min-height: 100vh;
 }
 
 /* Especificidad 001 */
 main {
     flex: 1;
-    padding: 1.5em 2em;
-    margin: 0;
 }
 
 /* Especificidad 001 */
@@ -45,13 +41,11 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0px;
 }
 
 /* Especificidad 002 */
 header > h1 {
     flex-basis: 100%; /* ocupa toda la fila, empuja nav abajo */
-    margin: 0;
 }
 
 /* Especificidad 002 */
@@ -62,13 +56,11 @@ header > nav {
     align-items: center;
     flex-wrap: wrap;
     flex: 1;
-    gap: 0px;
 }
 
 /* Especificidad 002 */
 header p {
     flex-basis: 100%; /* ocupa toda la fila */
-    margin: 0;
 }
 
 /* Especificidad 002 */
@@ -88,40 +80,12 @@ main > section:last-of-type > aside {
    section:nth-of-type(2) es la section#info-ruta (segunda en main de rutas.html).
    En meteorologia.html main tiene solo 2 sections y no hay section anidada con hitos,
    por lo que este selector no colisiona. */
-/*Selector doble para hitos y recursos turísticos*/
 /* Especificidad 013 */
 main > section:nth-of-type(2) > article > section,
 main > section:last-of-type > section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
-}
-/* RUTAS - Mapa dinámico planimetría (rutas.html)
-   section:nth-of-type(3) es la section de planimetría en rutas.html.
-   En meteorologia.html solo hay 2 sections, por lo que no aplica. */
-/* Especificidad 013 */
-main > section:nth-of-type(3) > div {
-    width: 100%;
-    height: 400px;
-    margin: 1em 0;
-}
-
-/* RESERVAS - Campos de formulario agrupados en fieldset; label y control directos sin div */
-/* Especificidad 002 */
-main form fieldset {
-    border: 1px solid #D4A84B;
-    border-radius: 4px;
-    padding: 1em;
-    margin-bottom: 1em;
-}
-
-/* Especificidad 002 */
-main form legend {
-    font-weight: bold;
-    padding: 0 0.5em;
-    color: #8B1A1A;
-    /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
-    /*advertencia: fondo heredado de body (#FDF8F0) - contraste > 7:1, cumple AAA*/
 }
 
 /* METEOROLOGÍA - Grid previsión 7 días (meteorologia.html)
@@ -150,37 +114,6 @@ main > section:last-of-type > article:has(article time) {
     header button {
         display: block;
         /*advertencia: redefinición de display por media query*/
-        background-color: #8B1A1A;
-        /*advertencia: color de fondo sin color de primer plano; se hereda de body (#1a1a1a) - contraste > 7:1, cumple AAA*/
-        color: #F5F0E8;
-        border: none;
-        padding: 0.8em 1.5em;
-        font-size: 1em;
-        font-weight: bold;
-        cursor: pointer;
-        border-radius: 0.3em;
-        margin: 0.5em 0;
-        width: 100%;
-        text-align: center;
-        transition: background-color 0.3s ease;
-    }
-
-    /* Especificidad 012 */
-    header button:hover {
-        background-color: #2C1A0E;
-        /*advertencia: color de fondo sin color de primer plano; se hereda de header button (#F5F0E8) - contraste > 7:1, cumple AAA*/
-    }
-
-    /* Especificidad 012 */
-    header button:focus {
-        outline: 0.2em solid #C8960C;
-        outline-offset: 0.2em;
-    }
-
-    /* Especificidad 012 */
-    header button:active {
-        background-color: #5C1010;
-        /*advertencia: redefinición de background-color por media query*/
     }
 
     /* Especificidad 002 */
@@ -189,29 +122,22 @@ main > section:last-of-type > article:has(article time) {
         /*advertencia: redefinición de display por media query*/
         flex-direction: column;
         /*advertencia: redefinición de flex-direction por media query*/
-        width: 100%;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
+    }
+
+    /* Menú móvil desplegado: JS añade nav.menu-visible */
+    /* Selector de class permitido: menú móvil según especificación del proyecto */
+    /* Especificidad 011 */
+    header nav.menu-visible {
+        display: flex;
+        /*advertencia: redefinición de display por media query*/
+        flex-direction: column;
+        /*advertencia: redefinición de flex-direction por media query*/
     }
 
     /* Especificidad 002 */
     header p {
         display: none;
         /*advertencia: redefinición de display por media query*/
-    }
-
-    /* Especificidad 001 */
-    video {
-        width: 100%;
-        /*advertencia: redefinición de width por media query*/
-        height: auto;
-    }
-
-    /* Especificidad 001 */
-    audio {
-        width: 100%;
-        /*advertencia: redefinición de width por media query*/
     }
 
     /*Hitos en una columna en móviles*/
@@ -236,8 +162,6 @@ main > section:last-of-type > article:has(article time) {
     main > section:last-of-type > article:has(article time) {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         /*advertencia: redefinición de grid-template-columns por media query*/
-        height: auto;
-        /*advertencia: redefinición de height por media query*/
     }
 
 }
@@ -258,12 +182,6 @@ main > section:last-of-type > article:has(article time) {
     main > section:last-of-type > article:has(article time) {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         /*advertencia: redefinición de grid-template-columns por media query*/
-    }
-
-    /* Especificidad 013 */
-    main > section:nth-of-type(3) > div {
-        height: 300px;
-        /*advertencia: redefinición de height por media query*/
     }
 }
 
