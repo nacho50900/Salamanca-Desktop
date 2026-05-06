@@ -88,13 +88,14 @@ main > section:last-of-type > aside {
    section:nth-of-type(2) es la section#info-ruta (segunda en main de rutas.html).
    En meteorologia.html main tiene solo 2 sections y no hay section anidada con hitos,
    por lo que este selector no colisiona. */
+/*Selector doble para hitos y recursos turísticos*/
 /* Especificidad 013 */
-main > section:nth-of-type(2) > section {
+main > section:nth-of-type(2) > article > section,
+main > section:last-of-type > section:not(:has(article time)) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
 }
-
 /* RUTAS - Mapa dinámico planimetría (rutas.html)
    section:nth-of-type(3) es la section de planimetría en rutas.html.
    En meteorologia.html solo hay 2 sections, por lo que no aplica. */
@@ -128,7 +129,7 @@ main form legend {
    En rutas.html la última section contiene section#altimetria-ruta (no hitos),
    por lo que el grid de auto-fill no colisiona con el de 2 columnas de hitos. */
 /* Especificidad 013 */
-main > section:last-of-type > section {
+main > section:last-of-type > section:has(article time) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 0.8em;
@@ -213,8 +214,10 @@ main > section:last-of-type > section {
         /*advertencia: redefinición de width por media query*/
     }
 
+    /*Hitos en una columna en móviles*/
     /* Especificidad 013 */
-    main > section:nth-of-type(2) > section {
+    main > section:nth-of-type(2) > article > section,
+    main > section:last-of-type > section:not(:has(article time)) {
         grid-template-columns: 1fr;
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
@@ -230,7 +233,7 @@ main > section:last-of-type > section {
     }
 
     /* Especificidad 013 */
-    main > section:last-of-type > section {
+    main > section:last-of-type > section:has(article time) {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         /*advertencia: redefinición de grid-template-columns por media query*/
         height: auto;
@@ -243,14 +246,16 @@ main > section:last-of-type > section {
 
 @media only screen and (max-width: 768px) {
 
+    /*Hitos en una columna en tablets pequeñas*/
     /* Especificidad 013 */
-    main > section:nth-of-type(2) > section {
+    main > section:nth-of-type(2) > article > section,
+    main > section:last-of-type > section:not(:has(article time)) {
         grid-template-columns: 1fr;
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
 
     /* Especificidad 013 */
-    main > section:last-of-type > section {
+    main > section:last-of-type > section:has(article time) {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
@@ -267,7 +272,7 @@ main > section:last-of-type > section {
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 
     /* Especificidad 013 */
-    main > section:last-of-type > section {
+    main > section:last-of-type > section:has(article time) {
         grid-template-columns: repeat(7, 1fr);
         /*advertencia: redefinición de grid-template-columns por media query*/
     }
@@ -278,7 +283,7 @@ main > section:last-of-type > section {
 @media only screen and (min-width: 1025px) {
 
     /* Especificidad 013 */
-    main > section:last-of-type > section {
+    main > section:last-of-type > section:has(article time) {
         grid-template-columns: repeat(7, 1fr);
         /*advertencia: redefinición de grid-template-columns por media query*/
     }

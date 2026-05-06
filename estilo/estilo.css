@@ -347,9 +347,9 @@ caption {
 
 /* METEOROLOGÍA (meteorologia.html) */
 
-/* Tiempo actual: article hijo directo de la primera section */
-/* Especificidad 003 */
-main > section:first-of-type > article {
+/* Tiempo actual meteorología */
+/* Especificidad 014 */
+main > section:first-of-type > article:first-of-type:last-of-type {
     background-color: #E8F4FD;
     border: 1px solid #B8D8F0;
     border-radius: 4px;
@@ -362,7 +362,7 @@ main > section:first-of-type > article {
 
 /* Días de previsión: articles generados por JS dentro de la section anidada */
 /* Especificidad 004 */
-main > section:last-of-type > section > article {
+main > section:last-of-type > section > article:has(time) {
     background-color: #E8F4FD;
     border: 1px solid #B8D8F0;
     border-left: 4px solid #B8D8F0;
@@ -374,20 +374,20 @@ main > section:last-of-type > section > article {
 
 /* Icono: primer p */
 /* Especificidad 005 */
-main > section:last-of-type > section > article p:first-of-type {
+main > section:last-of-type > section > article:has(time) p:first-of-type {
     font-size: 1.8em;
     margin: 0.3em 0;
 }
 
 /* Temperatura: segundo p */
 /* Especificidad 005 */
-main > section:last-of-type > section > article p:nth-of-type(2) {
+main > section:last-of-type > section > article:has(time) p:nth-of-type(2) {
     font-size: 0.9em;
 }
 
 /* Lluvia: último p */
 /* Especificidad 005 */
-main > section:last-of-type > section > article p:last-of-type {
+main > section:last-of-type > section > article:has(time) p:last-of-type {
     font-size: 0.78em;
     color: #555555;
     /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
@@ -522,7 +522,7 @@ main section div > article {
 
 /* Galería de fotos del hito */
 /* Especificidad 003 */
-main > section article > div {
+main > section:nth-of-type(2) > article > section > article > figure {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 0.8em;
@@ -531,14 +531,28 @@ main > section article > div {
 
 /* Foto de la galería */
 /* Especificidad 004 */
-main > section article > div > img {
+main > section:nth-of-type(2) > article > section > article > figure > img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 4px;
     border: 2px solid #D4A84B;
-    /*advertencia: width sobrescribe el max-width heredado de img*/
-    /*advertencia: height sobrescribe el auto heredado de img*/
+}
+/* Resetear article de info-ruta (section[2] de rutas.html) */
+main > section:nth-of-type(2) > article {
+    background-color: transparent;
+    border-left: none;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+/* Borde amarillo solo en la section de hitos */
+main > section:nth-of-type(2) > article > section {
+    padding: 1em 1.5em;
+    background-color: #FFF8EE;
+    border-radius: 4px;
+    /* sin border-left aquí */
 }
 
 /* Referencias de rutas - URLs largas */
@@ -549,13 +563,13 @@ main > section > ul > li > a {
 
 /* Altimetría - SVG adaptable (section anidada dentro de section) */
 /* Especificidad 013 */
-main > section:last-of-type > section > div {
+main > section:last-of-type > section {
     overflow: auto;
     width: 100%;
 }
 
 /* Especificidad 014 */
-main > section:last-of-type > section > div > svg {
+main > section:last-of-type > section > svg {
     width: 100%;
     height: auto;
     display: block;
@@ -592,20 +606,24 @@ main > p[role="alert"] {
 
 /* Etiqueta del campo */
 /* Especificidad 004 */
-main form > div label {
+main form label {
+    display: block;
     font-weight: bold;
+    margin-top: 0.8em;
 }
 
 /* Controles del campo */
 /* Especificidad 004, 004, 004 */
-main form > div input,
-main form > div select,
-main form > div textarea {
+main form input,
+main form select,
+main form textarea {
+    display: block;
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 0.95em;
     width: 100%;
+    margin-bottom: 0.5em;
 }
 
 /* DISEÑO RESPONSIVO — tablas adaptables */
