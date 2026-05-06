@@ -87,7 +87,7 @@ class Meteorologia {
 
     mostrarPrevision(daily, dailyUnits) {
         let $contenedor = $("#prevision-contenedor");
-        $contenedor.empty();
+        $contenedor.find("article, p").remove();
 
         daily.time.forEach((fecha, i) => {
             let info = this.codigosWMO[daily.weathercode[i]] || { desc: "Desconocido", icono: "🌡️" };

@@ -11,7 +11,7 @@
 
    ─ meteorologia.html
        main > section:first-of-type > article        → tiempo actual
-       main > section:last-of-type > section > article → días de previsión (JS)
+       main > section:last-of-type > article > article → días de previsión (JS)
 
    ─ juego.html
        main section article > meter                         → barra de progreso
@@ -360,9 +360,15 @@ main > section:first-of-type > article:first-of-type:last-of-type {
     /*advertencia: color de fondo sobrescribe el heredado de body (#FDF8F0)*/
 }
 
-/* Días de previsión: articles generados por JS dentro de la section anidada */
+/* Días de previsión: articles generados por JS dentro del article#prevision-contenedor */
+/* Ocultar h3 placeholder del contenedor cuando ya hay artículos de días */
+/* Especificidad 005 */
+main > section:last-of-type > article:has(article time) > h3 {
+    display: none;
+}
+
 /* Especificidad 004 */
-main > section:last-of-type > section > article:has(time) {
+main > section:last-of-type > article > article:has(time) {
     background-color: #E8F4FD;
     border: 1px solid #B8D8F0;
     border-left: 4px solid #B8D8F0;
@@ -374,20 +380,20 @@ main > section:last-of-type > section > article:has(time) {
 
 /* Icono: primer p */
 /* Especificidad 005 */
-main > section:last-of-type > section > article:has(time) p:first-of-type {
+main > section:last-of-type > article > article:has(time) p:first-of-type {
     font-size: 1.8em;
     margin: 0.3em 0;
 }
 
 /* Temperatura: segundo p */
 /* Especificidad 005 */
-main > section:last-of-type > section > article:has(time) p:nth-of-type(2) {
+main > section:last-of-type > article > article:has(time) p:nth-of-type(2) {
     font-size: 0.9em;
 }
 
 /* Lluvia: último p */
 /* Especificidad 005 */
-main > section:last-of-type > section > article:has(time) p:last-of-type {
+main > section:last-of-type > article > article:has(time) p:last-of-type {
     font-size: 0.78em;
     color: #555555;
     /*advertencia: color sobrescribe el heredado de body (#1a1a1a)*/
@@ -538,6 +544,7 @@ main > section:nth-of-type(2) > article > section > article > figure > img {
     border-radius: 4px;
     border: 2px solid #D4A84B;
 }
+
 /* Resetear article de info-ruta (section[2] de rutas.html) */
 main > section:nth-of-type(2) > article {
     background-color: transparent;
@@ -552,7 +559,6 @@ main > section:nth-of-type(2) > article > section {
     padding: 1em 1.5em;
     background-color: #FFF8EE;
     border-radius: 4px;
-    /* sin border-left aquí */
 }
 
 /* Referencias de rutas - URLs largas */
@@ -561,15 +567,16 @@ main > section > ul > li > a {
     word-break: break-all;
 }
 
-/* Altimetría - SVG adaptable (section anidada dentro de section) */
+/* Altimetría - SVG adaptable (figure anidada dentro de section) */
 /* Especificidad 013 */
-main > section:last-of-type > section {
+main > section:last-of-type > figure {
     overflow: auto;
     width: 100%;
+    margin: 0;
 }
 
 /* Especificidad 014 */
-main > section:last-of-type > section > svg {
+main > section:last-of-type > figure > svg {
     width: 100%;
     height: auto;
     display: block;

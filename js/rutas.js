@@ -145,10 +145,8 @@ class GestorRutas {
             "<li><a href='" + ref + "' target='_blank' rel='noopener noreferrer'>" + ref + "</a></li>"
         ).join("");
 
-        // Todo el contenido va dentro de un article para no romper el modelo
-        // de contenido de section#info-ruta con h2 sueltos
-        let html = "<article>" +
-            "<h2>" + ruta.nombre + "</h2>" +
+        let html =
+            "<h3>" + ruta.nombre + "</h3>" +
             "<ul>" +
             "<li><strong>Tipo:</strong> " + ruta.tipo + "</li>" +
             "<li><strong>Transporte:</strong> " + ruta.transporte + "</li>" +
@@ -159,13 +157,12 @@ class GestorRutas {
             "<li><strong>Inicio:</strong> " + ruta.lugarInicio + "</li>" +
             "</ul>" +
             "<p>" + ruta.descripcion + "</p>" +
-            "<h3>Hitos de la ruta</h3>" +
-            "<section><h3 hidden>Hitos</h3>" + hitosHtml + "</section>" +
-            "<h3>Referencias</h3>" +
-            "<ul>" + referenciasHtml + "</ul>" +
-            "</article>";
+            "<h4>Hitos de la ruta</h4>" +
+            "<section aria-label='Hitos de la ruta'>" + hitosHtml + "</section>" +
+            "<h4>Referencias</h4>" +
+            "<ul>" + referenciasHtml + "</ul>";
 
-        $("#info-ruta").html(html);
+        $("#info-ruta-contenido").html(html);
     }
 
     cargarMapa(ruta) {
