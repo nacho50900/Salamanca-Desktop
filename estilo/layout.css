@@ -20,35 +20,35 @@
        main form fieldset          → agrupa label + control semánticamente
    ============================================================ */
 
-/* NOTA: El validador genera advertencias de redefinición de column-gap y row-gap
-   en línea 0 porque la propiedad shorthand "gap" se expande internamente a
-   column-gap y row-gap. No corresponde a ninguna línea real del archivo. */
+/* NOTA (línea 0 - Redefinición de column-gap / Redefinición de row-gap):
+   El shorthand "gap" se expande internamente a column-gap y row-gap; el validador
+   detecta la redefinición pero no puede señalar una línea real del archivo. */
 
-/* Especificidad 001 */
+/* Especificidad 0,0,1 */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Especificidad 001 */
+/* Especificidad 0,0,1 */
 main {
     flex: 1;
 }
 
-/* Especificidad 001 */
+/* Especificidad 0,0,1 */
 header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-/* Especificidad 002 */
+/* Especificidad 0,0,2 */
 header > h1 {
     flex-basis: 100%; /* ocupa toda la fila, empuja nav abajo */
 }
 
-/* Especificidad 002 */
+/* Especificidad 0,0,2 */
 header > nav {
     display: flex;
     flex-direction: row;
@@ -58,18 +58,18 @@ header > nav {
     flex: 1;
 }
 
-/* Especificidad 002 */
+/* Especificidad 0,0,2 */
 header p {
     flex-basis: 100%; /* ocupa toda la fila */
 }
 
-/* Especificidad 002 */
+/* Especificidad 0,0,2 */
 header button {
     display: none;
 }
 
 /* NOTICIAS (index.html) - aside donde JS inserta las tarjetas */
-/* Especificidad 013 */
+/* Especificidad 0,1,3 */
 main > section:last-of-type > aside {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -80,7 +80,7 @@ main > section:last-of-type > aside {
    section:nth-of-type(2) es la section#info-ruta (segunda en main de rutas.html).
    En meteorologia.html main tiene solo 2 sections y no hay section anidada con hitos,
    por lo que este selector no colisiona. */
-/* Especificidad 013 */
+/* Especificidad 0,1,4 (primer selector) / 0,1,3 (segundo selector) */
 main > section:nth-of-type(2) > article > section,
 main > section:last-of-type > section {
     display: grid;
@@ -92,7 +92,7 @@ main > section:last-of-type > section {
    section:last-of-type > article apunta al article#prevision-contenedor anidado.
    En rutas.html la última section contiene figure#altimetria-ruta,
    por lo que este selector no colisiona. */
-/* Especificidad 013 */
+/* Especificidad 0,2,5 — :has cuenta como pseudoclase y su argumento suma elementos */
 main > section:last-of-type > article:has(article time) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -103,65 +103,65 @@ main > section:last-of-type > article:has(article time) {
 
 @media (max-width: 485px) {
 
-    /* Especificidad 001 */
+    /* Especificidad 0,0,1 */
     header {
         flex-direction: column;
-        /*advertencia: redefinición de flex-direction por media query*/
+        /* Redefinición de flex-direction: sobreescribe "row" del bloque base para apilar en vertical. */
         align-items: center;
     }
 
-    /* Especificidad 002 */
+    /* Especificidad 0,0,2 */
     header button {
         display: block;
-        /*advertencia: redefinición de display por media query*/
+        /* Redefinición de display: sobreescribe "none" del bloque base para mostrar el botón hamburguesa. */
     }
 
-    /* Especificidad 002 */
+    /* Especificidad 0,0,2 */
     header > nav {
         display: none;
-        /*advertencia: redefinición de display por media query*/
+        /* Redefinición de display: oculta el nav por defecto; JS lo muestra añadiendo menu-visible. */
         flex-direction: column;
-        /*advertencia: redefinición de flex-direction por media query*/
+        /* Redefinición de flex-direction: sobreescribe "row" del bloque base para el menú desplegable. */
     }
 
     /* Menú móvil desplegado: JS añade nav.menu-visible */
     /* Selector de class permitido: menú móvil según especificación del proyecto */
-    /* Especificidad 011 */
+    /* Especificidad 0,1,2 */
     header nav.menu-visible {
         display: flex;
-        /*advertencia: redefinición de display por media query*/
+        /* Redefinición de display: recupera "flex" para mostrar el menú al añadir la clase menu-visible. */
         flex-direction: column;
-        /*advertencia: redefinición de flex-direction por media query*/
+        /* Redefinición de flex-direction: mantiene "column" para los ítems del menú desplegado. */
     }
 
-    /* Especificidad 002 */
+    /* Especificidad 0,0,2 */
     header p {
         display: none;
-        /*advertencia: redefinición de display por media query*/
+        /* Redefinición de display: oculta el párrafo del header para liberar espacio en móvil. */
     }
 
     /*Hitos en una columna en móviles*/
-    /* Especificidad 013 */
+    /* Especificidad 0,1,4 (primer selector) / 0,1,3 (segundo selector) */
     main > section:nth-of-type(2) > article > section,
     main > section:last-of-type > section {
         grid-template-columns: 1fr;
-        /*advertencia: redefinición de grid-template-columns por media query*/
+        /* Redefinición de grid-template-columns: sobreescribe "repeat(2, 1fr)" del bloque base para una columna. */
     }
 
-    /* Especificidad 013 */
+    /* Especificidad 0,1,3 */
     main > section:last-of-type > aside {
         display: grid;
-        /*advertencia: redefinición de display por media query*/
+        /* Redefinición de display: reitera "grid" del bloque base para asegurar el contexto en este media query. */
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        /*advertencia: redefinición de grid-template-columns por media query*/
+        /* Redefinición de grid-template-columns: mismo valor que el bloque base; se repite para que la regla sea autónoma. */
         gap: 1.2em;
-        /*advertencia: redefinición de gap por media query*/
+        /* Redefinición de gap: mismo valor que el bloque base; se repite por la misma razón. */
     }
 
-    /* Especificidad 013 */
+    /* Especificidad 0,2,5 */
     main > section:last-of-type > article:has(article time) {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-        /*advertencia: redefinición de grid-template-columns por media query*/
+        /* Redefinición de grid-template-columns: reduce el mínimo de 110px a 90px para pantallas estrechas. */
     }
 
 }
@@ -171,17 +171,17 @@ main > section:last-of-type > article:has(article time) {
 @media only screen and (max-width: 768px) {
 
     /*Hitos en una columna en tablets pequeñas*/
-    /* Especificidad 013 */
+    /* Especificidad 0,1,4 (primer selector) / 0,1,3 (segundo selector) */
     main > section:nth-of-type(2) > article > section,
     main > section:last-of-type > section {
         grid-template-columns: 1fr;
-        /*advertencia: redefinición de grid-template-columns por media query*/
+        /* Redefinición de grid-template-columns: sobreescribe "repeat(2, 1fr)" del bloque base para una columna. */
     }
 
-    /* Especificidad 013 */
+    /* Especificidad 0,2,5 */
     main > section:last-of-type > article:has(article time) {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-        /*advertencia: redefinición de grid-template-columns por media query*/
+        /* Redefinición de grid-template-columns: reduce el mínimo de 110px a 90px para tablets pequeñas. */
     }
 }
 
@@ -189,10 +189,10 @@ main > section:last-of-type > article:has(article time) {
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 
-    /* Especificidad 013 */
+    /* Especificidad 0,2,5 */
     main > section:last-of-type > article:has(article time) {
         grid-template-columns: repeat(7, 1fr);
-        /*advertencia: redefinición de grid-template-columns por media query*/
+        /* Redefinición de grid-template-columns: fija 7 columnas para mostrar los 7 días en una fila. */
     }
 }
 
@@ -200,10 +200,10 @@ main > section:last-of-type > article:has(article time) {
 
 @media only screen and (min-width: 1025px) {
 
-    /* Especificidad 013 */
+    /* Especificidad 0,2,5 */
     main > section:last-of-type > article:has(article time) {
         grid-template-columns: repeat(7, 1fr);
-        /*advertencia: redefinición de grid-template-columns por media query*/
+        /* Redefinición de grid-template-columns: fija 7 columnas para mostrar los 7 días en una fila. */
     }
 }
 
@@ -211,15 +211,15 @@ main > section:last-of-type > article:has(article time) {
 
 @media print {
 
-    /* Especificidad 001 */
+    /* Especificidad 0,0,1 */
     nav {
         display: none;
-        /*advertencia: redefinición de display por media query*/
+        /* Redefinición de display: oculta la navegación en impresión. */
     }
 
-    /* Especificidad 001 */
+    /* Especificidad 0,0,1 */
     button {
         display: none;
-        /*advertencia: redefinición de display por media query*/
+        /* Redefinición de display: oculta todos los botones en impresión. */
     }
 }
