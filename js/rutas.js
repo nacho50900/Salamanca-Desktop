@@ -174,18 +174,29 @@ class GestorRutas {
             return;
         }
 
+        // Esperar a que google.maps.Map esté disponible (condición de carrera con loading=async)
+        if (typeof google.maps.Map !== "function") {
+            setTimeout(() => this.cargarMapa(ruta), 100);
+            return;
+        }
+
         let mapa = new google.maps.Map(contenedorMapa, {
             center: { lat: ruta.latInicio, lng: ruta.lonInicio },
             zoom: 12,
-            mapTypeId: "terrain"
+            mapTypeId: "terrain",
+            mapId: "DEMO_MAP_ID"
         });
 
         ruta.hitos.forEach((hito, i) => {
-            let marcador = new google.maps.Marker({
+            let contenidoPin = document.createElement("div");
+            contenidoPin.textContent = String(i + 1);
+            contenidoPin.style.cssText = "background:#8B1A1A;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;";
+
+            let marcador = new google.maps.marker.AdvancedMarkerElement({
                 position: { lat: hito.latitud, lng: hito.longitud },
                 map: mapa,
                 title: hito.nombre,
-                label: String(i + 1)
+                content: contenidoPin
             });
 
             let ventana = new google.maps.InfoWindow({
@@ -193,7 +204,7 @@ class GestorRutas {
                     hito.descripcion.substring(0, 100) + "…</p>"
             });
 
-            marcador.addListener("click", () => ventana.open(mapa, marcador));
+            marcador.addListener("gmp-click", () => ventana.open(mapa, marcador));
         });
 
         let coordenadas = ruta.hitos.map(h => ({ lat: h.latitud, lng: h.longitud }));
