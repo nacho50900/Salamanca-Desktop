@@ -844,7 +844,6 @@ header + article figure figcaption {
         height: 160px;
         /*advertencia: Redefinición de height: sobrescribe el valor de 200px definido fuera del media query.*/
     }
-}
 
     /* Especificidad 012 */
     header button:hover {
