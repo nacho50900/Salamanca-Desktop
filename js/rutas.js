@@ -180,6 +180,28 @@ class GestorRutas {
             return;
         }
 
+        // Cargar y parsear el archivo KML generado por Python
+        $.ajax({
+            url: ruta.planimetria,
+            method: "GET",
+            dataType: "xml",
+            success: (kmlDoc) => {
+                console.log("KML cargado:", ruta.planimetria);
+                this._renderizarKmlEnMapa(kmlDoc, ruta, contenedorMapa);
+            },
+            error: (jqXHR, textStatus, errorThrown) => {
+                console.error("Error al cargar KML:", textStatus, errorThrown);
+                contenedorMapa.innerHTML = "<p>No se pudo cargar el archivo KML de planimetría (<em>" +
+                    ruta.planimetria + "</em>).</p>";
+            }
+        });
+    }
+
+    _renderizarKmlEnMapa(kmlDoc, ruta, contenedorMapa) {
+        // El KML usa el namespace http://www.opengis.net/kml/2.2
+        // jQuery no maneja namespaces en XML, usamos la API DOM directamente
+        let ns = "http://www.opengis.net/kml/2.2";
+
         let mapa = new google.maps.Map(contenedorMapa, {
             center: { lat: ruta.latInicio, lng: ruta.lonInicio },
             zoom: 12,
@@ -187,37 +209,89 @@ class GestorRutas {
             mapId: "DEMO_MAP_ID"
         });
 
-        ruta.hitos.forEach((hito, i) => {
-            let contenidoPin = document.createElement("div");
-            contenidoPin.textContent = String(i + 1);
-            contenidoPin.style.cssText = "background:#8B1A1A;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;";
+        let placemarks = kmlDoc.getElementsByTagNameNS(ns, "Placemark");
+        // El primer Placemark es el punto de inicio de la ruta (no es un hito numerado).
+        // Arrancamos en -1: al procesar ese primero sube a 0 y no muestra número;
+        // a partir del segundo (hito 1) muestra 1, 2, 3…
+        let marcadorIndex = -1;
 
-            let marcador = new google.maps.marker.AdvancedMarkerElement({
-                position: { lat: hito.latitud, lng: hito.longitud },
-                map: mapa,
-                title: hito.nombre,
-                content: contenidoPin
-            });
+        for (let i = 0; i < placemarks.length; i++) {
+            let placemark = placemarks[i];
+            let nombreElem = placemark.getElementsByTagNameNS(ns, "name")[0];
+            let descElem   = placemark.getElementsByTagNameNS(ns, "description")[0];
+            let nombre     = nombreElem ? nombreElem.textContent.trim() : "";
+            let desc       = descElem   ? descElem.textContent.trim()   : "";
 
-            let ventana = new google.maps.InfoWindow({
-                content: "<strong>" + hito.nombre + "</strong><p>" +
-                    hito.descripcion.substring(0, 100) + "…</p>"
-            });
+            // --- Placemark de tipo Point -> marcador ---
+            let pointElems = placemark.getElementsByTagNameNS(ns, "Point");
+            if (pointElems.length > 0) {
+                let coordsText = pointElems[0]
+                    .getElementsByTagNameNS(ns, "coordinates")[0]
+                    .textContent.trim();
+                // Formato KML: lon,lat,alt
+                let partes = coordsText.split(",");
+                let lon = parseFloat(partes[0]);
+                let lat = parseFloat(partes[1]);
 
-            marcador.addListener("gmp-click", () => ventana.open(mapa, marcador));
-        });
+                marcadorIndex++;
+                let contenidoPin = document.createElement("div");
+                if (marcadorIndex === 0) {
+                    // Punto de inicio: estrella sin número
+                    contenidoPin.textContent = "★";
+                    contenidoPin.style.cssText =
+                        "background:#2255AA;color:#fff;border-radius:50%;" +
+                        "width:24px;height:24px;display:flex;align-items:center;" +
+                        "justify-content:center;font-weight:bold;font-size:14px;";
+                } else {
+                    // Hitos numerados desde 1
+                    contenidoPin.textContent = String(marcadorIndex);
+                    contenidoPin.style.cssText =
+                        "background:#8B1A1A;color:#fff;border-radius:50%;" +
+                        "width:24px;height:24px;display:flex;align-items:center;" +
+                        "justify-content:center;font-weight:bold;font-size:12px;";
+                }
 
-        let coordenadas = ruta.hitos.map(h => ({ lat: h.latitud, lng: h.longitud }));
-        new google.maps.Polyline({
-            path: coordenadas,
-            geodesic: true,
-            strokeColor: "#8B1A1A",
-            strokeOpacity: 1.0,
-            strokeWeight: 3,
-            map: mapa
-        });
+                let marcador = new google.maps.marker.AdvancedMarkerElement({
+                    position: { lat: lat, lng: lon },
+                    map: mapa,
+                    title: nombre,
+                    content: contenidoPin
+                });
 
-        console.log("Mapa cargado para ruta:", ruta.nombre);
+                let ventana = new google.maps.InfoWindow({
+                    content: "<strong>" + nombre + "</strong>" +
+                        (desc ? "<p>" + desc.substring(0, 120) + "…</p>" : "")
+                });
+                marcador.addListener("gmp-click", () => ventana.open(mapa, marcador));
+            }
+
+            // --- Placemark de tipo LineString -> polilínea del trazado ---
+            let lineElems = placemark.getElementsByTagNameNS(ns, "LineString");
+            if (lineElems.length > 0) {
+                let coordsText = lineElems[0]
+                    .getElementsByTagNameNS(ns, "coordinates")[0]
+                    .textContent.trim();
+                // Cada coordenada: lon,lat,alt separadas por espacios o saltos de línea
+                let coordenadas = coordsText
+                    .split(/\s+/)
+                    .filter(c => c.length > 0)
+                    .map(c => {
+                        let p = c.split(",");
+                        return { lat: parseFloat(p[1]), lng: parseFloat(p[0]) };
+                    });
+
+                new google.maps.Polyline({
+                    path: coordenadas,
+                    geodesic: true,
+                    strokeColor: "#8B1A1A",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 3,
+                    map: mapa
+                });
+            }
+        }
+
+        console.log("Mapa renderizado desde KML para ruta:", ruta.nombre);
     }
 
     cargarAltimetria(ruta) {

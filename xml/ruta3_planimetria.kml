@@ -96,7 +96,7 @@
                     instaló 388 retrat</description>
       <styleUrl>#hitoStyle</styleUrl>
       <Point>
-        <coordinates>-6.084,40.506,820.0</coordinates>
+        <coordinates>-6.0517,40.4927,820.0</coordinates>
       </Point>
     </Placemark>
 
@@ -113,7 +113,7 @@
           -6.1728,40.5319,1723.0
           -6.097,40.456,680.0
           -6.084,40.449,700.0
-          -6.084,40.506,820.0
+          -6.0517,40.4927,820.0
         </coordinates>
       </LineString>
     </Placemark>
