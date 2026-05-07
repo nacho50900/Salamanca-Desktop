@@ -315,46 +315,43 @@ class Reservas {
 
         <section>
             <h2>Recursos turísticos disponibles</h2>
-            <section>
-                <h2 hidden>Lista de recursos</h2>
-                <?php if (empty($recursos)): ?>
-                    <p>No hay recursos disponibles en este momento.</p>
-                <?php else: ?>
-                    <?php foreach ($recursos as $recurso): ?>
-                    <article>
-                        <h3>
-                            <?php echo htmlspecialchars($recurso["nombre"], ENT_QUOTES); ?>
-                            <small>(<?php echo htmlspecialchars($recurso["tipo"], ENT_QUOTES); ?>)</small>
-                        </h3>
-                        <p><?php echo htmlspecialchars($recurso["descripcion"], ENT_QUOTES); ?></p>
-                        <ul>
-                            <li><strong>Precio:</strong> <?php echo number_format((float)$recurso["precio"], 2); ?> €/persona</li>
-                            <li><strong>Disponible:</strong>
-                                <?php echo (new DateTime($recurso["fecha_inicio"]))->format("d/m/Y H:i"); ?>
-                                al <?php echo (new DateTime($recurso["fecha_fin"]))->format("d/m/Y H:i"); ?>
-                            </li>
-                            <li><strong>Plazas disponibles:</strong>
-                                <?php echo $this->recursoDAO->plazasDisponibles((int)$recurso["id_recurso"]); ?>
-                            </li>
-                        </ul>
-                        <form method="post" action="reservas.php">
-                            <input type="hidden" name="accion" value="reservar" />
-                            <input type="hidden" name="id_recurso" value="<?php echo (int)$recurso["id_recurso"]; ?>" />
-                                <label for="personas-<?php echo (int)$recurso["id_recurso"]; ?>">Número de personas</label>
-                                <input type="number"
-                                    id="personas-<?php echo (int)$recurso["id_recurso"]; ?>"
-                                    name="num_personas" min="1"
-                                    max="<?php echo $this->recursoDAO->plazasDisponibles((int)$recurso["id_recurso"]); ?>"
-                                    value="1" />
-                                <label for="notas-<?php echo (int)$recurso["id_recurso"]; ?>">Notas</label>
-                                <textarea id="notas-<?php echo (int)$recurso["id_recurso"]; ?>" name="notas" rows="2"></textarea>
-                            <button type="submit">Reservar</button>
-                        </form>
-                    </article>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </section>
-
+            <?php if (empty($recursos)): ?>
+                <p>No hay recursos disponibles en este momento.</p>
+            <?php else: ?>
+                <?php foreach ($recursos as $recurso): ?>
+                <article>
+                    <h3>
+                        <?php echo htmlspecialchars($recurso["nombre"], ENT_QUOTES); ?>
+                        <small>(<?php echo htmlspecialchars($recurso["tipo"], ENT_QUOTES); ?>)</small>
+                    </h3>
+                    <p><?php echo htmlspecialchars($recurso["descripcion"], ENT_QUOTES); ?></p>
+                    <ul>
+                        <li><strong>Precio:</strong> <?php echo number_format((float)$recurso["precio"], 2); ?> €/persona</li>
+                        <li><strong>Disponible:</strong>
+                            <?php echo (new DateTime($recurso["fecha_inicio"]))->format("d/m/Y H:i"); ?>
+                            al <?php echo (new DateTime($recurso["fecha_fin"]))->format("d/m/Y H:i"); ?>
+                        </li>
+                        <li><strong>Plazas disponibles:</strong>
+                            <?php echo $this->recursoDAO->plazasDisponibles((int)$recurso["id_recurso"]); ?>
+                        </li>
+                    </ul>
+                    <form method="post" action="reservas.php">
+                        <input type="hidden" name="accion" value="reservar" />
+                        <input type="hidden" name="id_recurso" value="<?php echo (int)$recurso["id_recurso"]; ?>" />
+                            <label for="personas-<?php echo (int)$recurso["id_recurso"]; ?>">Número de personas</label>
+                            <input type="number"
+                                id="personas-<?php echo (int)$recurso["id_recurso"]; ?>"
+                                name="num_personas" min="1"
+                                max="<?php echo $this->recursoDAO->plazasDisponibles((int)$recurso["id_recurso"]); ?>"
+                                value="1" />
+                            <label for="notas-<?php echo (int)$recurso["id_recurso"]; ?>">Notas</label>
+                            <textarea id="notas-<?php echo (int)$recurso["id_recurso"]; ?>" name="notas" rows="2"></textarea>
+                        <button type="submit">Reservar</button>
+                    </form>
+                </article>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </section>
         <?php
     }
 }
