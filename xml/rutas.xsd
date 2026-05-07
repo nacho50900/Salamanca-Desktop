@@ -61,7 +61,7 @@
     <!-- Tipo para hora opcional -->
     <xs:complexType name="tipoHoraOpcional">
         <xs:simpleContent>
-            <xs:extension base="xs:string">
+            <xs:extension base="xs:time">
                 <xs:attribute name="opcional" type="xs:boolean" default="true"/>
             </xs:extension>
         </xs:simpleContent>

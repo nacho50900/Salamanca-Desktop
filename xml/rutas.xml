@@ -7,7 +7,7 @@
         <tipo>Arquitectura y monumentos</tipo>
         <transporte>A pie</transporte>
         <fechaInicio opcional="true">2026-04-01</fechaInicio>
-        <horaInicio opcional="true">09:00</horaInicio>
+        <horaInicio opcional="true">09:00:00</horaInicio>
         <duracion>3 horas</duracion>
         <agencia>Salamanca Turismo</agencia>
         <descripcion>
@@ -140,7 +140,7 @@
         <tipo>Paisajística</tipo>
         <transporte>Bicicleta</transporte>
         <fechaInicio opcional="true">2026-05-15</fechaInicio>
-        <horaInicio opcional="true">08:30</horaInicio>
+        <horaInicio opcional="true">08:30:00</horaInicio>
         <duracion>6 horas</duracion>
         <agencia>NaturaTur Arribes</agencia>
         <descripcion>
@@ -266,7 +266,7 @@
         <tipo>Senderismo</tipo>
         <transporte>A pie</transporte>
         <fechaInicio opcional="true">2026-06-10</fechaInicio>
-        <horaInicio opcional="true">07:00</horaInicio>
+        <horaInicio opcional="true">07:00:00</horaInicio>
         <duracion>5 horas</duracion>
         <agencia>Sierra de Francia Activa</agencia>
         <descripcion>

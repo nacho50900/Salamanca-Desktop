@@ -1,5 +1,5 @@
-<!-- rutas.dtd – Definición de Tipo de Documento para rutas turísticas de Salamanca -->
-<!-- UO300737 – Software y estándares para la Web -->
+<!-- rutas.dtd - Definición de Tipo de Documento para rutas turísticas de Salamanca -->
+<!-- UO300737 - Software y estándares para la Web -->
 
 <!ELEMENT rutas (ruta+)>
 <!ATTLIST rutas
@@ -55,7 +55,7 @@
 <!ELEMENT fotos (foto+)>
 <!ELEMENT foto (#PCDATA)>
 
-<!ELEMENT videos (video+)>
+<!ELEMENT videos (video*)>
 <!ELEMENT video (#PCDATA)>
 
 <!ELEMENT planimetria (#PCDATA)>
