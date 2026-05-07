@@ -213,7 +213,7 @@ def generar_svg(ruta: ET.Element, output_path: str) -> None:
         f'     viewBox="0 0 {SVG_W} {SVG_H}" role="img"',
         f'     width="100%" height="{SVG_H}" preserveAspectRatio="xMidYMid meet"',
         f'     aria-label="Altimetría de la ruta {_escape_xml(nombre_ruta)}">',
-        f'  <title>Altimetría – {_escape_xml(nombre_ruta)}</title>',
+        f'  <title>Altimetría - {_escape_xml(nombre_ruta)}</title>',
         f'  <desc>Perfil de alturas de la ruta {_escape_xml(nombre_ruta)}, '
         f'distancia total {dist_max:.1f} km</desc>',
         '',
@@ -223,7 +223,7 @@ def generar_svg(ruta: ET.Element, output_path: str) -> None:
         f'  <!-- Título -->',
         f'  <text x="{SVG_W // 2}" y="20" text-anchor="middle"',
         f'        font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#8b1a1a">',
-        f'    Altimetría – {_escape_xml(nombre_ruta)}',
+        f'    Altimetría - {_escape_xml(nombre_ruta)}',
         '  </text>',
         '',
         '  <!-- Cuadrícula y eje Y (altitud en metros) -->',
@@ -348,3 +348,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
