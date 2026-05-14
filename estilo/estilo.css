@@ -3,44 +3,48 @@
 /* Estilos generales del proyecto Turismo Salamanca */
 
 /* ============================================================
-   SELECTORES SIN ID NI CLASS: ESTRUCTURA HTML ASUMIDA
+   SELECTORES SIN ID NI CLASS: ESTRUCTURA HTML
    Selectores de class permitidos únicamente:
-     nav a.active                        -> opción activa del menú de navegación
-     main > section > nav > button.active -> tab de ruta activa (rutas.html)
-     header nav.menu-visible             -> menú móvil desplegado (menu-movil.css)
+     nav a.active                         -> opción activa del menú de navegación
+     header nav.menu-visible              -> menú móvil desplegado (menu-movil.css)
 
-   ─ meteorologia.html
-       main > section:first-of-type > article        -> tiempo actual
+     - index.html
+       header + article                              -> carrusel de fotos (JS)
+       header + article h2                           -> título del carrusel
+       header + article figure                       -> figura del carrusel
+       header + article figure img                   -> imagen del carrusel
+       header + article figure figcaption            -> pie de foto del carrusel
+       main > section > aside > article > h3         -> h3 de tarjeta de noticia (JS)
+
+   - meteorologia.html
+       main > section:first-of-type > article          -> tiempo actual
        main > section:last-of-type > article > article -> días de previsión (JS)
 
-   ─ juego.html
-       main section article > meter                         -> barra de progreso
-       main section article > ul                            -> lista de opciones
-       main section article > ul > li[data-correcta="true"] -> opción correcta
+   - juego.html
+       main section article > meter                           -> barra de progreso
+       main section article > ul                              -> lista de opciones
+       main section article > ul > li[data-correcta="true"]   -> opción correcta
        main section article > ul > li[data-incorrecta="true"] -> opción incorrecta
-       main section article > p:first-of-type               -> puntuación final
+       main section article > p:first-of-type                 -> puntuación final
 
-   ─ rutas.html
-       main > section > nav                          -> selector de rutas (tabs)
-       main > section > nav > button                 -> botón de tab
-       main > section > nav > button.active          -> tab activo
-       main > section:nth-of-type(2) > article > section > article > figure     -> galería de fotos del hito
+   - rutas.html
+       main > section > nav                                                       -> selector de rutas (tabs)
+       main > section > nav > button                                              -> botón de tab
+       main > section > nav > button[data-activa="true"]                          -> tab de ruta activa
+       main > section:nth-of-type(2) > article > section > article > figure       -> galería de fotos del hito
        main > section:nth-of-type(2) > article > section > article > figure > img -> foto del hito
-       main > section > article > ul:last-of-type > li > a  -> referencias URL largas
-       main > section:nth-of-type(3) > div           -> mapa dinámico de planimetría
-       main > section:last-of-type > figure          -> contenedor SVG altimetría
-       main > section:last-of-type > figure > svg    -> SVG altimetría adaptable
+       main > section > article > ul:last-of-type > li > a                        -> referencias URL largas
+       main > section:nth-of-type(3) > div                                        -> mapa dinámico de planimetría
+       main > section:last-of-type > figure                                       -> contenedor SVG altimetría
+       main > section:last-of-type > figure > svg                                 -> SVG altimetría adaptable    
 
-   ─ reservas.php
+   - reservas.php
        main > p[aria-live="polite"]     -> mensaje de éxito
        main > p[role="alert"]           -> mensaje de error
        main form label                  -> etiqueta del campo
        main form input/select/textarea  -> control del campo
    ============================================================ */
 
-/* NOTA (línea 0 - Redefinición de column-gap / Redefinición de row-gap):
-   El shorthand "gap" se expande internamente a column-gap y row-gap; el validador
-   detecta la redefinición pero no puede señalar una línea real del archivo. */
 
 /* Especificidad 001 */
 body {
@@ -370,17 +374,68 @@ caption {
     /*advertencia: fondo heredado de body (#FDF8F0) - contraste ratio > 7:1, cumple AAA*/
 }
 
-/* METEOROLOGÍA (meteorologia.html) */
+/* INDEX */
+
+/* Especificidad 003 */
+header + article h2 {
+    color: #F5F0E8;
+    /*advertencia: Hay un color de primer plano establecido y no hay color de fondo: se hereda el fondo de header + article (#2C1A0E).*/
+    text-align: center;
+    padding: 0.6em 1em;
+    margin: 0;
+    font-size: 1.2em;
+    /*advertencia: color sobrescribe el de h2 (#8B1A1A)*/
+    /*advertencia: fondo heredado de header + article (#2C1A0E) - contraste > 7:1, cumple AAA*/
+}
+
+/* Especificidad 003 */
+header + article figure {
+    width: 100%;
+    margin: 0;
+    border: 3px solid #C8960C;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+    background-color: #2C1A0E;
+    /*advertencia: Hay un color de fondo establecido y no hay color de primer plano: se hereda el color de header + article h2 (#F5F0E8).*/
+    /*advertencia: color de fondo sobrescribe el heredado de header + article (#2C1A0E)*/
+}
+
+/* Especificidad 004 */
+header + article figure img {
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+    /*advertencia: width sobrescribe el max-width heredado de img*/
+    /*advertencia: height sobrescribe el auto heredado de img*/
+    /*advertencia: border-radius sobrescribe el 4px heredado de img*/
+}
+
+/* Especificidad 004 */
+header + article figure figcaption {
+    background-color: #2C1A0E;
+    color: #C8960C;
+    text-align: center;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    font-style: normal;
+    font-family: Georgia, serif;
+    /*advertencia: color de fondo sobrescribe el heredado de header + article (#2C1A0E)*/
+    /*advertencia: color sobrescribe el de figcaption (#555555) - contraste > 7:1, cumple AAA*/
+}
+
+/* METEOROLOGÍA */
 
 /* Tiempo actual meteorología */
 /* Especificidad 014 */
 main > section:first-of-type > article:first-of-type:last-of-type {
     background-color: #E8F4FD;
     /*advertencia: Hay un color de fondo establecido y no hay color de primer plano: se hereda el color de body (#1a1a1a).*/
-    border: 1px solid #B8D8F0;
-    border-radius: 4px;
+    border-top: 1px solid #B8D8F0;
+    border-right: 1px solid #B8D8F0;
+    border-bottom: 1px solid #B8D8F0;
     border-left: 4px solid #B8D8F0;
-    /*advertencia: Redefinición de border-left-width, border-left-color, border-left-style: la propiedad border abreviada anterior ya establecía estos valores.*/
     padding: 1.5em;
     margin-bottom: 1.5em;
     /*advertencia: color de fondo sobrescribe el #FFF8EE de article*/
@@ -398,9 +453,10 @@ main > section:last-of-type > article:has(article time) > h3 {
 main > section:last-of-type > article > article:has(time) {
     background-color: #E8F4FD;
     /*advertencia: Hay un color de fondo establecido y no hay color de primer plano: se hereda el color de body (#1a1a1a).*/
-    border: 1px solid #B8D8F0;
+    border-top: 1px solid #B8D8F0;
+    border-right: 1px solid #B8D8F0;
+    border-bottom: 1px solid #B8D8F0;
     border-left: 4px solid #B8D8F0;
-    /*advertencia: Redefinición de border-left-width, border-left-color, border-left-style: la propiedad border abreviada anterior ya establecía estos valores.*/
     border-radius: 4px;
     padding: 0.8em;
     text-align: center;
@@ -458,9 +514,6 @@ main section article > ul > li {
 /* Etiqueta seleccionable */
 /* Especificidad 006 */
 main section article > ul > li label {
-    display: flex;
-    align-items: center;
-    gap: 0.8em;
     padding: 0.7em 1em;
     border: 2px solid #D4A84B;
     border-radius: 4px;
@@ -517,9 +570,6 @@ main > section > aside > article > h3 {
 /* Nav de selección de rutas dentro de section */
 /* Especificidad 003 */
 main > section > nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
     margin-bottom: 1.5em;
     background-color: #8B1A1A;
     /*advertencia: Hay un color de fondo establecido y no hay color de primer plano: se hereda el color de body (#1a1a1a).*/
@@ -541,9 +591,8 @@ main > section > nav > button {
     /*advertencia: color sobrescribe el #F5F0E8 de button - contraste > 7:1, cumple AAA*/
 }
 
-/* Selector de class permitido: tab activo según especificación del proyecto */
 /* Especificidad 013 */
-main > section > nav > button.active {
+main > section > nav > button[data-activa="true"] {
     background-color: #2C1A0E;
     color: #F5F0E8;
     border: 2px solid #C8960C;
@@ -553,9 +602,6 @@ main > section > nav > button.active {
 /* Galería de fotos del hito */
 /* Especificidad 003 */
 main > section:nth-of-type(2) > article > section > article > figure {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 0.8em;
     margin-top: 1em;
 }
 
@@ -718,9 +764,10 @@ main form textarea {
     table tbody td {
         display: block;
         text-align: right;
-        border: none;
+        border-top: none;
+        border-right: none;
+        border-left: none;
         border-bottom: 1px solid #eee;
-        /*advertencia: Redefinición de border-bottom-style: la propiedad border: none anterior ya establecía border-bottom-style a none.*/
         padding: 0.6em 0.8em;
         position: relative;
         /*advertencia: display, text-align, border y padding sobrescriben valores anteriores - redefiniciones por media query*/
@@ -777,55 +824,6 @@ header + article {
     /*advertencia: color de fondo sobrescribe el #FFF8EE de article*/
 }
 
-/* Especificidad 003 */
-header + article h2 {
-    color: #F5F0E8;
-    /*advertencia: Hay un color de primer plano establecido y no hay color de fondo: se hereda el fondo de header + article (#2C1A0E).*/
-    text-align: center;
-    padding: 0.6em 1em;
-    margin: 0;
-    font-size: 1.2em;
-    /*advertencia: color sobrescribe el de h2 (#8B1A1A)*/
-    /*advertencia: fondo heredado de header + article (#2C1A0E) - contraste > 7:1, cumple AAA*/
-}
-
-/* Especificidad 003 */
-header + article figure {
-    width: 100%;
-    margin: 0;
-    border: 3px solid #C8960C;
-    border-radius: 0 0 4px 4px;
-    overflow: hidden;
-    background-color: #2C1A0E;
-    /*advertencia: Hay un color de fondo establecido y no hay color de primer plano: se hereda el color de header + article h2 (#F5F0E8).*/
-    /*advertencia: color de fondo sobrescribe el heredado de header + article (#2C1A0E)*/
-}
-
-/* Especificidad 004 */
-header + article figure img {
-    width: 100%;
-    height: 580px;
-    object-fit: cover;
-    display: block;
-    border-radius: 0;
-    /*advertencia: width sobrescribe el max-width heredado de img*/
-    /*advertencia: height sobrescribe el auto heredado de img*/
-    /*advertencia: border-radius sobrescribe el 4px heredado de img*/
-}
-
-/* Especificidad 004 */
-header + article figure figcaption {
-    background-color: #2C1A0E;
-    color: #C8960C;
-    text-align: center;
-    padding: 0.5em 1em;
-    font-size: 1em;
-    font-style: normal;
-    font-family: Georgia, serif;
-    /*advertencia: color de fondo sobrescribe el heredado de header + article (#2C1A0E)*/
-    /*advertencia: color sobrescribe el de figcaption (#555555) - contraste > 7:1, cumple AAA*/
-}
-
 /* MENÚ MÓVIL (max-width: 485px) */
 
 @media (max-width: 485px) {
@@ -854,13 +852,12 @@ header + article figure figcaption {
         /*advertencia: height sobrescribe el 560px - redefinición por media query*/
     }
 
-    /* Especificidad 003 */
-    main > section:nth-of-type(2) > article > section > article > figure {
-        grid-template-columns: 1fr;
-        /*advertencia: Redefinición de grid-template-columns: sobrescribe el valor de la regla base.*/
+    /* Especificidad 0,1,3 */
+    main > section:nth-of-type(2) > article > section {
+        padding: 1em 0.5em;
+        /*advertencia: Redefinición de padding: reduce el padding lateral en móvil */
     }
-
-    /* Especificidad 004 */
+    /* Especificidad 016 */
     main > section:nth-of-type(2) > article > section > article > figure > img {
         height: 160px;
         /*advertencia: Redefinición de height: sobrescribe el valor de 200px definido fuera del media query.*/

@@ -26,31 +26,31 @@
    El shorthand "gap" se expande internamente a column-gap y row-gap; el validador
    detecta la redefinición pero no puede señalar una línea real del archivo. */
 
-/* Especificidad 0,0,1 */
+/* Especificidad 001 */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Especificidad 0,0,1 */
+/* Especificidad 001 */
 main {
     flex: 1;
 }
 
-/* Especificidad 0,0,1 */
+/* Especificidad 001 */
 header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-/* Especificidad 0,0,2 */
+/* Especificidad 002 */
 header > h1 {
     flex-basis: 100%; /* ocupa toda la fila, empuja nav abajo */
 }
 
-/* Especificidad 0,0,2 */
+/* Especificidad 002 */
 header > nav {
     display: flex;
     flex-direction: row;
@@ -60,18 +60,18 @@ header > nav {
     flex: 1;
 }
 
-/* Especificidad 0,0,2 */
+/* Especificidad 002 */
 header p {
     flex-basis: 100%; /* ocupa toda la fila */
 }
 
-/* Especificidad 0,0,2 */
+/* Especificidad 002 */
 header button {
     display: none;
 }
 
 /* NOTICIAS (index.html) - aside donde JS inserta las tarjetas */
-/* Especificidad 0,1,3 */
+/* Especificidad 013 */
 main > section:last-of-type > aside {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -82,18 +82,34 @@ main > section:last-of-type > aside {
    section:nth-of-type(2) es la section#info-ruta (segunda en main de rutas.html).
    En meteorologia.html main tiene solo 2 sections y no hay section anidada con hitos,
    por lo que este selector no colisiona. */
-/* Especificidad 0,1,4 */
+
+/* Especificidad 014 */
 main > section:nth-of-type(2) > article > section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
+}
+/* Nav de selección de rutas dentro de section */
+/* Especificidad 003 */
+main > section > nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+/* Galería de fotos del hito */
+/* Especificidad 003 */
+main > section:nth-of-type(2) > article > section > article > figure {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.8em;
 }
 
 /* RESERVAS - Grid de recursos turísticos (reservas.php).
    El selector apunta a la section que contiene articles con un formulario
    que incluye input[name="id_recurso"], exclusivo de reservas.php.
    No colisiona con ninguna otra página del proyecto. */
-/* Especificidad 0,2,4 */
+/* Especificidad 024 */
 main > section:has(> h2 ~ article > form > input[name="id_recurso"]) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -101,7 +117,7 @@ main > section:has(> h2 ~ article > form > input[name="id_recurso"]) {
 }
 
 /* El h2 de recursos ocupa las 2 columnas del grid */
-/* Especificidad 0,2,5 */
+/* Especificidad 025 */
 main > section:has(> h2 ~ article > form > input[name="id_recurso"]) > h2 {
     grid-column: 1 / -1;
 }
@@ -110,31 +126,39 @@ main > section:has(> h2 ~ article > form > input[name="id_recurso"]) > h2 {
    section:last-of-type > article apunta al article#prevision-contenedor anidado.
    En rutas.html la última section contiene figure#altimetria-ruta,
    por lo que este selector no colisiona. */
-/* Especificidad 0,2,5 — :has cuenta como pseudoclase y su argumento suma elementos */
+/* Especificidad 025 — :has cuenta como pseudoclase y su argumento suma elementos */
 main > section:last-of-type > article:has(article time) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 0.8em;
 }
 
-/* MÓVIL - max-width: 485px */
+/* JUEGO */
+/* Etiqueta seleccionable */
+/* Especificidad 006 */
+main section article > ul > li label {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
 
+/* MÓVIL - max-width: 485px */
 @media (max-width: 485px) {
 
-    /* Especificidad 0,0,1 */
+    /* Especificidad 001 */
     header {
         flex-direction: column;
         /* Redefinición de flex-direction: sobreescribe "row" del bloque base para apilar en vertical. */
         align-items: center;
     }
 
-    /* Especificidad 0,0,2 */
+    /* Especificidad 002 */
     header button {
         display: block;
         /* Redefinición de display: sobreescribe "none" del bloque base para mostrar el botón hamburguesa. */
     }
 
-    /* Especificidad 0,0,2 */
+    /* Especificidad 002 */
     header > nav {
         display: none;
         /* Redefinición de display: oculta el nav por defecto; JS lo muestra añadiendo menu-visible. */
@@ -144,7 +168,7 @@ main > section:last-of-type > article:has(article time) {
 
     /* Menú móvil desplegado: JS añade nav.menu-visible */
     /* Selector de class permitido: menú móvil según especificación del proyecto */
-    /* Especificidad 0,1,2 */
+    /* Especificidad 012 */
     header nav.menu-visible {
         display: flex;
         /* Redefinición de display: recupera "flex" para mostrar el menú al añadir la clase menu-visible. */
@@ -152,21 +176,21 @@ main > section:last-of-type > article:has(article time) {
         /* Redefinición de flex-direction: mantiene "column" para los ítems del menú desplegado. */
     }
 
-    /* Especificidad 0,0,2 */
+    /* Especificidad 002 */
     header p {
         display: none;
         /* Redefinición de display: oculta el párrafo del header para liberar espacio en móvil. */
     }
 
     /* Hitos y Recursosen una columna en tablets pequeñas */
-    /* Especificidad 0,1,4 y Especificidad 0,2,4 */
+    /* Especificidad 014 y Especificidad 024 */
     main > section:nth-of-type(2) > article > section,
     main > section:has(> h2 ~ article > form > input[name="id_recurso"]) {
         grid-template-columns: 1fr;
         /* Redefinición de grid-template-columns: sobreescribe "repeat(2, 1fr)" del bloque base para una columna. */
     }
 
-    /* Especificidad 0,1,3 */
+    /* Especificidad 013 */
     main > section:last-of-type > aside {
         display: grid;
         /* Redefinición de display: reitera "grid" del bloque base para asegurar el contexto en este media query. */
@@ -176,12 +200,18 @@ main > section:last-of-type > article:has(article time) {
         /* Redefinición de gap: mismo valor que el bloque base; se repite por la misma razón. */
     }
 
-    /* Especificidad 0,2,5 */
+    /* Especificidad 025 */
     main > section:last-of-type > article:has(article time) {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         /* Redefinición de grid-template-columns: reduce el mínimo de 110px a 90px para pantallas estrechas. */
     }
 
+    /*Disposición de hitos de rutas*/
+    /* Especificidad 015 */
+    main > section:nth-of-type(2) > article > section > article > figure {
+        grid-template-columns: 1fr;
+        /* Advertencia por redefinición de grid-template-columns: una columna en móvil */
+    }
 }
 
 /* TABLET - max-width: 768px */
@@ -207,7 +237,7 @@ main > section:last-of-type > article:has(article time) {
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 
-    /* Especificidad 0,2,5 */
+    /* Especificidad 025 */
     main > section:last-of-type > article:has(article time) {
         grid-template-columns: repeat(7, 1fr);
         /* Redefinición de grid-template-columns: fija 7 columnas para mostrar los 7 días en una fila. */
@@ -218,7 +248,7 @@ main > section:last-of-type > article:has(article time) {
 
 @media only screen and (min-width: 1025px) {
 
-    /* Especificidad 0,2,5 */
+    /* Especificidad 025 */
     main > section:last-of-type > article:has(article time) {
         grid-template-columns: repeat(7, 1fr);
         /* Redefinición de grid-template-columns: fija 7 columnas para mostrar los 7 días en una fila. */
@@ -229,13 +259,13 @@ main > section:last-of-type > article:has(article time) {
 
 @media print {
 
-    /* Especificidad 0,0,1 */
+    /* Especificidad 001 */
     nav {
         display: none;
         /* Redefinición de display: oculta la navegación en impresión. */
     }
 
-    /* Especificidad 0,0,1 */
+    /* Especificidad 001 */
     button {
         display: none;
         /* Redefinición de display: oculta todos los botones en impresión. */

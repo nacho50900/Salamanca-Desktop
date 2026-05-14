@@ -95,12 +95,12 @@ class GestorRutas {
                 .attr("type", "button")
                 .text(ruta.nombre)
                 .on("click", () => {
-                    $tabs.find("button").removeClass("active");
-                    $btn.addClass("active");
+                    $tabs.find("button").removeAttr("data-activa");
+                    $btn.attr("data-activa", "true");
                     this.mostrarRuta(indice);
                 });
 
-            if (indice === 0) $btn.addClass("active");
+            if (indice === 0) $btn.attr("data-activa", "true");
             $tabs.append($btn);
         });
     }
