@@ -33,50 +33,28 @@
     <!-- Hito 0: Plaza Pública de La Alberca -->
     <Placemark>
       <name>Plaza Pública de La Alberca</name>
-      <description></description>
-      <styleUrl>#hitoStyle</styleUrl>
-      <Point>
-        <coordinates>-6.1158,40.4897,1048.0</coordinates>
-      </Point>
-    </Placemark>
-
-    <!-- Hito 1: Plaza Pública de La Alberca -->
-    <Placemark>
-      <name>Plaza Pública de La Alberca</name>
       <description>La Alberca es el primer municipio declarado Conjunto Histórico-Artístico
                     de España (1940). Su plaza porticada del siglo XVII es el corazón del
                     pueblo y escenari</description>
       <styleUrl>#hitoStyle</styleUrl>
       <Point>
-        <coordinates>-6.1158,40.4897,1048.0</coordinates>
+        <coordinates>-6.1106,40.489,1048.0</coordinates>
       </Point>
     </Placemark>
 
-    <!-- Hito 2: Ermita de la Virgen de la Peña de Francia -->
+    <!-- Hito 1: Santuario Peña de Francia -->
     <Placemark>
-      <name>Ermita de la Virgen de la Peña de Francia</name>
+      <name>Santuario Peña de Francia</name>
       <description>Situada en el Pico de la Peña de Francia a 1.723 metros, es el punto
                     más alto de la Sierra de Francia. El convento dominico del siglo XV
                     alberga la imagen de la</description>
       <styleUrl>#hitoStyle</styleUrl>
       <Point>
-        <coordinates>-6.1728,40.5319,1723.0</coordinates>
+        <coordinates>-6.1691,40.5124,1723.0</coordinates>
       </Point>
     </Placemark>
 
-    <!-- Hito 3: Valle de Las Batuecas -->
-    <Placemark>
-      <name>Valle de Las Batuecas</name>
-      <description>El Valle de Las Batuecas es un paraje de extraordinaria belleza
-                    situado en el corazón de la Sierra de Francia. El arroyo de Las Batuecas
-                    discurre por un valle c</description>
-      <styleUrl>#hitoStyle</styleUrl>
-      <Point>
-        <coordinates>-6.097,40.456,680.0</coordinates>
-      </Point>
-    </Placemark>
-
-    <!-- Hito 4: Pinturas Rupestres de Las Batuecas -->
+    <!-- Hito 2: Pinturas Rupestres de Las Batuecas -->
     <Placemark>
       <name>Pinturas Rupestres de Las Batuecas</name>
       <description>El Valle de Las Batuecas concentra uno de los conjuntos de arte
@@ -84,11 +62,23 @@
                     La Risca, Los Casares y El Milano co</description>
       <styleUrl>#hitoStyle</styleUrl>
       <Point>
-        <coordinates>-6.084,40.449,700.0</coordinates>
+        <coordinates>-6.1509,40.4686,650.0</coordinates>
       </Point>
     </Placemark>
 
-    <!-- Hito 5: Mogarraz -->
+    <!-- Hito 3: Valle de Las Batuecas -->
+    <Placemark>
+      <name>Valle de Las Batuecas</name>
+      <description>El Valle de Las Batuecas es un paraje de extraordinaria belleza
+                    situado en el corazón de la Sierra de Francia. Podremos ver que alberga 
+                    el Monasterio Carmelita</description>
+      <styleUrl>#hitoStyle</styleUrl>
+      <Point>
+        <coordinates>-6.1201,40.4543,605.0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Hito 4: Mogarraz -->
     <Placemark>
       <name>Mogarraz</name>
       <description>Pueblo declarado Conjunto Histórico que conserva intacta la arquitectura
@@ -96,7 +86,7 @@
                     instaló 388 retrat</description>
       <styleUrl>#hitoStyle</styleUrl>
       <Point>
-        <coordinates>-6.0517,40.4927,820.0</coordinates>
+        <coordinates>-6.0521,40.4928,820.0</coordinates>
       </Point>
     </Placemark>
 
@@ -108,12 +98,11 @@
         <tessellate>1</tessellate>
         <altitudeMode>clampToGround</altitudeMode>
         <coordinates>
-          -6.1158,40.4897,1048.0
-          -6.1158,40.4897,1048.0
-          -6.1728,40.5319,1723.0
-          -6.097,40.456,680.0
-          -6.084,40.449,700.0
-          -6.0517,40.4927,820.0
+          -6.1106,40.489,1048.0
+          -6.1691,40.5124,1723.0
+          -6.1509,40.4686,650.0
+          -6.1201,40.4543,605.0
+          -6.0521,40.4928,820.0
         </coordinates>
       </LineString>
     </Placemark>

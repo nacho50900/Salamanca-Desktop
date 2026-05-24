@@ -33,13 +33,13 @@ def generar_kml(ruta: ET.Element, output_path: str) -> None:
     # Recopilar coordenadas de inicio y de cada hito
     puntos = []
 
-    # Coordenadas de inicio
-    coord_inicio = ruta.find('coordenadasInicio')
-    if coord_inicio is not None:
-        lon = float(coord_inicio.findtext('longitud', '0'))
-        lat = float(coord_inicio.findtext('latitud', '0'))
-        alt = float(coord_inicio.findtext('altitud', '0'))
-        puntos.append((lon, lat, alt, ruta.findtext('lugarInicio', 'Inicio'), ''))
+    # Coordenadas de inicio -> QUITADO AY QUE SE VE CON EL PLACEMARK 1
+    #coord_inicio = ruta.find('coordenadasInicio')
+    #if coord_inicio is not None:
+    #    lon = float(coord_inicio.findtext('longitud', '0'))
+    #    lat = float(coord_inicio.findtext('latitud', '0'))
+    #    alt = float(coord_inicio.findtext('altitud', '0'))
+    #    puntos.append((lon, lat, alt, ruta.findtext('lugarInicio', 'Inicio'), ''))
 
     # Coordenadas de cada hito
     for hito in ruta.findall('.//hito'):

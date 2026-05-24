@@ -8,7 +8,7 @@
         <transporte>A pie</transporte>
         <fechaInicio opcional="true">2026-04-01</fechaInicio>
         <horaInicio opcional="true">09:00:00</horaInicio>
-        <duracion>3 horas</duracion>
+        <duracion>2 horas</duracion>
         <agencia>Salamanca Turismo</agencia>
         <descripcion>
             Recorrido por los monumentos más emblemáticos del casco histórico de Salamanca,
@@ -19,8 +19,8 @@
         <lugarInicio>Plaza Mayor</lugarInicio>
         <direccionInicio>Plaza Mayor, s/n, Salamanca</direccionInicio>
         <coordenadasInicio>
-            <longitud>-5.6638</longitud>
-            <latitud>40.9651</latitud>
+            <longitud>-5.6637</longitud>
+            <latitud>40.9650</latitud>
             <altitud>800</altitud>
         </coordenadasInicio>
         <referencias>
@@ -40,8 +40,8 @@
                     bustos de reyes y personajes ilustres en las enjutas de los arcos.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-5.6638</longitud>
-                    <latitud>40.9651</latitud>
+                    <longitud>-5.6637</longitud>
+                    <latitud>40.9650</latitud>
                     <altitud>800</altitud>
                 </coordenadas>
                 <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
@@ -58,8 +58,8 @@
                     símbolo de la Orden de Santiago. Actualmente es biblioteca pública.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-5.6672</longitud>
-                    <latitud>40.9640</latitud>
+                    <longitud>-5.6659</longitud>
+                    <latitud>40.9630</latitud>
                     <altitud>798</altitud>
                 </coordenadas>
                 <distanciaDesdeAnterior unidades="m">350</distanciaDesdeAnterior>
@@ -77,8 +77,8 @@
                     tradición trae suerte a quien la encuentre antes del examen.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-5.6680</longitud>
-                    <latitud>40.9628</latitud>
+                    <longitud>-5.6669</longitud>
+                    <latitud>40.9614</latitud>
                     <altitud>795</altitud>
                 </coordenadas>
                 <distanciaDesdeAnterior unidades="m">200</distanciaDesdeAnterior>
@@ -101,8 +101,8 @@
                     durante una restauración en 1992.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-5.6695</longitud>
-                    <latitud>40.9609</latitud>
+                    <longitud>-5.6659</longitud>
+                    <latitud>40.9610</latitud>
                     <altitud>793</altitud>
                 </coordenadas>
                 <distanciaDesdeAnterior unidades="m">300</distanciaDesdeAnterior>
@@ -150,12 +150,12 @@
             biodiversidad con buitres leonados, cigüeñas negras y águilas reales.
         </descripcion>
         <personas>Personas en buena forma física. No recomendada para tercera edad ni niños pequeños.</personas>
-        <lugarInicio>Mirador de La Peña de Francia visible desde Aldeadávila</lugarInicio>
+        <lugarInicio>Mirador Monte del Puerto</lugarInicio>
         <direccionInicio>Carretera SA-335, Aldeadávila de la Ribera</direccionInicio>
         <coordenadasInicio>
-            <longitud>-6.6178</longitud>
-            <latitud>41.2295</latitud>
-            <altitud>320</altitud>
+            <longitud>-6.6538</longitud>
+            <latitud>41.2284</latitud>
+            <altitud>650</altitud>
         </coordenadasInicio>
         <referencias>
             <referencia>https://www.losarribesdelduero.com/</referencia>
@@ -165,63 +165,44 @@
         <recomendacion>8</recomendacion>
         <hitos>
             <hito id="h2_1">
-                <nombre>Mirador de la Presa de Aldeadávila</nombre>
+                <nombre>Mirador Monte del Puerto</nombre>
                 <descripcion>
-                    La presa de Aldeadávila es la mayor central hidroeléctrica de España y
-                    una de las más grandes de Europa. El mirador ofrece una vista privilegiada
-                    del embalse y del cañón del Duero desde más de 300 metros de altura.
-                    Una maravilla de ingeniería rodeada de naturaleza salvaje.
+                    Gran mirador del cañon del duero. Des aquí es habitual 
+                    avistar buitres leonados sobrevolando las hoces.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-6.6178</longitud>
-                    <latitud>41.2295</latitud>
-                    <altitud>320</altitud>
+                    <longitud>-6.6538</longitud>
+                    <latitud>41.2284</latitud>
+                    <altitud>650</altitud>
                 </coordenadas>
-                <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
+                <distanciaDesdeAnterior unidades="km">0</distanciaDesdeAnterior>
                 <fotos>
-                    <foto>presa-aldeadavila.jpg</foto>
-                    <foto>arribes-panoramica.jpg</foto>
-                </fotos>
-            </hito>
-            <hito id="h2_2">
-                <nombre>Vilvestre</nombre>
-                <descripcion>
-                    Precioso pueblo con arquitectura tradicional de la raya hispanoportuguesa.
-                    Su iglesia parroquial de estilo románico tardío data del siglo XIII.
-                    Desde aquí se organizan excursiones en barco por el río Duero.
-                </descripcion>
-                <coordenadas>
-                    <longitud>-6.6520</longitud>
-                    <latitud>41.1930</latitud>
-                    <altitud>510</altitud>
-                </coordenadas>
-                <distanciaDesdeAnterior unidades="km">12</distanciaDesdeAnterior>
-                <fotos>
-                    <foto>vilvestre-pueblo.jpg</foto>
-                </fotos>
-            </hito>
-            <hito id="h2_3">
-                <nombre>Mirador del Picón de Felipe</nombre>
-                <descripcion>
-                    Uno de los miradores más espectaculares de los Arribes. Desde aquí
-                    se domina una panorámica de 360 grados del cañón del Duero y la frontera
-                    con Portugal. Es habitual avistar buitres leonados sobrevolando las hoces.
-                </descripcion>
-                <coordenadas>
-                    <longitud>-6.7010</longitud>
-                    <latitud>41.1450</latitud>
-                    <altitud>680</altitud>
-                </coordenadas>
-                <distanciaDesdeAnterior unidades="km">18</distanciaDesdeAnterior>
-                <fotos>
-                    <foto>picon-felipe.jpg</foto>
+                    <foto>monte.jpg</foto>
                     <foto>buitres-arribes.jpg</foto>
                 </fotos>
                 <videos>
                     <video>arribes-vuelo-buitres.mp4</video>
                 </videos>
             </hito>
-            <hito id="h2_4">
+            <hito id="h2_2">
+                <nombre>Mirador del Picón de Felipe</nombre>
+                <descripcion>
+                    Uno de los miradores más espectaculares de los Arribes. Desde aquí
+                    se domina una panorámica de 360 grados del cañón del Duero y la frontera
+                    con Portugal.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.6775</longitud>
+                    <latitud>41.2188</latitud>
+                    <altitud>471</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">3</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>picon-felipe.jpg</foto>
+                    <foto>presa-aldeadavila.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h2_3">
                 <nombre>Corporario</nombre>
                 <descripcion>
                     Pequeña aldea prácticamente deshabitada que conserva la arquitectura
@@ -229,31 +210,46 @@
                     tradicionales transportan al visitante a otro tiempo.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-6.7200</longitud>
-                    <latitud>41.1200</latitud>
-                    <altitud>720</altitud>
+                    <longitud>-6.6074</longitud>
+                    <latitud>41.2153</latitud>
+                    <altitud>709</altitud>
                 </coordenadas>
-                <distanciaDesdeAnterior unidades="km">9</distanciaDesdeAnterior>
+                <distanciaDesdeAnterior unidades="km">6.5</distanciaDesdeAnterior>
                 <fotos>
-                    <foto>corporario-aldea.jpg</foto>
+                    <foto>corporario.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h2_4">
+                <nombre>Vilvestre</nombre>
+                <descripcion>
+                    Precioso pueblo con arquitectura tradicional de la raya hispanoportuguesa.
+                    Su iglesia parroquial de estilo románico tardío data del siglo XIII.
+                    Desde aquí se organizan excursiones en barco por el río Duero.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.7235</longitud>
+                    <latitud>41.1063</latitud>
+                    <altitud>713</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">16</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>vilvestre.jpg</foto>
                 </fotos>
             </hito>
             <hito id="h2_5">
-                <nombre>Mirador de la Fregeneda</nombre>
+                <nombre>Mirador de Mafeito</nombre>
                 <descripcion>
-                    La Fregeneda es famosa por su microclima mediterráneo que permite
-                    el cultivo de naranjos, limoneros y olivos a más de 600 metros de altitud.
-                    El mirador ofrece vistas únicas al meandro del Duero antes de entrar en Portugal.
+                    El Mirador de Mafeito ofrece una panorámica espectacular del cañón fluvial,
+                    al meandro del Duero que separa España y Portugal.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-6.8950</longitud>
-                    <latitud>41.0050</latitud>
-                    <altitud>650</altitud>
+                    <longitud>-6.8652</longitud>
+                    <latitud>41.02235</latitud>
+                    <altitud>345</altitud>
                 </coordenadas>
-                <distanciaDesdeAnterior unidades="km">25</distanciaDesdeAnterior>
+                <distanciaDesdeAnterior unidades="km">20</distanciaDesdeAnterior>
                 <fotos>
-                    <foto>fregeneda-duero.jpg</foto>
-                    <foto>fregeneda-microclima.jpg</foto>
+                    <foto>mirador-mafeito.jpg</foto>
                 </fotos>
             </hito>
         </hitos>
@@ -267,7 +263,7 @@
         <transporte>A pie</transporte>
         <fechaInicio opcional="true">2026-06-10</fechaInicio>
         <horaInicio opcional="true">07:00:00</horaInicio>
-        <duracion>5 horas</duracion>
+        <duracion>7 horas</duracion>
         <agencia>Sierra de Francia Activa</agencia>
         <descripcion>
             Ruta de senderismo por la Sierra de Francia que atraviesa La Alberca —primer
@@ -279,8 +275,8 @@
         <lugarInicio>Plaza Pública de La Alberca</lugarInicio>
         <direccionInicio>Plaza Pública, s/n, La Alberca (Salamanca)</direccionInicio>
         <coordenadasInicio>
-            <longitud>-6.1158</longitud>
-            <latitud>40.4897</latitud>
+            <longitud>-6.1106</longitud>
+            <latitud>40.4890</latitud>
             <altitud>1048</altitud>
         </coordenadasInicio>
         <referencias>
@@ -301,8 +297,8 @@
                     floridos son características del estilo serrano.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-6.1158</longitud>
-                    <latitud>40.4897</latitud>
+                    <longitud>-6.1106</longitud>
+                    <latitud>40.4890</latitud>
                     <altitud>1048</altitud>
                 </coordenadas>
                 <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
@@ -313,7 +309,7 @@
                 </fotos>
             </hito>
             <hito id="h3_2">
-                <nombre>Ermita de la Virgen de la Peña de Francia</nombre>
+                <nombre>Santuario Peña de Francia</nombre>
                 <descripcion>
                     Situada en el Pico de la Peña de Francia a 1.723 metros, es el punto
                     más alto de la Sierra de Francia. El convento dominico del siglo XV
@@ -321,8 +317,8 @@
                     provincia. Las vistas desde la cima son excepcionales en días claros.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-6.1728</longitud>
-                    <latitud>40.5319</latitud>
+                    <longitud>-6.1691</longitud>
+                    <latitud>40.5124</latitud>
                     <altitud>1723</altitud>
                 </coordenadas>
                 <distanciaDesdeAnterior unidades="km">6</distanciaDesdeAnterior>
@@ -335,26 +331,6 @@
                 </videos>
             </hito>
             <hito id="h3_3">
-                <nombre>Valle de Las Batuecas</nombre>
-                <descripcion>
-                    El Valle de Las Batuecas es un paraje de extraordinaria belleza
-                    situado en el corazón de la Sierra de Francia. El arroyo de Las Batuecas
-                    discurre por un valle cerrado y húmedo con una vegetación subtropical única.
-                    Alberga el Monasterio Carmelita fundado en 1600 y numerosas pinturas
-                    rupestres del Paleolítico y Neolítico.
-                </descripcion>
-                <coordenadas>
-                    <longitud>-6.0970</longitud>
-                    <latitud>40.4560</latitud>
-                    <altitud>680</altitud>
-                </coordenadas>
-                <distanciaDesdeAnterior unidades="km">8</distanciaDesdeAnterior>
-                <fotos>
-                    <foto>batuecas-valle.jpg</foto>
-                    <foto>batuecas-monasterio.jpg</foto>
-                </fotos>
-            </hito>
-            <hito id="h3_4">
                 <nombre>Pinturas Rupestres de Las Batuecas</nombre>
                 <descripcion>
                     El Valle de Las Batuecas concentra uno de los conjuntos de arte
@@ -364,14 +340,33 @@
                     de figuras humanas, animales y signos abstractos.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-6.0840</longitud>
-                    <latitud>40.4490</latitud>
-                    <altitud>700</altitud>
+                    <longitud>-6.1509</longitud>
+                    <latitud>40.4686</latitud>
+                    <altitud>650</altitud>
                 </coordenadas>
-                <distanciaDesdeAnterior unidades="km">2</distanciaDesdeAnterior>
+                <distanciaDesdeAnterior unidades="km">5.5</distanciaDesdeAnterior>
                 <fotos>
                     <foto>pinturas-rupestres.jpg</foto>
                     <foto>batuecas-abrigo.jpg</foto>
+                </fotos>
+            </hito>
+            <hito id="h3_4">
+                <nombre>Valle de Las Batuecas</nombre>
+                <descripcion>
+                    El Valle de Las Batuecas es un paraje de extraordinaria belleza
+                    situado en el corazón de la Sierra de Francia. Podremos ver que alberga 
+                    el Monasterio Carmelita fundado en 1600 y numerosas pinturas
+                    rupestres del Paleolítico y Neolítico.
+                </descripcion>
+                <coordenadas>
+                    <longitud>-6.1201</longitud>
+                    <latitud>40.4543</latitud>
+                    <altitud>605</altitud>
+                </coordenadas>
+                <distanciaDesdeAnterior unidades="km">3</distanciaDesdeAnterior>
+                <fotos>
+                    <foto>batuecas-valle.jpg</foto>
+                    <foto>batuecas-monasterio.jpg</foto>
                 </fotos>
             </hito>
             <hito id="h3_5">
@@ -384,11 +379,11 @@
                     restaurantes de cocina tradicional serrana.
                 </descripcion>
                 <coordenadas>
-                    <longitud>-6.0517</longitud>
-                    <latitud>40.4927</latitud>
+                    <longitud>-6.0521</longitud>
+                    <latitud>40.4928</latitud>
                     <altitud>820</altitud>
                 </coordenadas>
-                <distanciaDesdeAnterior unidades="km">7</distanciaDesdeAnterior>
+                <distanciaDesdeAnterior unidades="km">8</distanciaDesdeAnterior>
                 <fotos>
                     <foto>mogarraz-retratos.jpg</foto>
                     <foto>mogarraz-calle.jpg</foto>

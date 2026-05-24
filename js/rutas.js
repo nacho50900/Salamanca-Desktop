@@ -127,6 +127,13 @@ class GestorRutas {
                 "<img src='multimedia/" + f + "' alt='Fotografía de " + hito.nombre + "' loading='lazy' />"
             ).join("");
 
+            let videosHtml = hito.videos.map(v =>
+                "<video controls>" +
+                "<source src='multimedia/" + v + "' />" +
+                "Tu navegador no soporta el elemento de vídeo." +
+                "</video>"
+            ).join("");
+
             let distTexto = i > 0
                 ? "<p><strong>Distancia desde anterior:</strong> " + hito.distancia + " " + hito.unidadesDistancia + "</p>"
                 : "";
@@ -137,7 +144,8 @@ class GestorRutas {
                 distTexto +
                 "<p><strong>Coordenadas:</strong> Lat: " + hito.latitud +
                 ", Lon: " + hito.longitud + ", Alt: " + hito.altitud + " m</p>" +
-                "<figure>" + fotosHtml + "</figure>" +
+                (fotosHtml ? "<figure>" + fotosHtml + "</figure>" : "") +
+                (videosHtml ? "<figure>" + videosHtml + "</figure>" : "") +
                 "</article>";
         }).join("");
 
@@ -213,7 +221,9 @@ class GestorRutas {
         // El primer Placemark es el punto de inicio de la ruta (no es un hito numerado).
         // Arrancamos en -1: al procesar ese primero sube a 0 y no muestra número;
         // a partir del segundo (hito 1) muestra 1, 2, 3…
-        let marcadorIndex = -1;
+        let marcadorIndex = 0;
+        // Puesto en 0 para obviar el marcador de inicio ya que al mostart los marcadores 
+        // de hitos numerados se sobrenteinde que es el 1
 
         for (let i = 0; i < placemarks.length; i++) {
             let placemark = placemarks[i];
@@ -235,6 +245,8 @@ class GestorRutas {
 
                 marcadorIndex++;
                 let contenidoPin = document.createElement("div");
+                /* Cambiado, no pongo punto inicial se sobreentiendo con la
+                numeración de los
                 if (marcadorIndex === 0) {
                     // Punto de inicio: estrella sin número
                     contenidoPin.textContent = "★";
@@ -249,7 +261,12 @@ class GestorRutas {
                         "background:#8B1A1A;color:#fff;border-radius:50%;" +
                         "width:24px;height:24px;display:flex;align-items:center;" +
                         "justify-content:center;font-weight:bold;font-size:12px;";
-                }
+                }*/
+                contenidoPin.textContent = String(marcadorIndex);
+                contenidoPin.style.cssText =
+                    "background:#8B1A1A;color:#fff;border-radius:50%;" +
+                    "width:24px;height:24px;display:flex;align-items:center;" +
+                    "justify-content:center;font-weight:bold;font-size:12px;";
 
                 let marcador = new google.maps.marker.AdvancedMarkerElement({
                     position: { lat: lat, lng: lon },

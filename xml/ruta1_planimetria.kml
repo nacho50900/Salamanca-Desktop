@@ -32,26 +32,16 @@
     <!-- Hito 0: Plaza Mayor -->
     <Placemark>
       <name>Plaza Mayor</name>
-      <description></description>
-      <styleUrl>#hitoStyle</styleUrl>
-      <Point>
-        <coordinates>-5.6638,40.9651,800.0</coordinates>
-      </Point>
-    </Placemark>
-
-    <!-- Hito 1: Plaza Mayor -->
-    <Placemark>
-      <name>Plaza Mayor</name>
       <description>La Plaza Mayor de Salamanca es considerada una de las más bellas de España.
                     Construida entre 1729 y 1756 por los arquitectos Alberto Churriguera y Andrés García de Quiñones,
       </description>
       <styleUrl>#hitoStyle</styleUrl>
       <Point>
-        <coordinates>-5.6638,40.9651,800.0</coordinates>
+        <coordinates>-5.6637,40.965,800.0</coordinates>
       </Point>
     </Placemark>
 
-    <!-- Hito 2: Casa de las Conchas -->
+    <!-- Hito 1: Casa de las Conchas -->
     <Placemark>
       <name>Casa de las Conchas</name>
       <description>Edificio gótico-plateresco construido a finales del siglo XV por Rodrigo Arias Maldonado.
@@ -59,11 +49,11 @@
            </description>
       <styleUrl>#hitoStyle</styleUrl>
       <Point>
-        <coordinates>-5.6672,40.964,798.0</coordinates>
+        <coordinates>-5.6659,40.963,798.0</coordinates>
       </Point>
     </Placemark>
 
-    <!-- Hito 3: Universidad de Salamanca -->
+    <!-- Hito 2: Universidad de Salamanca -->
     <Placemark>
       <name>Universidad de Salamanca</name>
       <description>Fundada en 1218, es una de las universidades más antiguas del mundo.
@@ -71,11 +61,11 @@
                     plateresc</description>
       <styleUrl>#hitoStyle</styleUrl>
       <Point>
-        <coordinates>-5.668,40.9628,795.0</coordinates>
+        <coordinates>-5.6669,40.9614,795.0</coordinates>
       </Point>
     </Placemark>
 
-    <!-- Hito 4: Catedral Nueva de Salamanca -->
+    <!-- Hito 3: Catedral Nueva de Salamanca -->
     <Placemark>
       <name>Catedral Nueva de Salamanca</name>
       <description>Construida entre los siglos XVI y XVIII, combina los estilos gótico tardío,
@@ -83,11 +73,11 @@
                     Comparte </description>
       <styleUrl>#hitoStyle</styleUrl>
       <Point>
-        <coordinates>-5.6695,40.9609,793.0</coordinates>
+        <coordinates>-5.6659,40.961,793.0</coordinates>
       </Point>
     </Placemark>
 
-    <!-- Hito 5: Puente Romano -->
+    <!-- Hito 4: Puente Romano -->
     <Placemark>
       <name>Puente Romano</name>
       <description>El Puente Romano de Salamanca data del siglo I a.C. y fue construido
@@ -107,11 +97,10 @@
         <tessellate>1</tessellate>
         <altitudeMode>clampToGround</altitudeMode>
         <coordinates>
-          -5.6638,40.9651,800.0
-          -5.6638,40.9651,800.0
-          -5.6672,40.964,798.0
-          -5.668,40.9628,795.0
-          -5.6695,40.9609,793.0
+          -5.6637,40.965,800.0
+          -5.6659,40.963,798.0
+          -5.6669,40.9614,795.0
+          -5.6659,40.961,793.0
           -5.668,40.957,790.0
         </coordinates>
       </LineString>
