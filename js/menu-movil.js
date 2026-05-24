@@ -36,13 +36,14 @@ class MenuMovil {
     }
 
     toggleMenu(boton, nav) {
-        let visible = nav.classList.toggle("menu-visible");
-        boton.setAttribute("aria-expanded", visible.toString());
-        console.log("Menú móvil:", visible ? "abierto" : "cerrado");
+        let visible = nav.getAttribute("aria-expanded") === "true";
+        nav.setAttribute("aria-expanded", (!visible).toString());
+        boton.setAttribute("aria-expanded", (!visible).toString());
+        console.log("Menú móvil:", !visible ? "abierto" : "cerrado");
     }
 
     cerrarMenu(boton, nav) {
-        nav.classList.remove("menu-visible");
+        nav.setAttribute("aria-expanded", "false");
         boton.setAttribute("aria-expanded", "false");
     }
 }

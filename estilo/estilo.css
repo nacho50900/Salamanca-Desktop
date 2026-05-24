@@ -3,46 +3,50 @@
 /* Estilos generales del proyecto Turismo Salamanca */
 
 /* ============================================================
-   SELECTORES SIN ID NI CLASS: ESTRUCTURA HTML
-   Selectores de class permitidos únicamente:
+    SELECTORES SIN ID NI CLASS - ESTRUCTURA HTML POR PÁGINA
+    Selector class permitido únicamente:
      nav a.active                         -> opción activa del menú de navegación
-     header nav.menu-visible              -> menú móvil desplegado (menu-movil.css)
 
-     - index.html
-       header + article                              -> carrusel de fotos (JS)
-       header + article h2                           -> título del carrusel
-       header + article figure                       -> figura del carrusel
-       header + article figure img                   -> imagen del carrusel
-       header + article figure figcaption            -> pie de foto del carrusel
-       main > section > aside > article > h3         -> h3 de tarjeta de noticia (JS)
+    Menu móvil:
+     header nav[aria-expanded="true"]     -> menú móvil desplegado (menu-movil.css)
 
-   - meteorologia.html
-       main > section:first-of-type > article          -> tiempo actual
-       main > section:last-of-type > article > article -> días de previsión (JS)
+    - index.html
+        header + article                              -> carrusel de fotos (JS)
+        header + article h2                           -> título del carrusel
+        header + article figure                       -> figura del carrusel
+        header + article figure img                   -> imagen del carrusel
+        header + article figure figcaption            -> pie de foto del carrusel
+        main > section > aside > article > h3         -> h3 de tarjeta de noticia (JS)
 
-   - juego.html
-       main section article > meter                           -> barra de progreso
-       main section article > ul                              -> lista de opciones
-       main section article > ul > li[data-correcta="true"]   -> opción correcta
-       main section article > ul > li[data-incorrecta="true"] -> opción incorrecta
-       main section article > p:first-of-type                 -> puntuación final
+    - meteorologia.html
+        main > section:first-of-type > article          -> tiempo actual
+        main > section:last-of-type > article > article -> días de previsión (JS)
 
-   - rutas.html
-       main > section > nav                                                       -> selector de rutas (tabs)
-       main > section > nav > button                                              -> botón de tab
-       main > section > nav > button[data-activa="true"]                          -> tab de ruta activa
-       main > section:nth-of-type(2) > article > section > article > figure       -> galería de fotos del hito
-       main > section:nth-of-type(2) > article > section > article > figure > img -> foto del hito
-       main > section > article > ul:last-of-type > li > a                        -> referencias URL largas
-       main > section:nth-of-type(3) > div                                        -> mapa dinámico de planimetría
-       main > section:last-of-type > figure                                       -> contenedor SVG altimetría
-       main > section:last-of-type > figure > svg                                 -> SVG altimetría adaptable    
+    - juego.html
+        main section article > meter                           -> barra de progreso
+        main section article > ul                              -> lista de opciones
+        main section article > ul > li[data-correcta="true"]   -> opción correcta
+        main section article > ul > li[data-incorrecta="true"] -> opción incorrecta
+        main section article > p:first-of-type                 -> puntuación final
 
-   - reservas.php
-       main > p[aria-live="polite"]     -> mensaje de éxito
-       main > p[role="alert"]           -> mensaje de error
-       main form label                  -> etiqueta del campo
-       main form input/select/textarea  -> control del campo
+    - rutas.html
+        main > section > nav                                     -> selector de rutas (tabs)
+        main > section > nav > button                            -> botón de tab
+        main > section > nav > button[data-activa="true"]        -> tab de ruta activa
+        main > section:nth-of-type(2) > article > 
+                            section > article > figure          -> galería de fotos del hito
+        main > section:nth-of-type(2) > article > 
+                            section > article > figure > img    -> foto del hito
+        main > section > article > ul:last-of-type > li > a      -> referencias URL largas
+        main > section:nth-of-type(3) > div                      -> mapa dinámico de planimetría
+        main > section:last-of-type > figure                     -> contenedor SVG altimetría
+        main > section:last-of-type > figure > svg               -> SVG altimetría adaptable    
+
+    - reservas.php
+        main > p[aria-live="polite"]     -> mensaje de éxito
+        main > p[role="alert"]           -> mensaje de error
+        main form label                  -> etiqueta del campo
+        main form input/select/textarea  -> control del campo
    ============================================================ */
 
 
@@ -891,13 +895,14 @@ header + article {
         transition: max-height 0.4s ease-in-out;
     }
 
-    /* Menú desplegado: JS añade nav.menu-visible */
-    /* Selector de class permitido: menú móvil según especificación del proyecto */
-    /* Especificidad 011 */
-    header nav.menu-visible {
+    /* Menú desplegado: JS añade aria-expanded="true" al nav */
+    /* Selector de atributo ARIA: indica estado abierto para lectores de pantalla */
+    /* Especificidad 012 */
+    header nav[aria-expanded="true"] {
         max-height: 50em;
         animation: desplegar 0.4s ease-in-out;
     }
+    
 
     @keyframes desplegar {
         from {

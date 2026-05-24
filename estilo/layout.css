@@ -5,21 +5,25 @@
 
 /* ============================================================
    SELECTORES SIN ID NI CLASS - ESTRUCTURA HTML POR PÁGINA
-   ─ index.html
-       main > section:last-of-type > aside
+
+    - Menu móvil:
+        header nav[aria-expanded="true"]     -> menú móvil desplegado (menu-movil.css)
+
+    - index.html
+        main > section:last-of-type > aside
                                    -> grid de noticias (auto-fill)
-   ─ meteorologia.html
-       main > section:last-of-type > article
+    - meteorologia.html
+        main > section:last-of-type > article
                                    -> grid previsión 7 días
-   ─ rutas.html
-       main > section:nth-of-type(2) > article > section
+    - rutas.html
+        main > section:nth-of-type(2) > article > section
                                    -> hitos en 2 columnas
-       main > section:nth-of-type(3) > div
+        main > section:nth-of-type(3) > div
                                    -> mapa dinámico (div permitido por spec)
-   ─ reservas.php
-       main > section:has(> h2 ~ article > form > input[name="id_recurso"])
+    - reservas.php
+        main > section:has(> h2 ~ article > form > input[name="id_recurso"])
                                    -> grid de recursos turísticos (2 columnas)
-       main form fieldset          -> agrupa label + control semánticamente
+        main form fieldset          -> agrupa label + control semánticamente
    ============================================================ */
 
 /* NOTA (línea 0 - Redefinición de column-gap / Redefinición de row-gap):
@@ -173,9 +177,9 @@ main section article > ul > li label {
     }
 
     /* Menú móvil desplegado: JS añade nav.menu-visible */
-    /* Selector de class permitido: menú móvil según especificación del proyecto */
+    /* Selector de atributo ARIA: nav desplegado; aria-expanded="true" indica estado abierto para lectores de pantalla */
     /* Especificidad 012 */
-    header nav.menu-visible {
+    header nav[aria-expanded="true"] {
         display: flex;
         /* Redefinición de display: recupera "flex" para mostrar el menú al añadir la clase menu-visible. */
         flex-direction: column;
