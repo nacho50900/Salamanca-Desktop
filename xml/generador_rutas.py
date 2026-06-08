@@ -5,7 +5,7 @@ generador_rutas.py
 Genera archivos KML (planimetría) y SVG (altimetría) para cada ruta turística
 de Salamanca a partir del archivo rutas.xml.
 
-UO300737 – Software y estándares para la Web
+UO300737 - Software y estándares para la Web
 """
 
 import xml.etree.ElementTree as ET
@@ -243,7 +243,7 @@ def generar_svg(ruta: ET.Element, output_path: str) -> None:
 
     svg_lines += [
         '',
-        '  <!-- Eje Y – etiqueta vertical -->',
+        '  <!-- Eje Y - etiqueta vertical -->',
         f'  <text x="15" y="{MARGEN_SUP + alto_grafico // 2}" '
         f'text-anchor="middle" font-family="Arial, sans-serif" '
         f'font-size="12" fill="#333" '
@@ -321,7 +321,7 @@ def _escape_xml(texto: str) -> str:
 
 def main():
     """Función principal: parsea rutas.xml y genera KML y SVG para cada ruta."""
-    print('Generador de archivos KML y SVG – Turismo Salamanca')
+    print('Generador de archivos KML y SVG - Turismo Salamanca')
     print('=' * 50)
 
     if not os.path.exists(RUTAS_XML):
