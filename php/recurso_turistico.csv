@@ -1,7 +1,7 @@
 id_recurso,id_tipo,nombre,descripcion,plazas,fecha_inicio,fecha_fin,precio,activo
-1,1,Museo Casa Lis,Museo Art Nouveau y Art Déco ubicado en una espectacular casa modernista a orillas del Tormes.,30,2026-04-01 10:00:00,2026-12-31 20:00:00,6.00,1
-2,2,Visita guiada Universidad de Salamanca,Recorrido por la Universidad más antigua de España: Escuelas Mayores Cielo de Salamanca y Biblioteca Histórica.,20,2026-04-01 09:00:00,2026-12-31 18:00:00,12.00,1
-3,2,Ruta nocturna monumental,Tour nocturno por el casco histórico con iluminación especial. Incluye degustación de farinato.,15,2026-05-01 21:00:00,2026-10-31 23:30:00,18.00,1
-4,3,Experiencia gastronómica en La Alberca,Cena de 5 platos con productos de la Sierra de Francia: jamón ibérico farinato hornazo y perrunillas.,12,2026-04-15 20:30:00,2026-11-30 23:00:00,45.00,1
-5,5,Kayak en los Arribes del Duero,Actividad de kayak por el espectacular cañón del Duero. Material y seguro incluidos. Nivel básico.,10,2026-05-15 09:00:00,2026-09-30 18:00:00,35.00,1
-6,4,Hotel Hacienda Zorita Spa,Estancia de 2 noches en bodega-hotel del siglo XV con spa catas de vino D.O. Arribes y desayuno.,8,2026-04-01 14:00:00,2026-12-31 12:00:00,220.00,1
+1,1,Museo Casa Lis,"Museo Art Nouveau y Art Déco ubicado en una espectacular casa modernista a orillas del Tormes.",30,2026-04-01 10:00:00,2026-12-31 20:00:00,6.00,1
+2,2,Visita guiada Universidad de Salamanca,"Recorrido por la Universidad más antigua de España: Escuelas Mayores, Cielo de Salamanca y Biblioteca Histórica.",20,2026-04-01 09:00:00,2026-12-31 18:00:00,12.00,1
+3,2,Ruta nocturna monumental,"Tour nocturno por el casco histórico con iluminación especial. Incluye degustación de farinato.",15,2026-05-01 21:00:00,2026-10-31 23:30:00,18.00,1
+4,3,Experiencia gastronómica en La Alberca,"Cena de 5 platos con productos de la Sierra de Francia: jamón ibérico, farinato, hornazo y perrunillas.",12,2026-04-15 20:30:00,2026-11-30 23:00:00,45.00,1
+5,5,Kayak en los Arribes del Duero,"Actividad de kayak por el espectacular cañón del Duero. Material y seguro incluidos. Nivel básico.",10,2026-05-15 09:00:00,2026-09-30 18:00:00,35.00,1
+6,4,Hotel Hacienda Zorita Spa,"Estancia de 2 noches en bodega-hotel del siglo XV con spa, catas de vino D.O. Arribes y desayuno.",8,2026-04-01 14:00:00,2026-12-31 12:00:00,220.00,1
