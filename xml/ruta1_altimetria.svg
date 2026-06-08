@@ -21,7 +21,7 @@
   <line x1="80" y1="30.0" x2="770" y2="30.0" stroke="#ddd" stroke-width="1"/>
   <text x="72" y="34.0" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#555">900 m</text>
 
-  <!-- Eje Y – etiqueta vertical -->
+  <!-- Eje Y - etiqueta vertical -->
   <text x="15" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333" transform="rotate(-90, 15, 175)">
     Altitud (m)
   </text>

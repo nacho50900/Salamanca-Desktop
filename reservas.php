@@ -8,6 +8,73 @@ require_once "php/UsuarioDAO.php";
 require_once "php/RecursoDAO.php";
 require_once "php/ReservaDAO.php";
 
+/* InicializadorBD
+ * Comprueba si las tablas están vacías al cargar reservas.php
+ * y las rellena con los CSV si es necesario. (por si acaso) */
+class InicializadorBD {
+
+    protected $db;
+
+    public function __construct() {
+        $this->db = Database::obtenerInstancia()->obtenerConexion();
+    }
+
+    public function inicializarSiVacia(): void {
+        if ($this->estaVacia()) {
+            $this->cargarCSV(
+                "php/tipo_recurso.csv",
+                "tipo_recurso",
+                ["nombre", "descripcion"]
+            );
+            $this->cargarCSV(
+                "php/recurso_turistico.csv",
+                "recurso_turistico",
+                ["id_tipo","nombre","descripcion","plazas","fecha_inicio","fecha_fin","precio","activo"]
+            );
+            $this->cargarCSV(
+                "php/usuario.csv",
+                "usuario",
+                ["nombre","apellidos","email","password","telefono","fecha_registro","activo"]
+            );
+        }
+    }
+
+    protected function estaVacia(): bool {
+        $resultado = $this->db->query("SELECT COUNT(*) AS total FROM tipo_recurso");
+        $fila      = $resultado->fetch_assoc();
+        return (int)$fila["total"] === 0;
+    }
+
+    protected function cargarCSV(string $ruta, string $tabla, array $columnas): void {
+        $rutaAbsoluta = __DIR__ . "/" . $ruta;
+        if (!file_exists($rutaAbsoluta)) return;
+
+        $archivo = fopen($rutaAbsoluta, "r");
+        if (!$archivo) return;
+
+        fgetcsv($archivo); /* Saltar cabecera */
+
+        $marcadores = implode(", ", array_fill(0, count($columnas), "?"));
+        $nombresCol = implode(", ", $columnas);
+        $tipos      = str_repeat("s", count($columnas));
+
+        $stmt = $this->db->prepare(
+            "INSERT IGNORE INTO {$tabla} ({$nombresCol}) VALUES ({$marcadores})"
+        );
+
+        while (($fila = fgetcsv($archivo)) !== false) {
+            if (count($fila) < count($columnas)) continue;
+            /* Tomar solo las últimas N columnas para ignorar el id autoincremental del CSV */
+            $valores = array_slice($fila, count($fila) - count($columnas));
+            $stmt->bind_param($tipos, ...$valores);
+            $stmt->execute();
+        }
+
+        $stmt->close();
+        fclose($archivo);
+    }
+}
+
 class Reservas {
 
     protected $usuarioDAO;
@@ -18,6 +85,7 @@ class Reservas {
 
     public function __construct() {
         SesionManager::iniciar();
+        (new InicializadorBD())->inicializarSiVacia();
         $this->usuarioDAO = new UsuarioDAO();
         $this->recursoDAO = new RecursoDAO();
         $this->reservaDAO = new ReservaDAO();
