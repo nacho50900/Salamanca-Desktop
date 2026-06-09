@@ -79,7 +79,6 @@ class Juego {
         this.elOpciones.innerHTML = "";
         pregunta.opciones.forEach((texto, indice) => {
             let li = document.createElement("li");
-            li.setAttribute("role", "option");
             let inputId = "opcion-" + indice;
 
             let input = document.createElement("input");
